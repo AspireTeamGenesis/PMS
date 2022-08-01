@@ -1,0 +1,79 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>HR register</title>
+     <link rel="stylesheet" type="text/css" href="HR.css"> 
+</head>
+
+<body > -->
+    <app-topbar></app-topbar>
+    <app-sidebar></app-sidebar>
+    <form name="regi" action="register1.jsp" method="post">
+        <div class="model"  >
+            <h2>{{profileDetails.username}}</h2><br><br>
+    
+            <div class="hello">
+                <br>
+                <div class="form-input">
+                    <label for="r4" id="pwd">Name</label>
+                    <span>:</span>
+                    <label for="r4" id="pwd">{{profileDetails.name}}</label>
+    
+    
+                </div>
+                <br>
+    
+                <div class="form-input">
+                    <label for="r4" id="pwd">Gender</label>
+                    <span>:</span>
+                    <label for="r4" id="pwd">{{profileDetails.gender}}</label>
+    
+    
+                </div>
+                <br>
+                <div class="form-input">
+                    <label for="r5" id="em">Email</label>
+                    <span>:</span>
+                    <label for="r5" id="em">{{profileDetails.email}}</label>
+    
+                </div>
+                <br>
+    
+                <div class="form-input">
+                    <label for="r4" id="pwd">Organisation</label>
+                    <span>:</span>
+                    <label for="r4" id="pwd">{{profileDetails.organisation}} </label>
+    
+                </div>
+                <br>
+                <div class="form-input">
+                    <label for="r6" id="mn">Designation</label>
+                    <span>:</span>
+                    <label for="r4" id="pwd">{{profileDetails.designation}}</label>
+                </div>
+                <br>
+                <!-- <div class="form-input">
+                    <label for="r4" id="pwd">Reporting Person</label>
+                    <span>:</span>
+                    <label for="r4" id="pwd">{{profileDetails.reportingpersonUsername}} </label>
+    
+    
+                </div> -->
+                <br>
+            </div>
+        </div>
+    </form>
+    
+    <!-- <script type="text/javascript">
+            function save() {
+                var user = document.getElementById("user").value;
+                var pwd = document.getElementById("pwd").value;
+                alert("username" + user + "password" + pwd);
+            }
+        </script> -->
+    
+    <!-- </body>
+    
+    </html> -->

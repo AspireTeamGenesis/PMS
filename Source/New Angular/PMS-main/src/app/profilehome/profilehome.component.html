@@ -1,0 +1,68 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<div class="container d-flex justify-content-center table-box">
+    
+    <div class="main"> 
+        <div class="home">
+            <div class="search">
+                <input type="text" name="search" placeholder="Search by User Name"  [(ngModel)]="filter.username"  (onclick)="getProfileByFilters()">
+                
+                <label for="search"><i class="fas fa-search"> </i></label> 
+                <div class="filtericon">
+                    <i class="fa fa-filter" (click)="toogletag1()"></i>
+                    
+                </div>
+            </div>
+            
+            <div class="filters" *ngIf="showMe1">
+                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                     <select class="h-100 py-2" name="Designation" [(ngModel)]="filter.designationId" required >
+                        <option value="0">Select Designation </option>
+                        <option *ngFor="let item of designationValue" value={{item.designationId}}>{{item.designationName}}</option>
+                    </select>
+                </div>
+                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                    <select class="h-100 py-2" name="Domain" [(ngModel)]="filter.domainId" required >
+                        <option value="0">Select Domain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                        <option *ngFor="let item of domainValue" value={{item.domainId}}>{{item.domainName}}</option>
+                         </select>      
+                </div>
+                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                    <select class="h-100 py-2" name="Technology" [(ngModel)]="filter.technologyId" required >
+                        <option value="0">Select Technology&nbsp;&nbsp;</option>
+                        <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
+                        </select>               
+                </div>
+                
+                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                     <select class="h-100 py-2" name="College" [(ngModel)]="filter.collegeId" required >
+                        <br>
+                        <option value="0">Select College&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                        <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+</select>
+                
+                </div>
+                
+                <div class="filter py-3 d-flex align-items-center justify-content-between">
+                     <select class="h-100 py-2" name="Profile Status" [(ngModel)]="filter.profileStatusId" required >
+                        <option value="0">Select Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                        <option *ngFor="let item of profileValue" value={{item.profileStatusId}}>{{item.profileStatusName}}</option>
+                        
+                    </select>
+                </div>
+                <div class="filter py-3 d-flex justify-content-between">
+                    <button class="h-100 py-2"  id="button7" type="button" (click)="getProfileByFilters()"  (click)="toogletag()" style="background-color:#967bb6;color: white; width:150px; border-radius: 5px; margin-left: 2px;">Apply</button>
+                </div>
+        </div> 
+                </div>
+            
+        <div class="middler">
+            <app-filtercard [filterDetails]="filterValue" ></app-filtercard>
+        </div>
+        <div *ngIf="showMe" class="filtertext"><h1>Please select the filter</h1></div>
+    </div>
+</div> 

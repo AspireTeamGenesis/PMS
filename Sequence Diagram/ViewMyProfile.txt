@@ -1,0 +1,37 @@
+
+title View MyProfile
+actor User
+participant ProfileView
+participant Controller
+participant Service
+participant Data access layer
+participant Db
+
+activate User
+activate ProfileView
+activate Controller
+activate Service
+activate Data access layer
+User->ProfileView:To View profile
+
+ProfileView->Controller:GetUserProfile()
+else not null
+
+Controller->Service:calls GetUser(id)
+alt if not null
+Service->Data access layer:calls GetUser(id)
+Data access layer->Db:GetAllUser()
+Db->Data access layer:return users
+alt if username exists
+Service<-Data access layer:returns GetUser(int id)
+Service->Controller:returns user(id)
+Controller->ProfileView:Returns User details
+else user does not exists
+Controller->ProfileView:User not found
+end
+else if null
+Controller->User:Bad request(Null Value)
+end
+participant Data access layer
+database Db
+

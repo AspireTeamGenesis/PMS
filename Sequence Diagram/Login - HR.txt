@@ -1,0 +1,31 @@
+
+title Login Page
+actor User
+activate User
+activate Login
+
+activate Controller
+activate Service
+activate Data access layer
+User->Login:Enter the login details
+
+Login->Controller:AuthLogin()
+alt if null
+Controller->User:Bad request(Null Value)
+else not null
+
+Controller->Service:calls AuthLogin(Username,Password)
+Service->Data access layer:calls AuthLogin()
+Data access layer->Db:Get User LoginCredentials from database
+Db->Service:return user
+alt Detail valid
+Service->Controller:return AuthLogin()(Username,password)
+Controller->Login:User approved
+Login->User:Dashboard
+end
+else detail invalid
+Service->User:Invalid login
+end
+participant Data access layer
+database Db
+

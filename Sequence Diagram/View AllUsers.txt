@@ -1,0 +1,31 @@
+
+title View AllUsers
+actor User
+entryspacing 0.8
+participant View Users
+participant Controller
+participant Service
+participant Data access layer
+
+activate User
+activate View Users
+activate Controller
+activate Service
+activate Data access layer
+database Db
+User->View Users:To view all Users\n
+View Users->Controller: GetallUsers()\n        
+alt if null
+Controller->User:return BadRequest("User Id not found{id}")
+else if not null
+Controller->Service: GetallUsers()\n        
+
+
+Service->Data access layer: GetallUsers()\n        
+Data access layer->Db:Gets all users details
+
+
+
+Data access layer<-Db:returns all users details
+View Users<-Data access layer:list of all users
+end

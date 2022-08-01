@@ -1,0 +1,63 @@
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<div class="container d-flex justify-content-center">
+  <div class="kcard"
+    *ngFor="let item of filterDetails| paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+    <!-- <div *ngIf="item.image!=''">
+        <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.image"
+          width="50%" /></a>
+      </div>
+      <div *ngIf="item.image==''"> 
+        <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
+          alt="Card image cap"></a>   
+      </div> -->
+    <!-- <div class="status">
+        <p>Status </p>
+        <p class="card-text">{{item.profileStatus}}</p>
+        <p>{{item.userId}}</p>
+      </div> -->
+    <div class="card-body">
+      <div class="row rone ">
+        <div class="col-md-8">
+          <div *ngIf="item.image!=''">
+            <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
+                [src]="'data:image/jpg;base64,'+item.image" width="60%" /></a>
+          </div>
+          <div *ngIf="item.image==''">
+            <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
+                src="./assets/img/profile.jpg" alt="Card image cap" width="50%"></a>
+          </div>
+        </div>
+        <div class="col-md-4 pt-4">
+          <p>Status </p>
+          <p>{{item.profileStatus}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-text1"><br>{{item.name}}&nbsp;-&nbsp;{{item.designation}}<br>Reporting
+        Person&nbsp;-&nbsp;{{item.repotingPerson}}</p>
+      <br>
+      <h2>
+        <div class="tooltip1">
+          <i class="fa fa-paper-plane" (click)="editToUpdate()"></i>
+          <span class="tooltip1text">Request to update</span>
+        </div>
+        <div class="tooltip1">
+          <i [routerLink]="['/sharepage',item.name]" class="fa fa-share-nodes"  ></i>
+          <span class="tooltip1text">Click here to share</span>
+        </div>
+      </h2>
+
+    </div>
+  </div>
+
+
+  <div class="mt-3 pagination" *ngIf="filterDetails.length!=0">
+    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+  </div>
+  <div *ngIf="filterDetails.length==0">
+    <h2>No Results Found</h2>
+
+  </div>
+</div>

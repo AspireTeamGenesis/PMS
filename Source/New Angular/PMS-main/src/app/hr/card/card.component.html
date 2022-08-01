@@ -1,0 +1,39 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<div class="container d-flex justify-content-center table-box">
+  <div class="main">
+    <div class="kcard" *ngFor="let item of data">
+      <a [routerLink]="['../viewprofile']"><img class="card-img-top" src="./assets/img/profile.jpg"></a>
+      <div class="status">
+        <p>Status </p>
+        <p class="card-text">Approved</p>
+      </div>
+      <div class="card-body">
+        <p class="card-text1"><br><strong>{{item.name}}</strong> - {{item.designation.designatioName}<br><strong>Reporting
+          Person</strong> - {{item.reportingPersonUsername}}</p>
+        <br>
+        <h2>
+          <div class="tooltip1">
+            <i class="fa fa-pencil fa-sm"></i>
+            <span class="tooltip1text">Click here to edit</span>
+          </div>
+          <div class="tooltip1">
+            <i class="fa fa-share fa-sm"></i>
+            <span class="tooltip1text">Click here to share</span>
+          </div>
+          <div class="tooltip1">
+            <i class="fa fa-download"></i>
+            <span class="tooltip1text">Click here to download</span>
+          </div>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 pagination">
+    <!-- <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls> -->
+  </div>
+  <!-- </div> -->
+  <!-- <h1>hello</h1> -->

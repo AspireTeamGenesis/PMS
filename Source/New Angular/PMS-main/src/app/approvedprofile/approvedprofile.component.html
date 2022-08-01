@@ -1,0 +1,59 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<div class="container d-flex justify-content-center table-box">
+  <div class="main">
+    <h1 class="heading1">Approved Profiles</h1>
+    <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
+    <div class="kcard"
+      *ngFor="let item of approvedProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+      <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
+        style="border-radius:50%;width:45%;height:45%"
+        width="50%" /></a>
+      <div class="status">
+        <p>Status </p>
+        <p class="card-text">{{item.userProfileStatus}}</p>
+      </div> -->
+      <div class="card-body">
+        <div class="row rone ">
+          <div class="col-md-8">
+            <div *ngIf="item.userProfileImage!=''&&item.userProfileImage!=null">
+              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
+                  [src]="'data:image/jpg;base64,'+item.userProfileImage" width="60%" /></a>
+            </div>
+            <div *ngIf="item.userProfileImage==null||item.userProfileImage==''">
+              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
+                  src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Card image cap" width="50%"></a>
+            </div>
+          </div>
+          <div class="col-md-4 pt-4">
+            <p>Status </p>
+            <p>{{item.userProfileStatus}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text1"><br>{{item.name}}&nbsp; -&nbsp;{{item.userDesignation}}<br>Reporting Person&nbsp;-&nbsp;{{item.reportingPerson}}</p>
+        <br>
+        <h2>
+          <div class="tooltip1">
+          <i class="fa fa-paper-plane" (click)="editToUpdate()"></i><i [routerLink]="['/sharepage',item.name]" class="fa fa-share-nodes"></i>
+          <span class="tooltip1text">Click here to edit</span>
+            </div>
+          <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
+          <i class="fa fa-trash"></i> -->
+
+          <!-- <i class="fa fa-trash"></i> -->
+        </h2>
+
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 pagination">
+    <pagination-controls class="text-center" (pageChange)="page = $event">
+      
+    </pagination-controls>
+  </div>
+</div>

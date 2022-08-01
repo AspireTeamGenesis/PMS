@@ -1,0 +1,95 @@
+
+  form {
+    /* margin-top: 200px;  */
+    padding-top: 100px; 
+     margin-left: 550px; 
+    /* margin: auto; */
+    width: 50%;
+    height: 20%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;  */
+    /* border: 2px solid black;  */
+    background-color: #ffffff;
+    /* background-color:green; */
+
+  }
+  .hello
+  {
+    
+    border: 2px solid black;
+    border-radius: 15px;
+  }
+  
+  form h2{
+    text-align: center;
+  }
+  
+  .form-input {
+    margin: 10px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .form-input *{
+    min-height: 20px;
+  }
+  
+  .form-input span{
+    padding: 0px 10px;
+  }
+  
+  .form-input p {
+    min-width: 180px;
+    text-align: left;
+    
+  }
+  
+  .form-input label {
+    min-width: 200px;
+    text-align: left;
+    
+  }
+  
+  input[type=text],
+  [type=password],
+  [type=number] {
+    width: 35%;
+    margin: 8px 0;
+    padding: 7px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    width: auto;
+    padding: 9px 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    color: #ffffff;
+    /* margin-left: 80px; */
+    margin-right: 80px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #fn,
+  #ln,
+  #un,
+  #pwd,
+  #em,
+  #mn,
+  #fm,
+  #cy {
+    font-family: 'Lato', sans-serif;
+    font-size: large;
+    color:black;
+  }

@@ -1,0 +1,67 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form action="#" class="form form-border" [formGroup]="achievementForm" (ngsubmit)="achievementForm.valid ">
+
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
+      <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language & SocialMedia"></div>
+      <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+      <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
+      <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
+      <div class="progress-step progress-step-active" data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Achievements
+        <div class="tooltip1">
+          <button class="plus" (click)="toogletag()"> + </button>
+          <span class="tooltip1text">Click here to add achievement details</span>
+        </div>
+      </h3>
+      <div *ngIf="showMe">
+        <label for="achievementTypeValue">Type</label>
+        <select name="achievementTypeValue" 
+          [class.is-invalid]="(formSubmitted && achievementForm.controls['AchievementType'].invalid )|| achievementForm.controls['AchievementType'].invalid && achievementForm.controls['AchievementType'].touched||achievementForm.controls['AchievementType'].untouched"
+          id="achievementTypeValue"  
+          formControlName="AchievementType" required class="textbox-border">
+
+          <option value="0" hidden>Select type of Achievement</option>
+          <option value="1">Award</option>
+          <option value="2">Certificates</option>
+        </select>
+        <div
+          *ngIf="formSubmitted || (achievementForm.controls['AchievementType'].invalid && achievementForm.controls['AchievementType'].touched)">
+          <span class="text-danger" *ngIf="achievementForm.controls['AchievementType'].errors?.['required']">
+            Select type of Achievement</span>
+        </div>
+        <br>
+        <input type="file" (change)="fileChangeEvent($event)" name="Role" id="Role" class="textbox-border"
+          [class.is-invalid]="achievementForm.controls['AchievementPhoto'].invalid && achievementForm.controls['AchievementPhoto'].touched"
+          formControlName="AchievementPhoto" required />
+        <div
+          *ngIf="(formSubmitted && achievementForm.controls['AchievementPhoto'].invalid && achievementForm.controls['AchievementPhoto'].touched)|| (achievementForm.controls['AchievementPhoto'].invalid && achievementForm.controls['AchievementPhoto'].touched)">
+          <span class="text-danger" *ngIf="achievementForm.controls['AchievementPhoto'].errors?.['required']">Upload
+            your
+            Photo
+          </span>
+        </div>
+        <div class="button">
+          <button class="btn btn-next width-50 ml-auto" [disabled]="!achievementForm.valid"
+            (click)="submitAchievement()">Add</button>
+        </div>
+      </div>
+      <br>
+    <!-- <div style="border:1px solid black"> -->
+      <app-achievementcard></app-achievementcard>
+    <!-- </div>       -->
+      <div class="row">
+        <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto" (click)="submit()">Submit</a>
+      </div>
+    </div>
+  </form>
+</div>

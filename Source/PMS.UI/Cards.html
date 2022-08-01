@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ad58591d53.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="./styles/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="card.css">
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="user">
+                <img src="logo.jpg" alt="">
+            </div>
+            <div class="logo">                   
+                <h2>Profile Management</h2>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <div class="d-flex flex-column">
+                    <div class="profile">
+                        <img src="profile.png" alt="" class="img-fluid rounded-circle">
+                        <h1 class="text-light">UserName</h1>
+                        <!-- <div class="social-links mt-3 text-center">
+                            <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+
+                        </div> -->
+
+                    </div>
+                </div>
+                <!-- <li>
+                    <img src="profile.png" class="profile" alt="">                      
+                </li>
+                <li class="username">
+                       <h2>UserName</h2>
+                    
+                </li> -->
+                <li>
+                    <a href="#">
+                       <i class="fa-solid fa-house text-dark"></i>
+                       <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                       <i class="fa-solid fa-address-card text-dark"></i>
+                      <p>MyProfile</p>
+                   </a>
+               </li>
+               <li>
+                   <a href="#">
+                       <i class="fa-solid fa-box-archive text-dark"></i> 
+                      <p>Profile History</p>
+                   </a>
+               </li>
+               <li>
+                   <a href="#">
+                       <i class="fa-solid fa-key text-dark"></i>
+                       <p>Change Password</p>
+                   </a>
+               </li>
+               <li>
+                   <a href="#">
+                       <i class="fa-solid fa-right-from-bracket text-dark"></i>
+                      <p>SignOut</p>
+                   </a>
+               </li>
+                   <div class="profile1">
+                       <div class="social-links mt-3 text-center">
+                            <h1 class="text-light">Contact Us</h1>
+                            <a href="" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+
+                        </div>
+                   </div>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="card1">
+                <h4>Approved&nbsp;Profiles</h4>
+            </div>
+            <div class="search">
+                <input type="text" name="search" placeholder="search by name, project">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <div class="filters">
+                <div class="filter">
+                    <p> Designation:<select name="Designation">
+                        <option value="select Designation">Select Designation</option>
+                        <option value="CEO">CEO</option>
+                        <option value="PM">PM</option>
+                        <option value="TL">TL</option>
+                        <option value="SSE">SSE</option>
+                        <option value="SE">SE</option>
+
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Domain:<select name="Domain">
+                        <option value="select Domain">Select Domain</option>
+                        <option value="IT">IT</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Technology:<select name="Technology">
+                        <option value="select Technology">Select Technology</option>
+                        <option value="NET">NET</option>
+                        <option value="Java">Java</option>
+                        <option value="Lamp">Lamp</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> College:<select name="College">
+                        <br>
+                        <option value="select college">Select college</option>
+                        <option value="Krishna">Krishna</option>
+                        <option value="Bannari">Bannari</option>
+                        <option value="Kumaraguru">Kumaraguru</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Experience:<select name="Min">
+                        <option value="Min">Min</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                    <select name="Max">
+                        <option value="Max">Max</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Profile Status:<select name="Profile Status">
+                        <option value="select Profile Status">Select Profile Status</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Waiting for Approval">Waiting for Approval</option>
+                    </select>
+                </p>
+                </div>
+                <!-- <div class="Apply">
+                    <button type="submit" form="form1" value="Submit">Submit</button>
+                </div> -->
+            </div>
+     <div class="">
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+            <div class="card " >
+                <img  class="card-img-top" src="https://st.depositphotos.com/2101611/4338/v/450/depositphotos_43381243-stock-illustration-male-avatar-profile-picture.jpg" alt="Card image cap">
+                <div class="status">
+                    <p class="card-text"><br><br>Status:Approved</p>
+                  </div>
+                <div class="card-body">
+                  <p class="card-text"><br>Ravi Shanker - Module Lead<br>Reporting Person-Vinay Raja</p><br>
+                 <h2><a class="fa-solid fa-square-pen"></a><i  class="fa-solid fa-share-nodes"></i></i><i class="fa-solid fa-download"></i></h2> 
+                  
+                </div>
+            </div>
+
+            
+
+
+            
+            
+            
+        </div>
+    
+</body>
+  
+</html>

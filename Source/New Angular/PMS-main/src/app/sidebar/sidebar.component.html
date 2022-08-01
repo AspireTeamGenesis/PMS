@@ -1,0 +1,34 @@
+<nav id="sidebar">
+    <div class="custom-menu">
+        <button (click)="toggleSidebar()" type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+              <span class="sr-only">Toggle Menu</span>
+        </button>
+    </div>
+    <div *ngIf="!isShowDivIf" class="p-4 pt-5">
+        <div >
+            <a href="#" class="img logo rounded-circle mb-6"><img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Admin Logo" class="sidebar-image"></a>
+            <h4 class="text-light admin-text mt-3 sidebar-h4">{{profileDetails.username}}</h4>
+        </div>
+        <ul class="list-unstyled components mb-5 sidebar-items">
+            <li>
+                <a [routerLink]="['/dashboard']" ><i class="fa-solid fa-person ml-4 sidebar-dashboard"></i>Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/profilehome']" data-toggle="collapse" aria-expanded="false"> <i class="fa-solid fa-magnifying-glass ml-4 mr-4"></i>Search Profile</a> 
+            </li>
+            <li>
+                <a [routerLink]="['../myinfo']"><i class="fa-solid fa-user ml-4 mr-4"></i>My Info</a>   
+            </li>
+            <li>
+                <a (click)="getProfileIdByUserId()"><i class="fa-solid fa-circle-plus ml-4 mr-4"></i>My Profile</a>
+            </li>
+            <li>
+                <a  [routerLink]="['/changepassword']"><i class="fa-solid fa-building ml-4 sidebar-changepassword"></i>Change Password</a>
+            </li>
+            <li>
+                <a (click)="logout()" routerLink=""><i class="fa-solid fa-layer-group ml-4 mr-4"></i>Sign Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

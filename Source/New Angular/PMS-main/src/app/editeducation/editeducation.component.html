@@ -1,0 +1,119 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form action="#" class="form form-border" >
+
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div class="progress-step" data-title="Personal"></div>
+      <div class="progress-step" data-title="Language & SocialMedia"></div>
+      <div class="progress-step progress-step-active" data-title="Education"></div>
+      <div class="progress-step " data-title="Project"></div>
+      <div class="progress-step " data-title="Skills"></div>
+      <div class="progress-step " data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Education Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button> </h3>
+      <div class="input-group">
+        <label for="degree">Degree</label>
+        <input [class.is-invalid]="(formSubmitted && educationForm.controls['Degree'].invalid )||educationForm.controls['Degree'].invalid && educationForm.controls['Degree'].touched" type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
+          required />
+          <!-- <div *ngIf="(formSubmitted)||educationForm.controls['Degree'].invalid && educationForm.controls['Degree'].touched">
+            <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['minlength']">Degree is too short</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['maxlength']">Degree is too long</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['required']">Degree is required</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['pattern']">Degree is not valid</span>
+          </div> -->
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="course">Course</label>
+        <input [class.is-invalid]="(formSubmitted && educationForm.controls['Course'].invalid )||educationForm.controls['Course'].invalid && educationForm.controls['Course'].touched" type="text" name="course" id="course" placeholder="Enter your course" [(ngModel)]="user.course"
+          required />
+          <!-- <div *ngIf="(formSubmitted)||educationForm.controls['Course'].invalid && educationForm.controls['Course'].touched">
+            <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['minlength']">Course is too short</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['maxlength']">Course is too long</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['required']">Course is required</span>
+            <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['pattern']">Degree is not valid</span>
+          </div> -->
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="College">College</label>
+        <select   id="college" name="college" [(ngModel)]="user.collegeid" required>
+          <option value="">Select college/University</option>
+          <option *ngFor="let item of collegeValue" [selected]="item.collegeId==collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+        </select>
+      </div>
+      <!-- <div
+                    *ngIf="(formSubmitted)||educationForm.controls['College'].dirty && educationForm.controls['College'].touched">
+                    <span class="text-danger" *ngIf="educationForm.controls['College'].errors?.['required']">College is required</span>
+                </div> -->
+      <br>
+      <table>
+        <tr>
+          <!-- <div class="input-group"> -->
+          <td>
+            <label for="personaldetails">Duration</label>
+          </td>
+          <!-- </div> -->
+        </tr>
+      </table>
+      <!-- <div class="input-group"> -->
+      <label for="personaldetails">From</label>
+      <select  name="starting" [(ngModel)]="user.starting" required="">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+      <!-- <div
+      *ngIf="(formSubmitted)||educationForm.controls['From'].invalid && educationForm.controls['From'].touched">
+      <span class="text-danger" *ngIf="educationForm.controls['From'].errors?.['required']">From is required</span>
+  </div> -->
+
+      <br>
+
+      <!-- <input type="date" name="from" id="personaldetails"  [(ngModel)]="user.starting_Year" required /> -->
+      <!-- </div> -->
+      <div class="input-group">
+        <label for="personaldetails">To</label>
+        <!-- <input type="date" name="to" id="personaldetails"  [(ngModel)]="user.ending_Year" required/> -->
+        <select name="ending" [(ngModel)]="user.ending" required="">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+        <!-- <div
+        *ngIf="(formSubmitted)||educationForm.controls['To'].invalid && educationForm.controls['To'].touched">
+        <span class="text-danger" *ngIf="educationForm.controls['To'].errors?.['required']">TO is required</span>
+    </div> -->
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="percentage">Percentage</label>
+        <input  type="number" name="percentage" id="percentage" placeholder="Enter percentage of marks"
+          [(ngModel)]="user.percentage" required />
+          <!-- <div *ngIf="(formSubmitted)||educationForm.controls['Percentage'].invalid && educationForm.controls['Percentage'].touched">
+            <span class="text-danger" *ngIf="educationForm.controls['Percentage'].errors?.['minlength']">Percentage is too short. </span>
+            <span class="text-danger" *ngIf="educationForm.controls['Percentage'].errors?.['maxlength']">Percentage is too long. </span>
+            <span class="text-danger" *ngIf="educationForm.controls['Percentage'].errors?.['required']">Percentage is required. </span>
+            
+             <span class="text-danger" *ngIf="educationForm.controls['Percentage'].errors?.['pattern1']">Enter valid Percentage1. </span> 
+            <span class="text-danger" *ngIf="educationForm.controls['Percentage'].errors?.['pattern']">Enter valid Percentage. </span>
+          </div> -->
+
+      </div>
+      <div class="button">
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education']" (click)="updateEducation()" (click)="toogletag()">Update</a>
+      </div>
+      <br>
+      <app-educationcard [profileId]="profileId"></app-educationcard>
+      <div class="row">
+        <a [routerLink]="['/personal']" class="btn btn-next width-50 ml-auto">Previous</a>
+
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
+
+      </div>
+    </div>
+  </form>
+</div>

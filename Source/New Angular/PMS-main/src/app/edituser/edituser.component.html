@@ -1,0 +1,147 @@
+<app-topbar></app-topbar>
+<app-hrsidebar></app-hrsidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form  class="form" style="margin-top:110px;">
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+      <div class="form-step form-step-active">
+        <h1 style="margin-top: -35px; text-align: center;">User Creation</h1>
+        <div class="input-group">
+          <label for="personaldetails">Name</label>
+          <input type="text" name="Name" [(ngModel)]="userDetails.name"  id="personaldetails" placeholder="Enter User's name" />
+          <!-- <div *ngIf="registerForm.controls['Name'].invalid && registerForm.controls['Name'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['required']">Name is
+                required</span>
+            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['pattern']">Name should
+                contain only characters</span>
+        </div>  -->
+        </div>
+        <div class="input-group">
+          <label for="personaldetails">Mail Address</label>
+          <input type="email" name="Email" [(ngModel)]="userDetails.email" id="personaldetails"
+            placeholder="Enter User's mail address" />
+            <!-- <div *ngIf="registerForm.controls['Email'].invalid && registerForm.controls['Email'].touched">
+              <span class="text-danger" *ngIf="registerForm.controls['Email'].errors?.['required']">Email
+                  is
+                  required</span>
+              <span class="text-danger" *ngIf="registerForm.controls['Email'].errors?.['pattern']">Email
+                  should
+                  contain only characters</span>
+          </div> -->
+        </div>
+        <div class="input-group">
+          <label for="personaldetails">User Name</label>
+          <input type="text" name="UserName"[(ngModel)]="userDetails.username" id="personaldetails" placeholder="Enter User's user name" />
+          <!-- <div *ngIf="registerForm.controls['UserName'].invalid && registerForm.controls['UserName'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['UserName'].errors?.['required']">UserName
+                is
+                required</span>
+            <span class="text-danger" *ngIf="registerForm.controls['UserName'].errors?.['pattern']">UserName
+                should
+                contain only characters</span>
+        </div> -->
+        </div>
+        <div class="input-group">
+          <label for="personaldetails">Password</label>
+          <input type="password" name="Password" [(ngModel)]="userDetails.password" id="personaldetails" placeholder="Enter User's password" />
+          <!-- <div *ngIf="registerForm.controls['Password'].invalid && registerForm.controls['Password'].touched">
+            <span class="text-danger" *ngIf="registerForm.controls['Password'].errors?.['required']">Password
+                is
+                required</span>
+            <span class="text-danger" *ngIf="registerForm.controls['Password'].errors?.['pattern']">Password
+                should
+                contain only characters</span>
+        </div> -->
+        </div>
+        <div class="x">
+          <label for="personaldetails">Gender</label>
+          <select id="personaldetails" name="GenderValue" [(ngModel)]="userDetails.genderId"   [value]="userDetails.genderId">
+            <option value="">Select Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="3">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <div class="label">
+            Mobile Number
+          </div>
+          <div class="mobilenum1">
+            <select style="width:5rem" id="personaldetails" name="CountryCodeValue" [value]="userDetails.countryCodeId">
+              <option value="">Select Country Code</option>
+               <option value="1">+91</option>
+                   <option value="2">+44</option>
+                   <option value="3">+213</option>
+                   <option value="4">+1</option>
+                   <option value="5">+55</option> 
+
+            </select>
+          </div>
+          <div class="mobilenum">
+            <input type="text" name="MobileNumber" [(ngModel)]="userDetails.mobilenumber" id="personaldetails" placeholder="Enter User's mobile number">
+            <!-- <div *ngIf="registerForm.controls['MobileNumber'].invalid && registerForm.controls['MobileNumber'].touched">
+              <span class="text-danger" *ngIf="registerForm.controls['MobileNumber'].errors?.['required']">Mobile Number
+                  is
+                  required</span>
+              <span class="text-danger" *ngIf="registerForm.controls['MobileNumber'].errors?.['pattern']">Mobile Number
+                  should
+                  contain only integers</span>
+          </div> -->
+          </div>
+        </div>
+        <br><br>
+        <div class="input-group">
+          <label for="personaldetails">Organisation</label>
+          <select id="personaldetails" name="OrganisationValue" [(ngModel)]="userDetails.organisationId">
+            <option value="">Select organisation</option>
+            <option *ngFor="let item of organisationValue" [selected]="item.organisationId==organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
+          </select>
+        </div>
+
+        <!-- <div class="input-group">
+          <label for="College">College</label>
+          <select  id="college" name="college" [(ngModel)]="user.collegeid" required>
+            <option value="">Select college/University</option>
+            <option *ngFor="let item of collegeValue" [selected]="item.collegeId==collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+          </select>
+        </div> -->
+        
+        <div class="input-group">
+          <label for="personaldetails">Designation</label>
+          <select id="personaldetails" name="DesignationValue" [(ngModel)]="userDetails.designationId">
+            <option value="">Select Designation</option>
+            <option *ngFor="let item of designationValue" [selected]="item.designationId==designationValue" value={{item.designationId}}>{{item.designationName}}</option>
+
+            
+            <!-- <option *ngFor="let item of designationValue" [value]="userDetails.designationId">
+              {{item.designationName}} -->
+            <!-- </option> -->
+            <!-- <option value="volvo">PM</option>
+                  <option value="saab">TL</option>
+                  <option value="fiat">SSE</option> -->
+          </select>
+        </div>
+        <!-- <div class="input-group">
+          <label for="personaldetails">Reporting Person</label>
+          <input type="text" name="ReportingPerson" [(ngModel)]="ReportingPerson" id="personaldetails"
+            placeholder="Enter reporting person's Username" /> -->
+            <!-- <div *ngIf="registerForm.controls['ReportingPerson'].invalid && registerForm.controls['ReportingPerson'].touched">
+              <span class="text-danger" *ngIf="registerForm.controls['ReportingPerson'].errors?.['required']">Reporting Person UserName
+                  is
+                  required</span>
+              <span class="text-danger" *ngIf="registerForm.controls['ReportingPerson'].errors?.['pattern']">Reporting Person
+                  should
+                  contain only characters</span>
+          </div> -->
+        <!-- </div> -->
+        <div class="input-group">
+          <label for="personaldetails">Reporting Person Username</label>
+          <input type="text" name="ReportingPersonUsername" [(ngModel)]="userDetails.reportingpersonUsername" id="personaldetails" placeholder="Enter Reporting Person User's name" />
+        </div>
+        <div class="row btns-group1">         
+          <a (click) = "updateUser()" routerLink="/newcard" class="btn">Update</a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,95 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+
+<div class="container d-flex justify-content-center table-box">
+  <form [formGroup]="personalForm" class="form form-border">
+
+    <div class="progressbar">
+      <div [routerLink]="['/personal']" class="progress-step progress-step-active" data-title="Personal"></div>
+      <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language & SocialMedia"></div>
+      <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+      <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
+      <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
+      <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Personal Details</h3>
+
+      <label class="form-label" for="profilePhoto">Profile Photo<label class="text-danger">*</label></label>
+      <input type="file" (change)="fileChangeEvent($event)" name="profilePhoto" id="profilePhoto"
+        placeholder="Upload your Photo"
+        [class.is-invalid]="(formSubmitted && personalForm.controls['profilePhoto'].invalid )||personalForm.controls['profilePhoto'].invalid && personalForm.controls['profilePhoto'].touched"
+        formControlName="profilePhoto">
+      <div
+        *ngIf="(formSubmitted)||personalForm.controls['profilePhoto'].invalid && personalForm.controls['profilePhoto'].touched">
+        <span class="text-danger" *ngIf="personalForm.controls['profilePhoto'].errors?.['required']">Upload your
+          Photo</span>
+      </div>
+      <label class="text-error"> {{imageError}}</label>
+      <br>
+
+      <label class="form-label" for="objective">Objective<label class="text-danger">*</label></label>
+      <textarea name="objective" id="objective" rows="4" cols="80" placeholder="Enter Objective"
+        class="personal-objective"
+        [class.is-invalid]="(formSubmitted && personalForm.controls['objective'].invalid )||personalForm.controls['objective'].invalid && personalForm.controls['objective'].touched"
+        formControlName="objective"></textarea>
+      <div
+        *ngIf="(formSubmitted)||personalForm.controls['objective'].invalid && personalForm.controls['objective'].touched">
+        <span class="text-danger" *ngIf="personalForm.controls['objective'].errors?.['required']">Objective is
+          required</span>
+        <span class="text-danger" *ngIf="personalForm.controls['objective'].errors?.['minlength']">Objective is too
+          short</span>
+        <span class="text-danger" *ngIf="personalForm.controls['objective'].errors?.['maxlength']">Objective is too
+          long</span>
+      </div>
+      <br><br>
+
+      <label for="dateofBirth">Date of Birth<label class="text-danger">*</label></label>
+      <input type="date" name="dateofBirth" id="dateofBirth"
+        [class.is-invalid]="(formSubmitted && personalForm.controls['dateofBirth'].invalid)||personalForm.controls['dateofBirth'].invalid && personalForm.controls['dateofBirth'].touched"
+        name="dateofBirth" id="dateofBirth" class="form-select" name="dateofBirth" formControlName="dateofBirth">
+      <div
+        *ngIf="(formSubmitted)||personalForm.controls['dateofBirth'].invalid && personalForm.controls['dateofBirth'].touched">
+        <span class="text-danger" *ngIf="personalForm.controls['dateofBirth'].errors?.['required']">Date of Birth is
+          required</span>
+        <span class="text-danger" *ngIf="validateDateOfBirth()">Your age must be greater than 18 and
+          less than 60</span>
+      </div>
+      <br>
+
+      <label for="personaldetails">Nationality<label class="text-danger">*</label></label>
+      <input type="text" id="nationality" name="nationality"
+        placeholder="Enter your Nationality"
+        [class.is-invalid]="(formSubmitted && personalForm.controls['nationality'].invalid )||personalForm.controls['nationality'].invalid && personalForm.controls['nationality'].touched"
+        id="nationality" formControlName="nationality">
+      <div
+        *ngIf="(formSubmitted)||personalForm.controls['nationality'].invalid && personalForm.controls['nationality'].touched">
+        <span class="text-danger" *ngIf="personalForm.controls['nationality'].errors?.['required']">Nationality is
+          required</span>
+        <span class="text-danger" *ngIf="personalForm.controls['nationality'].errors?.['minlength']">Nationality is
+          too short</span>
+        <span class="text-danger" *ngIf="personalForm.controls['nationality'].errors?.['maxlength']">Nationality is
+          too long</span>
+      </div>
+      <br>
+
+      <label for="personaldetails">Date of Joining<label class="text-danger">*</label></label>
+      <input type="date" name="dateofJoining" id="dateofJoining"
+        [class.is-invalid]="(formSubmitted && personalForm.controls['dateofJoining'].invalid)||personalForm.controls['dateofJoining'].invalid && personalForm.controls['dateofJoining'].touched"
+        name="dateofJoining" id="dateofJoining" class="form-select" name="dateofJoining"
+        formControlName="dateofJoining">
+      <div
+        *ngIf="(formSubmitted)||personalForm.controls['dateofJoining'].invalid && personalForm.controls['dateofJoining'].touched">
+        <span class="text-danger" *ngIf="personalForm.controls['dateofJoining'].errors?.['required']">Date of Joining
+          is required</span>
+      </div>
+    </div>
+    <div class="row">
+      <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 mlr-auto"
+        (click)="personalSubmit()">Save as
+        Draft</a>
+      <a [routerLink]="['/languagesocial']" class="btn  width-50 mlr-auto" (click)="personalSubmit()">Next</a>
+    </div>
+  </form>
+</div>

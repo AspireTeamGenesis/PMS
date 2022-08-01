@@ -1,0 +1,41 @@
+<app-topbar></app-topbar>
+<app-hrsidebar></app-hrsidebar>
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+<div class="container d-flex justify-content-center table-box">
+  <div class="main">
+    <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
+    <div class="kcard"
+      *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+      <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
+          alt="Card image cap"></a>
+      <div class="status">
+        <p>Status </p>
+        <p class="card-text">Approved</p>
+      </div>
+      <div class="card-body">
+        <p class="card-text1"><br>{{item.name}} - {{item.designation}}<br>Reporting
+          Person-{{item.reportingPerson}}</p>
+        <br>
+        <h2>
+
+          <div class="tooltip1">
+            <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
+            <span class="tooltip1text">Click here to update</span>
+          </div>
+          <div class="tooltip1">
+            <i (click)="CancelDrive(item.userId)" class="fa fa-trash"></i>
+            <span class="tooltip1text">Click here to delete</span>
+          </div>
+
+          <!-- <i class="fa fa-trash"></i> -->
+        </h2>
+
+      </div>
+    </div>
+  </div>
+  <div class="mt-3 pagination">
+    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

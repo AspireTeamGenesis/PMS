@@ -1,0 +1,90 @@
+Project Setup Manual
+
+Profile Management System
+
+GitHub Account Name :  AspireTeamGenesis (https://github.com/AspireTeamGenesis)
+
+Steps To Download the Project from GitHub : Profile_Management-->Download Zip-->Extract All
+
+Pre-Requisites  :
+
+API
+
+Visual Studio code
+Basic Knowledge in C#
+SQL Server
+SDK
+
+Angular
+
+Visual Studio Code
+Node.js
+Basic Knowledge on HTML , CSS , TypeScript.
+For Angular CLI, we need to install npm by using "npm install -g @angular/cli".
+
+
+
+1. API (Back-End)
+
+1.1 Steps to be followed to run the API
+
+Open Extracted Profile_Management-->Source-->PMS.API and then in file path type "cmd",
+it will open command prompt  and type "code ." it will open VS code.
+
+(or)
+
+Open VS code, File --> Open Folder -->Profile_Management -->Source -->PMS.API, it will open the Project in VScode.
+
+In appsetting.json,change the server name in the Connection String with the server name of the local SQL Server.Then open terminal.
+
+To open terminal either use Terminal -->New Terminal (or) control + shift + ~ 
+
+Then in terminal type "dotnet build"
+
+Then type "dotnet ef migrations add (migration name)" 
+(Ex:dotnet ef migrations add initial)
+	
+To update database type "dotnet ef database update".
+
+To run the project type "dotnet run".
+
+A localhost link will be generated (Ex: https://localhost:7021), Click that link and it will navigate to chrome page and 
+in url we have to type "/swagger" next to the available link. 
+(Ex:https://localhost:7021/swagger).
+
+
+
+2. Angular (Front-End)
+
+2.1 Steps to be followed to run the Angular
+
+Open Extracted Profile_Management -->Source -->New Angular nd then in path type "cmd",
+and it will open Command prompt and type "code ." it will open VScode.
+
+(or)
+
+Open VS code, File -->Open Folder -->Extracted Profile_Management -->Source -->New Angular, it will open the Project in VScode
+
+Change the host id (URL) with your Swagger URL in app -->src -->Services -->Connection.Service.ts
+
+In command prompt, type "npm i"  to install the packages that are required for our project.
+
+After the packages have been installed give the command as "ng s -o" it will open the Application's login page.
+
+
+
+3. Linting
+
+3.1 Steps to be followed to Lint the Angular project: 
+
+Open the extracted Profile_Management -->Source -->New Angular.
+
+The pakages that are dependent, will be installed by using the command "npm i" in terminal.
+
+To install the Package for linting, type "ng add @angular-eslint/schematics" in the terminal. It adds the file "eslintrc.json" in angular.
+
+After installing the packages, run linting by using the command "ng lint".
+
+To skip the errors that are occurred due to default life method, add "@angular-eslint/no-empty-lifecycle-method": "off" in eslintrc.json file.
+
+Some Errors can be automatically fixed by default. To fix those linting errors run ng lint --fix .

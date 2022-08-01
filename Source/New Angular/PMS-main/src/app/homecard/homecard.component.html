@@ -1,0 +1,31 @@
+<script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<div class="container d-flex justify-content-center">
+    <div class="kcard"
+      *ngFor="let item of filterDetails| paginate: {itemsPerPage : 4, currentPage: page,totalItems:filterDetails.length}">
+      <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.image"
+        width="50%" /></a>
+      <div class="status">
+        <p>Status </p>
+        <p class="card-text">{{item.profileStatus}}</p>
+      </div>
+      <div class="card-body">
+        <p class="card-text1"><br>{{item.name}} - {{item.designation}}<br>Reporting
+          Person-{{item.repotingPerson}}</p>
+        <br>
+        <h2>
+          <i  class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i><i [routerLink]="['/sharepage']" class="fa fa-share-nodes"></i>
+        </h2>
+
+      </div>
+    </div>
+   
+
+    <div class="mt-3 pagination" *ngIf="filterDetails.length!=0">
+        <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <div *ngIf="filterDetails.length==0">
+        <p>No Results Found</p>
+
+    </div>
+</div>

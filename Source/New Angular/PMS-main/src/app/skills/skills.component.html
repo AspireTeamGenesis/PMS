@@ -1,0 +1,76 @@
+<app-topbar></app-topbar>
+<app-sidebar></app-sidebar>
+<div class="container d-flex justify-content-center table-box">
+  <form action="#" class="form form-border" [formGroup]="skillForm" (ngsubmit)="skillForm.valid"
+   >
+
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
+      <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language & SocialMedia"></div>
+      <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
+      <div [routerLink]="['/project']" class="progress-step   " data-title="Project"></div>
+      <div class="progress-step progress-step-active " data-title="Skills"></div>
+      <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
+    </div>
+
+    <div class="form-step form-step-active">
+      <h3>Skills
+        <div class="tooltip1">
+          <button class="plus" (click)="toogletag()"> + </button>
+          <span class="tooltip1text">Click here to add skill details</span>
+        </div></h3>
+      <div *ngIf="showMe">
+        <div class="input-group">
+          <label for="domainType">Domain</label>
+          <select id="domainType" name="domainId" formControlName="domainType"
+            [class.is-invalid]="(formSubmitted && skillForm.controls['domainType'].invalid )|| skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched||skillForm.controls['domainType'].untouched"
+            required>
+            <option value="0" hidden>Select Domain</option>
+            <option *ngFor="let item of domainValue" value={{item.domainId}}>{{item.domainName}}</option>
+          </select>
+          <div
+            *ngIf="formSubmitted || (skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched)">
+            <span class="text-danger" *ngIf="skillForm.controls['domainType'].errors?.['required']">
+              Select the Domain</span>
+          </div>
+          <div>
+            <h5 class="text-center text-danger">{{error}}</h5>
+          </div>
+        </div>
+        <br>
+
+        <div class="input-group">
+          <label for="technologyType">Technology</label>
+          <select id="technologyType" name="technologyType"
+            [class.is-invalid]="(formSubmitted && skillForm.controls['technologyType'].invalid )|| skillForm.controls['technologyType'].invalid && skillForm.controls['technologyType'].touched||skillForm.controls['technologyType'].untouched"
+            formControlName="technologyType" required>
+            <option value="0" hidden>Select Technology</option>
+            <option *ngFor="let item of technologyValue" value={{item.technologyId}}>{{item.technologyName}}</option>
+          </select>
+        </div>
+        <div
+          *ngIf="formSubmitted || (skillForm.controls['technologyType'].invalid && skillForm.controls['technologyType'].touched) ">
+          <span class="text-danger" *ngIf="skillForm.controls['technologyType'].errors?.['required']">
+            Select the Technology</span>
+        </div>
+        <div>
+          <h5 class="text-center text-danger">{{error}}</h5>
+        </div>
+
+        <div class="button">
+          <button class="btn btn-next width-50 ml-auto"  (click)="submitSkills()" [disabled]="!skillForm.valid"
+            (click)="toogletag()">Add</button>
+        </div>
+      </div>
+      <br>
+      <app-skillcard></app-skillcard>
+      <div class="row">
+        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Previous</a>
+        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+        <a [routerLink]="['/achievement']" class="btn btn-next width-50 ml-auto">Next</a>
+      </div>
+    </div>
+  </form>
+</div>

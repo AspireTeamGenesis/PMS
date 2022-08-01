@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ad58591d53.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="user">
+                <img src="logo.jpg" alt="">
+            </div>
+            <div class="logo">
+                <h2>Profile Management</h2>
+            </div> 
+            <!-- <div class="user">
+                <img src="img/doctor1.png" alt="">
+            </div>           -->
+        </div>
+        <div class="sidebar">
+            <ul>
+                <div class="d-flex flex-column">
+                    <div class="profile">
+                        <img src="profile.png" alt="" class="img-fluid rounded-circle">
+                        <h1 class="text-light">UserName</h1>
+                    </div>
+                </div>
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <i class="fa-solid fa-house text-dark"></i>
+                            <div>Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-address-card text-dark"></i>
+                            <div>Myprofile</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-box-archive text-dark"></i> 
+                            <div>Profile History</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="changepassword.html">
+                            <i class="fa-solid fa-key text-dark"></i>
+                            <div>Change Password</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login1.html">
+                            <i class="fa-solid fa-right-from-bracket text-dark"></i>
+                            <div>SignOut</div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </ul>
+        </div>
+        <div class="main">
+            <!-- code type here -->
+            <div class="search">
+                <input type="text" name="search" placeholder="search by name, project">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <div class="filters">
+                <div class="filter">
+                    <p> Designation:<select name="Designation">
+                        <option value="select Designation">Select Designation</option>
+                        <option value="CEO">CEO</option>
+                        <option value="PM">PM</option>
+                        <option value="TL">TL</option>
+                        <option value="SSE">SSE</option>
+                        <option value="SE">SE</option>
+
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Domain:<select name="Domain">
+                        <option value="select Domain">Select Domain</option>
+                        <option value="IT">IT</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Technology:<select name="Technology">
+                        <option value="select Technology">Select Technology</option>
+                        <option value="NET">NET</option>
+                        <option value="Java">Java</option>
+                        <option value="Lamp">Lamp</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <button class="button7" type="button" class="btn btn-info">Apply</button>
+                </div>
+                <div class="filter">
+                    <p> College:<select name="College">
+                        <br>
+                        <option value="select college">Select college</option>
+                        <option value="Krishna">Krishna</option>
+                        <option value="Bannari">Bannari</option>
+                        <option value="Kumaraguru">Kumaraguru</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Experience:<select name="Min">
+                        <option value="Min">Min</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                    <select name="Max">
+                        <option value="Max">Max</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </p>
+                </div>
+                <div class="filter">
+                    <p> Profile Status:<select name="Profile Status">
+                        <option value="select Profile Status">Select Status</option>
+                        <option value="Approved">Approved</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Waiting for Approval">Waiting</option>
+                    </select>
+                    <!-- <button type="button" class="btn btn-info">Info</button> -->
+                </p>
+                </div>
+                
+                <!-- <div class="Apply">
+                    <button type="submit" form="form1" value="Submit">Submit</button>
+                </div> -->
+            </div>
+            <!-- <input class="button" class="btn btn-primary" type="submit" value="Submit"> -->
+
+            <div class="people">
+                <div class="peoples">
+                    <img src="totalprofile.png" alt="">
+                    <h6>1000</h6>
+                    <a href="#"><h6>Total</h6></a>
+                </div>
+                <div class="peoples people-net">
+                    <img src="approved.png" alt="">
+                    <h6>1000</h6>
+                    <a href="card.html"><h6>Approved</h6></a>
+                </div>
+                <div class="peoples">
+                    <img src="rejected.png" alt="">
+                    <h6>1000</h6>
+                    <a href="#"><h6>Rejected</h6></a>
+                </div>
+                <div class="peoples people-net">
+                    <img src="wating2.png" alt="">
+                    <h6>1000</h6>
+                    <a href="#"><h6>Waiting</h6></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+    <script src="chart1.js"></script>
+    <script src="chart2.js"></script>
+</body>
+
+</html>

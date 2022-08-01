@@ -1,0 +1,35 @@
+
+title Edit User
+actor User
+entryspacing 0.8
+participant Edit User
+participant Controller
+participant Service
+participant Data access layer
+
+activate User
+activate Edit User
+activate Controller
+activate Service
+activate Data access layer
+database Db
+User->Edit User:Edit User\n
+Edit User->Controller:UpdateUser()
+alt if null
+Controller->User: return BadRequest("User values should not be null")
+else if not null
+Controller->Service:UpdateUser(User item)\n
+Service->Service:userValidate(item)
+alt if valid
+
+
+Service->Data access layer:UpdateUser(User item)
+Data access layer->Db:Update user details
+else not valid
+Service->Controller:Bad request
+
+
+
+Edit User<-Controller:User does not exists
+end 
+end

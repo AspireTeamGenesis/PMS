@@ -1,0 +1,85 @@
+
+
+<div class="container">
+    <div class="myCard">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="myLeftCtn"> 
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="myForm text-center">
+                        <header class="">Login Here</header>
+                        <div class="form-group py-1 px-3">
+                            <i class="fas fa-user"></i>
+                            <input
+                        [class.is-invalid]="(error.toString().includes('UserName')||submitted && loginForm.controls['UserName'].invalid)||loginForm.controls['UserName'].invalid && loginForm.controls['UserName'].touched"
+                        id="UserName" type="text" placeholder="Enter User Name" formControlName="UserName"
+                        class="myInput">
+                        <div
+                        *ngIf="(submitted)||loginForm.controls['UserName'].invalid && loginForm.controls['UserName'].touched">
+                        <span class="text-danger" *ngIf="loginForm.controls['UserName'].errors?.['required']">User Name is
+                            required</span>
+                        <span class="text-danger" *ngIf="loginForm.controls['UserName'].errors?.['pattern']">Please enter a Valid User Name</span>
+                        <span *ngIf="error.toString().includes('')" class="text-danger">{{error}}</span>
+                    </div>
+                        </div>
+                         
+                        
+
+                        <!-- <div class="form-group">
+                            <i class="fas fa-envelope"></i>
+                            <input class="myInput" placeholder="Email" type="text" id="email" required> 
+                        </div> -->
+
+                        <div class="form-group py-1 px-3">
+                            <i class="fas fa-lock"></i>
+                            <input
+                            [class.is-invalid]="(error.toString().includes('Password')||submitted && loginForm.controls['Password'].invalid)||loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched"
+                            id="Password" type="password" placeholder="Password" formControlName="Password"
+                            class="myInput" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
+                            <div *ngIf="(submitted)||loginForm.controls['Password'].invalid && loginForm.controls['Password'].touched">
+                            <span class="text-danger" *ngIf="loginForm.controls['Password'].errors?.['required']">Password is required</span>
+                            <span class="text-danger" *ngIf="loginForm.controls['Password'].errors?.['pattern']">Please enter a Valid Password</span>   
+                    </div>
+                        </div>
+                        
+                    <div *ngIf="loading" diameter="40" class="spinner">
+                    </div>
+                    <div *ngIf="isCommanError" class="span12 text-center">
+                        <span class="text-center text-danger">{{error}}</span>
+                    </div>
+                        
+                        <!-- <div class="form-group">
+                            <label>
+                                <input id="check_1" name="check_1"  type="checkbox" required><small> I read and agree to Terms & Conditions</small></input> 
+                                <div class="invalid-feedback">You must check the box.</div>
+                            </label>
+                        </div> -->
+                        <a><input  type="submit" class="butt ml-3 mb-2" value="LOGIN"></a>
+                        <div>
+                            <!-- {{loginForm.valid}} -->
+                        </div>
+
+                            <!-- <div class="">
+                                
+                                <a [routerLink]="['../forgot-password']">Forgot Password</a>
+                            </div> -->
+
+                        
+                    </form>
+                </div>
+            </div> 
+            <div class="col-md-6">
+                <div class="myRightCtn">
+                    <img src=".\assets\img\human.jpeg" class="d-none d-md-inline-block">
+                        <!-- <div class="box"><header>Hello World!</header>
+                        
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                            sed do eiusmod tempor incididunt ut labore et dolore magna 
+                            aliqua. Ut enim ad minim veniam.</p>
+                            <input type="button" class="butt_out" value="Learn More"/>
+                        </div> -->
+                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

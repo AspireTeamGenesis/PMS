@@ -1,0 +1,35 @@
+
+title User Creation
+actor User
+entryspacing 0.8
+participant Create  User
+participant Controller
+participant Service
+participant Data access layer
+
+activate User
+activate Create  User
+activate Controller
+activate Service
+activate Data access layer
+database Db
+User->Create  User:Create User\n
+Create  User->Controller:AddUser()
+alt if null
+Controller->User: return BadRequest("User values should not be null")
+else if not null
+Controller->Service: AddUser(User item,int userId)\n
+Service->Service:userValidate(item)
+alt if valid
+
+
+Service->Data access layer:AddUser()
+Data access layer->Db:Saves user details
+else not valid
+Service->Controller:Bad request
+
+
+
+Create  User<-Controller:User details not valid
+end 
+end

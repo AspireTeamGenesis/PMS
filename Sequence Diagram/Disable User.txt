@@ -1,0 +1,35 @@
+
+title Disabe User
+actor User
+entryspacing 0.8
+participant Disable User
+participant Controller
+participant Service
+participant Data access layer
+
+activate User
+activate Disable User
+activate Controller
+activate Service
+activate Data access layer
+database Db
+User->Disable User:Disable User\n
+Disable User->Controller:DisableUser(int id)
+alt if null
+Controller->User:return BadRequest("User Id not found{id}")
+else if not null
+Controller->Service:DisableUser(int id)\n
+Service->Service:userValidate(id)
+alt if id is valid
+
+
+Service->Data access layer:DisableUser(int id)
+Data access layer->Db:Disable user details
+else not valid
+Service->Controller:Bad request
+
+
+
+Disable User<-Controller:User id is not valid
+end 
+end
