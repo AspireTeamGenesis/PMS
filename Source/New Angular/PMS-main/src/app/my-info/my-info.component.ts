@@ -12,7 +12,14 @@ export class MyInfoComponent implements OnInit {
 
   userId:any;
   // data:any;
-  profileDetails:any;
+  profileDetails={
+    username:'',
+    name:'',
+    email:'',
+    designation:'',
+    organisation:'',
+    gender:''
+  };
 
   constructor(private service:UserserviceService,private route: ActivatedRoute) { }
 
