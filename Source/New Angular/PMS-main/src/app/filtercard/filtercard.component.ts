@@ -20,8 +20,6 @@ export class FiltercardComponent implements OnInit {
   educationDetails:any;
   profileIdDetails:any;
   arraylength:any;
-  // profileId=7;
-  // hello:100;
   constructor(private FB: FormBuilder,private service: UserserviceService,private http: HttpClient, private route : Router,private toaster: Toaster) { }
   
   ngOnInit(): void {
@@ -33,19 +31,15 @@ export class FiltercardComponent implements OnInit {
     this.service.getProfileIdByUserId().subscribe({
         next:(data:any)=>{this.profileIdDetails=data,
         this.profileId=this.profileIdDetails.profileId,
-        console.warn(this.profileId),
-        console.log(this.profileIdDetails),
         this.getEducationByProfileId();  }
     })
   }
   
   getEducationByProfileId()
   {
-    console.log('child called')
     this.service.getEducationByProfileId(this.profileId).subscribe((data)=>{
       this.educationDetails=data;
        this.totalLength=this.educationDetails.length;
-       console.warn(this.educationDetails);
      })
   }
 

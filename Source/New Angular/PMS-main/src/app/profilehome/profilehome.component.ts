@@ -49,7 +49,6 @@ export class ProfilehomeComponent implements OnInit {
   {
     this.service.dashboardcount().subscribe((data) => {
       this.dashboard = data;
-      console.log(this.dashboard);
     })
   }
 
@@ -58,7 +57,6 @@ export class ProfilehomeComponent implements OnInit {
     this.service.getDesignation().subscribe((data:any)=>
     {
       this.designationValue=data;
-      console.warn(this.designationValue);
     });
 
   }
@@ -68,7 +66,6 @@ export class ProfilehomeComponent implements OnInit {
     this.service.getDomain().subscribe((data:any)=>
     {
       this.domainValue=data;
-      console.warn(this.domainValue);
     });
 
   }
@@ -78,7 +75,6 @@ export class ProfilehomeComponent implements OnInit {
     this.service.getTechnology().subscribe((data:any)=>
     {
       this.technologyValue=data;
-      console.warn(this.technologyValue);
     });
 
   }
@@ -88,7 +84,6 @@ export class ProfilehomeComponent implements OnInit {
     this.service.getCollege().subscribe((data:any)=>
     {
       this.collegeValue=data;
-      console.warn(this.collegeValue);
     });
 
   }
@@ -98,40 +93,27 @@ export class ProfilehomeComponent implements OnInit {
     this.service.getProfileStatus().subscribe((data:any)=>
     {
       this.profileValue=data;
-      console.warn(this.profileValue);
     });
 
   }
 
   getProfileByFilters()
   {
-    console.warn(this.filter);
     this.service.getProfileByFilters(this.filter).subscribe((data:any)=>
     {
       this.filterValue=data;
-      console.warn(this.filterValue);
     });
   }
 
-  // getProfileBySearch()
-  // {
-  //   console.warn(this.username);
-  //   this.service.getProfileBySearch(this.username).subscribe();
-  // }
-
   toogletag()
-
   {
-
     !this.showMe==this.showMe;
     if(this.showMe==true){this.showMe=false};
-
   }
-  toogletag1()
 
+  toogletag1()
   {
     this.showMe1=!this.showMe1;
-
   }
 
 }

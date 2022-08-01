@@ -53,10 +53,10 @@
   </div>
 
 
-  <div class="mt-3 pagination" *ngIf="filterDetails.length!=0">
+  <div class="mt-3 pagination" *ngIf="filterDetails?.length!=0">
     <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
   </div>
-  <div *ngIf="filterDetails.length==0">
+  <div *ngIf="filterDetails?.length==0">
     <h2>No Results Found</h2>
 
   </div>
