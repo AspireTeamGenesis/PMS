@@ -19,7 +19,7 @@
                 <div class="n-card">
                     <div class="img text-center">
                         <img class="n-rounded "
-                            [src]="'data:image/jpg;base64,'+profileDetails?.personaldetails[0].image"
+                            [src]="'data:image/jpg;base64,'+profileDetails?.personaldetails.image"
                             style="border-radius:100%;width:80%;height:50%" />
                     </div>
 
@@ -27,11 +27,11 @@
                     <hr class="mt-n1" />
                     <div class="card-body mt-n3">
                         <h6><i
-                                class="fas fa-solid fa-house-chimney mr-3"></i>{{profileDetails?.personaldetails[0].nationality}}
+                                class="fas fa-solid fa-house-chimney mr-3"></i>{{profileDetails?.personaldetails.nationality}}
                         </h6>
                         <h6><i class="fas fa-envelope mtr-1"></i>{{userDetails.email}}</h6>
                         <h6><i class="fas fa-phone-alt mtr-1"></i>{{userDetails.mobilenumber}}</h6>
-                        <div *ngFor="let item of profileDetails?.personaldetails[0].socialmedia">
+                        <div *ngFor="let item of profileDetails?.personaldetails.socialmedia">
                             <h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6>
                         </div>
 
@@ -59,7 +59,7 @@
 
                             <div *ngIf="showMe4">
                                 <ul class="list-unstyled">
-                                    <div *ngFor="let item of profileDetails['personaldetails'][0].language">
+                                    <div *ngFor="let item of profileDetails['personaldetails'].language">
                                         <h6><i class="fas fa-globe mr-3 mt-3 mb-2"></i>{{item.languageName}}</h6>
                                     </div>
                                 </ul>
@@ -74,7 +74,7 @@
                         <h2>
                             Objective
                         </h2>
-                        <h6>{{profileDetails?.personaldetails[0].objective}}
+                        <h6>{{profileDetails?.personaldetails.objective}}
                         </h6>
                     </div>
                 </div>

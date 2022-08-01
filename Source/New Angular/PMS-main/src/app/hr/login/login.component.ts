@@ -46,16 +46,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm.valid)
     if(this.loginForm.valid){
-      console.warn("1");
       this.loading = true
       const user = {
         UserName: this.loginForm.value['UserName'],
         Password: this.loginForm.value['Password']
       }
-      console.warn(user);
-
       this.service.Login(user).subscribe({
         next: (data) => {
           this.IsAdmin = data.isAdmin
@@ -64,10 +60,6 @@ export class LoginComponent implements OnInit {
           AuthenticationService.SetDateWithExpiry("token", data.token, data.expiryInMinutes)
           AuthenticationService.SetDateWithExpiry("Admin", data.isAdmin, data.expiryInMinutes)
           AuthenticationService.SetDateWithExpiry("HR", data.isHR, data.expiryInMinutes)
-
-          console.log(AuthenticationService.GetData("token"))
-          console.log(AuthenticationService.GetData("Admin"))
-          console.log(AuthenticationService.GetData("HR"))
 
           if (this.IsAdmin) {
             this.route.navigateByUrl("/");  //navigation
@@ -78,11 +70,9 @@ export class LoginComponent implements OnInit {
           else {
             this.route.navigateByUrl("/dashboard");
           }
-          console.log(data)
 
         },
         error: (error: any) => {
-          console.warn("3")
           if (error.status == 404) {
             this.route.navigateByUrl("errorPage");
           }
@@ -93,7 +83,6 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         },
         complete: () => {
-          console.warn("4")
           this.toaster.open({ text: 'Logged in successfully', position: 'top-center', type: 'success' });
           return this.loading = false;
         }
@@ -103,9 +92,7 @@ export class LoginComponent implements OnInit {
   onChanges() : void {
     this.loginForm.valueChanges.subscribe(val => {
       if (this.loginForm.valid) {
-        console.warn("Valid");
       } else {
-        console.warn("InValid");
       }
       });
   }

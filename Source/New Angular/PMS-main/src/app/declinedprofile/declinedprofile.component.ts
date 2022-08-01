@@ -25,9 +25,8 @@ export class DeclinedprofileComponent implements OnInit {
   getProfileByDeclinedStatus()
   {
     this.service.getProfileByDeclinedStatus().subscribe({
-      next:(data:any)=>{this.declinedProfiles=data,
-      console.log(this.declinedProfiles)
-        }
+      next:(data:any)=>{this.declinedProfiles=data
+      }
   })
   }
   editToUpdate(){

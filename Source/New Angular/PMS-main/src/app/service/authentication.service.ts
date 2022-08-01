@@ -42,8 +42,6 @@ export class AuthenticationService {
   
 
   ClearToken() {
-   console.log(localStorage.length);
    localStorage.clear();
-   console.log(localStorage.length);
  }
 }

@@ -24,8 +24,7 @@ export class TotalprofileComponent implements OnInit {
   getProfileBytotalStatus()
   {
     this.service.getProfileBytotalStatus().subscribe({
-      next:(data:any)=>{this.totalProfiles=data,
-      console.log(this.totalProfiles)
+      next:(data:any)=>{this.totalProfiles=data
         }
   })
   }

@@ -22,11 +22,9 @@ export class Dashboard11Component implements OnInit {
 
   dashboardcount()
   {
-    console.log("1");
     this.service.dashboardcount().subscribe({
       next:(data)=>{
-        this.dashboard=data,
-        console.log(this.dashboard)
+        this.dashboard=data
       }
     })
   }

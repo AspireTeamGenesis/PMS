@@ -26,8 +26,7 @@ export class ApprovedprofileComponent implements OnInit {
   getProfileByApprovedStaus()
   {
     this.service.getProfileByApprovedStaus().subscribe({
-      next:(data:any)=>{this.approvedProfiles=data,
-      console.log(this.approvedProfiles)
+      next:(data:any)=>{this.approvedProfiles=data
         }
   })
   }

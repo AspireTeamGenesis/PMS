@@ -27,8 +27,7 @@ export class WaitingprofileComponent implements OnInit {
   getProfileByWaitingStatus() {
     this.service.getProfileByWaitingStatus().subscribe({
       next: (data: any) => {
-        this.waitingProfiles = data,
-          console.log(this.waitingProfiles)
+        this.waitingProfiles = data
       }
     })
   }
@@ -36,8 +35,7 @@ export class WaitingprofileComponent implements OnInit {
     this.service.acceptorrejectprofile(profileid, response).subscribe
       ({
         next: (data: any) => {
-          this.acceptedProfile = data,
-            console.log(this.acceptedProfile)
+          this.acceptedProfile = data
         },
         complete: () => {
           this.toaster.open({ text: 'updated successfully', position: 'top-center', type: 'success' });

@@ -27,18 +27,18 @@
 
       <label for="personaldetails">Objective</label>
       <textarea name="objective" id="Prodes" rows="4" cols="80"
-        placeholder="  Enter Objective" [(ngModel)]="personalDetails[0].objective" style="width: 100%; border-color: black;"></textarea>
+        placeholder="  Enter Objective" [(ngModel)]="personalDetails.objective" style="width: 100%; border-color: black;"></textarea>
       <br>
       <!-- <label for="personaldetails">Name</label>
       <input type="text" name="name" [(ngModel)]="user.name" id="personaldetails" placeholder="Enter your name" [(ngModel)]="user.name"
         style="border-color: black;" /> -->
       <br>
       <label for="personaldetails">Date of Birth</label>
-      <input type="date" name="dateofBirth" [(ngModel)]="personalDetails[0].dateofbirth" id="personaldetails"
+      <input type="date" name="dob" [(ngModel)]="dob"  [ngModel]="personalDetails.dateofbirth | date:'YYYY-MM-dd'"  id="personaldetails"
          />
       <br>
       <label for="personaldetails">Nationality</label>
-      <input type="text" id="personaldetails" name="nationality" [(ngModel)]="personalDetails[0].nationality"
+      <input type="text" id="personaldetails" name="nationality" [(ngModel)]="personalDetails.nationality"
         placeholder="Enter your nationality" />
       
 
@@ -46,7 +46,7 @@
 
 
       <label for="personaldetails">Date of Joining</label>
-      <input type="date" name="dateofJoining" [(ngModel)]="personalDetails[0].dateofjoining" id="personaldetails"
+      <input type="date" name="dateofJoining" [(ngModel)]="doj" [ngModel]="personalDetails.dateofjoining | date:'YYYY-MM-dd'" id="personaldetails"
         style="border-color: black;" />
       <br>
       </div>
@@ -60,7 +60,7 @@
       <div class="row">
         <a [routerLink]="['/viewprofile']" (click)="updatePersonal()" class="btn btn-next width-50 ml-auto">Save as
           Draft</a>
-        <a [routerLink]="['/languagesocial']" (click)="updatePersonal()" class="btn btn-next width-50 ml-auto">Next</a>
+        <a  [routerLink]="['/language']" (click)="updatePersonal()" class="btn btn-next width-50 ml-auto">Next</a>
       </div>
     <br><br>
   </form>

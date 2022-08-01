@@ -118,7 +118,7 @@ namespace PMS_API
 
 
 
-                 }); return getpersonaldetailsbyprofileid;
+                 }).FirstOrDefault(); return getpersonaldetailsbyprofileid;
             }
             catch (Exception exception)
             {

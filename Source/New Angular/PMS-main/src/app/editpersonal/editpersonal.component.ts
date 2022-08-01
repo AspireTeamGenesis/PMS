@@ -10,7 +10,7 @@ import { Language } from 'Models/language';
 import { BreakDuration } from 'Models/breakduration';
 import { SocialMedia } from 'Models/socialMedia';
 import { PersonalDetails } from 'Models/personalDetails';
-import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -20,37 +20,37 @@ import { DatePipe } from '@angular/common';
 })
 export class EditpersonalComponent implements OnInit {
 
-  error:string;  
-  profileId :number=0;
-  imageError: string="";
+  error: string;
+  profileId: number = 0;
+  imageError: string = "";
   cardImageBase64: string = "";
   isImageSaved: boolean = false;
   child: any;
-  profileDetails:any;
-  profileIdDetails:any;
+  profileDetails: any;
+  profileIdDetails: any;
   formSubmitted: boolean = false;
-  personalForm:FormGroup;
+  personalForm: FormGroup;
 
   showMe: boolean = false;
 
-  foot:boolean = true;
-  
+  foot: boolean = true;
 
 
-  constructor(private FB:FormBuilder,private service: UserserviceService, private http: HttpClient,public datepipe:DatePipe,private toaster:Toaster) { 
-    this.personalForm=this.FB.group({});
+
+  constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, public datepipe: DatePipe, private toaster: Toaster) {
+    this.personalForm = this.FB.group({});
   }
   ngOnInit(): void {
-    this.personalForm=this.FB.group({
+    this.personalForm = this.FB.group({
       ProfilePhoto: ['', [Validators.required]],
-      Objective: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(500)]],
+      Objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]],
       DateofBirth: ['', [Validators.required]],
-      Nationality: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
+      Nationality: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
       DateofJoining: ['', [Validators.required]],
     })
     // this.getUserProfile();
     this.getProfileIdByUserId();
-    
+
   }
 
 
@@ -60,86 +60,84 @@ export class EditpersonalComponent implements OnInit {
   //     console.log(this.profileDetails),
   //     console.log(this.profileDetails.userid);
   //   }
-      
-      
+
+
   //   })
-    
+
   // }
-  getProfileIdByUserId()
-  {
+  getProfileIdByUserId() {
+    console.warn("2")
     this.service.getProfileIdByUserId().subscribe({
-        next:(data:any)=>{this.profileIdDetails=data,
-        this.profileId=this.profileIdDetails.profileId,
+      next: (data: any) => {
+        this.profileIdDetails = data,
+        this.profileId = this.profileIdDetails.profileId,
         console.warn(this.profileId),
         console.log(this.profileIdDetails),
-        this. GetAllPersonalDetailsByProfileId(this.profileId)
+        this.GetAllPersonalDetailsByProfileId(this.profileId)
 
-  }
+      }
     })
   }
 
- 
-  
+
+
   // personalDetailsId : number = 2;
-  Personal:any;
-  personal:PersonalDetails[]=[];
-  data : any;
-  user:any ;
-  languageDetails:any=
-  {
+  Personal: any;
+  personal: PersonalDetails[] = [];
+  data: any;
+  user: any;
+  languageDetails: any =
+    {
 
-  }
+    }
 
-    // language:any{
-    //   languageId: 0,
-    //   languageName: '',
-    //   read: '',
-    //   write: '',
-    //   speak: '',
-    // }
+  // language:any{
+  //   languageId: 0,
+  //   languageName: '',
+  //   read: '',
+  //   write: '',
+  //   speak: '',
+  // }
 
-    // breakDuration : {
-    //   breakDuration_Id: 0,
-    //   starting:'',
-    //   ending: '',
-    // },
-    
-    // socialmedia : {
-    //   socialMedia_Id: 0,
-    //   socialMedia_Name: '',
-    //   socialMedia_Link: '',
-    // }
-  
-  
+  // breakDuration : {
+  //   breakDuration_Id: 0,
+  //   starting:'',
+  //   ending: '',
+  // },
 
-  GetAllPersonalDetailsByProfileId(profileId:number){
-    this.service.getPersonalDetailByProfileId(profileId).subscribe((res)=>{
+  // socialmedia : {
+  //   socialMedia_Id: 0,
+  //   socialMedia_Name: '',
+  //   socialMedia_Link: '',
+  // }
+
+
+
+  GetAllPersonalDetailsByProfileId(profileId: number) {
+    console.warn("1")
+    this.service.getPersonalDetailByProfileId(profileId).subscribe((res) => {
       this.user = res;
       var start = new Date(this.user.starting);
       var estart = start.toString();
       estart = estart.replace('T', ' ');
-    var end=this.datepipe.transform(estart,"dd-MM-yyyy");
-    console.log(end);
-      console.log(this.user);
-  })
+      var end = this.datepipe.transform(estart, "dd-MM-yyyy");
+      console.log(end);
+      console.warn(this.user);
+    })
   }
-  toogletag()
-
-  {
-    this.showMe=!this.showMe;
+  toogletag() {
+    this.showMe = !this.showMe;
   }
 
 
 
-  footer()
+  footer() {
 
-  {
+    this.foot = !this.foot;
 
-    this.foot=!this.foot;
+    if (this.foot == false) { this.foot = true };
 
-    if(this.foot==false){this.foot=true};
 
-   
 
   }
   // getPersonalDetailsbyId(){
@@ -182,7 +180,7 @@ export class EditpersonalComponent implements OnInit {
   //   .subscribe((data)=>{
   //     console.log(data)
   //   });
-  
+
 
   // ngOnInit(): void {
   //   // this.http
@@ -198,52 +196,52 @@ export class EditpersonalComponent implements OnInit {
 
   // ];
 
-personalSubmit()
-{
-  this.formSubmitted=true;
-  this.user.profileId=this.profileIdDetails.profileId;
-  this.user.userId=this.profileDetails.userid;
-  console.log("User ProfileId");
-  console.log(this.user.profileId);
-  console.log(this.user.userId); 
-  console.log(this.user);
-  this.service.addPersonalDetail(this.user).subscribe(data=>this.user.push(data));
-}
+  personalSubmit() {
+    this.formSubmitted = true;
+    this.user.profileId = this.profileIdDetails.profileId;
+    this.user.userId = this.profileDetails.userid;
+    console.log("User ProfileId");
+    console.log(this.user.profileId);
+    console.log(this.user.userId);
+    console.log(this.user);
+    this.service.addPersonalDetail(this.user).subscribe(data => this.user.push(data));
+  }
 
-updatePersonal(){
-  this.data = this.user;
-  this.service.updatePersonalDetail(this.data).subscribe(data=>this.data.push(data));
-}
-// {//   error: (error) => { this.error = error.error.message },
-//   complete: () => {
-//     this.toaster.open({ text: 'Achievement added successfully', position: 'top-center', type: 'success' });
-//   }
-// }
+  updatePersonal() {
+    this.data = this.user;
+    console.warn(this.data);
+    this.service.updatePersonalDetail(this.data).subscribe(data => this.data.push(data));
+  }
+  // {//   error: (error) => { this.error = error.error.message },
+  //   complete: () => {
+  //     this.toaster.open({ text: 'Achievement added successfully', position: 'top-center', type: 'success' });
+  //   }
+  // }
 
-  fileChangeEvent(fileInput:any){
-     this.imageError="";
+  fileChangeEvent(fileInput: any) {
+    this.imageError = "";
 
-    if(fileInput.target.files && fileInput.target.files[0]){
+    if (fileInput.target.files && fileInput.target.files[0]) {
 
       const max_size = 20971520;
       const allowed_type = ['image/jpeg', 'image/png'];
-      if(fileInput.target.files[0].size > max_size){
-         this.imageError = 'maximum file size allowed is '+ max_size / 1000 +'Mb';
+      if (fileInput.target.files[0].size > max_size) {
+        this.imageError = 'maximum file size allowed is ' + max_size / 1000 + 'Mb';
 
         return false;
       }
       console.log(fileInput.target.files[0].type)
 
-      if(!allowed_type.includes(fileInput.target.files[0].type)){
+      if (!allowed_type.includes(fileInput.target.files[0].type)) {
         this.imageError = 'Only images are allowed (either JPG or PNG)';
         return false;
       }
 
       const reader = new FileReader();
-      reader.onload = (e:any) => {
+      reader.onload = (e: any) => {
         const image = new Image();
         image.src = e.target.result;
-        image.onload = rs =>{
+        image.onload = rs => {
 
           const imgBase64Path = e.target.result;
           this.cardImageBase64 = imgBase64Path;
@@ -258,7 +256,7 @@ updatePersonal(){
 
       reader.readAsDataURL(fileInput.target.files[0]);
     } return false;
-    
+
   }
 
 
