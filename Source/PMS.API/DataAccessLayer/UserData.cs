@@ -27,7 +27,8 @@ namespace PMS_API
             _logger = logger;
         }
         private UserValidation _validation = UserDataFactory.GetValidationObject();
-        //getting all users 
+
+        //Getting all the Users by using Profile Status Id
         public List<User> GetallForCard(int profileStatusId, int designationId)
         {
             try
@@ -42,11 +43,13 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all User details
         public List<User> GetallUsers()
         {
             try
             {
-                return _context.users.Include(user => user.gender).Include(user => user.designation).Include(user => user.organisation).Include(user => user.countrycode).ToList();
+                return _context.users.Include(user => user.gender).Include(user => user.designation).Include(user => user.organisation).Include(user => user.countrycode).Include(user => user.personalDetails).ToList();
             }
 
             catch (Exception exception)
@@ -56,6 +59,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting the logged in user's Profile
         public User GetUser(int id)
         {
             if (id <= 0)
@@ -75,6 +80,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Adding User details
         public bool AddUser(User item)
         {
             if (item == null)
@@ -97,10 +104,9 @@ namespace PMS_API
                 _logger.LogInformation($"UserData-AddUser()-{exception.StackTrace}");
                 return false;
             }
-
-
-
         }
+
+        //Disable User
         public bool Disable(int id)
         {
             if (id <= 0)
@@ -127,10 +133,9 @@ namespace PMS_API
                 return false;
             }
 
-
-
-
         }
+
+        //Updation of User details
         public bool UpdateUser(User item)
         {
 
@@ -166,14 +171,15 @@ namespace PMS_API
                 _logger.LogInformation($"UserData-UpdateUser()-{exception.StackTrace}");
                 return false;
             }
-
-
-
         }
+
+        //Save
         public bool save()
         {
             return _context.SaveChanges() >= 0;
         }
+        
+        //Login
         public User LoginCrendentials(string UserName, string Password)
         {
             try
@@ -193,6 +199,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Changing the Password for an User
         public bool EditPassword(string OldPassword, string NewPassword, string ConfirmPassword, int currentUser)
         {
             PasswordValidation.IsValidPassword(NewPassword, ConfirmPassword);
@@ -236,9 +244,9 @@ namespace PMS_API
 
                 return false;
             }
-
-
         }
+
+        //Getting all users by the logged in user's Designation 
         public List<User> GetAllUsersByDesignation(int designationId)
         {
             try
