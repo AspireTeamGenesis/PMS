@@ -12,8 +12,8 @@ namespace PMS_API
     }
     public class MailDataAccessLayer:IMailDataAccessLayer
     {
-        private Context _context;
-        private ILogger<ProfileService> _logger;
+        private readonly Context _context;
+        private readonly ILogger<ProfileService> _logger;
 
         public  MailDataAccessLayer(Context context, ILogger<ProfileService> logger)
         {
@@ -26,12 +26,12 @@ namespace PMS_API
         {
             try
             {
-                return _context.users.Find(Userid).Email;
+                return _context.users!.Find(Userid)!.Email!;
             }
             catch (Exception getUserEmailException)
             {
                 _logger.LogInformation($"Exception on Mail DAL : GetUserEmail(int UserId) : {getUserEmailException.Message} : {getUserEmailException.StackTrace}");
-                throw getUserEmailException;
+                throw;
             }
         }
 
@@ -40,12 +40,12 @@ namespace PMS_API
         {
             try
             {
-                return _context.users.Find(Userid).UserName;
+                return _context.users!.Find(Userid)!.UserName!;
             }
             catch (Exception getUserNameException)
             {
                 _logger.LogInformation($"Exception on Mail DAL :GetUserName(int Userid) : {getUserNameException.Message} : {getUserNameException.StackTrace}");
-                throw getUserNameException;
+                throw ;
             }
         }
 
@@ -55,12 +55,12 @@ namespace PMS_API
             try
             {
                 int userId= (from profile in _context.profile where profile.ProfileId==profileId select profile.ProfileId).First();
-                return _context.users.Find(userId).UserName;
+                return _context.users!.Find(userId)!.UserName!;
             }
             catch (Exception getUserNameException)
             {
                 _logger.LogInformation($"Exception on Mail DAL :GetUserName(int Userid) : {getUserNameException.Message} : {getUserNameException.StackTrace}");
-                throw getUserNameException;
+                throw;
             }
         }
     }

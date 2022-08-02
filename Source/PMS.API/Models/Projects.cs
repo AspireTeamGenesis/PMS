@@ -8,8 +8,8 @@ namespace PMS_API
         [Key]
         public int ProjectId{get;set;}
         public int ProfileId{get;set;}
-        public string ProjectName{get;set;}
-        public string ProjectDescription{get;set;}
+        public string? ProjectName{get;set;}
+        public string? ProjectDescription{get;set;}
         [NotMapped]
          public DateTime ProjectStartingMonth{get;set;}
         [NotMapped]
@@ -25,8 +25,8 @@ namespace PMS_API
          
         
         
-        public string Designation { get; set; }
-        public string ToolsUsed { get; set; }
+        public string? Designation { get; set; }
+        public string? ToolsUsed { get; set; }
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }

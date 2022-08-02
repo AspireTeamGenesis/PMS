@@ -24,9 +24,7 @@ namespace PMS_API
         [ForeignKey("ProfileStatusId")]
         
         public virtual ProfileStatus? profilestatus {get;set;}
-       
-        // public int UserId {get; set;}
-      
+            
         public DateTime? CreatedOn { get; set; }
 
         public int? CreatedBy { get; set; }

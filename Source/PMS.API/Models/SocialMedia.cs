@@ -7,8 +7,8 @@ namespace PMS_API
     {
         [Key]
         public int SocialMedia_Id{get;set;}
-        public string SocialMedia_Name{get;set;}
-        public string SocialMedia_Link{get;set;}
+        public string? SocialMedia_Name{get;set;}
+        public string? SocialMedia_Link{get;set;}
         
         public int PersonalDetailsId{get;set;}
          [ForeignKey("PersonalDetailsId")]

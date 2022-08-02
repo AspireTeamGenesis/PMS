@@ -6,7 +6,7 @@ namespace PMS_API{
     {
         [Key]
         public int OrganisationId{get; set;}
-        public string OrganisationName{get;set;}
+        public string? OrganisationName{get;set;}
         [InverseProperty("organisation")]
         public virtual ICollection<User>? users{get;set;}
         [DefaultValue(true)]

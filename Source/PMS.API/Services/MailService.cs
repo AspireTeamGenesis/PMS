@@ -13,8 +13,8 @@ namespace PMS_API
     public class MailService : IMailService
     {
         private readonly MailSettings _mailSettings;
-        private ILogger<MailService> _logger;
-        private IMailDataAccessLayer _mailDataAccessLayer;
+        private readonly ILogger<MailService> _logger;
+        private readonly IMailDataAccessLayer _mailDataAccessLayer;
         public MailService(ILogger<MailService> logger, IOptions<MailSettings> mailSettings, IMailDataAccessLayer mailDataAccessLayer)
         {
             _logger = logger;
@@ -32,7 +32,7 @@ namespace PMS_API
                     email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
                 else
                 {
-                    foreach (var mailid in mailRequest.ToEmailList)
+                    foreach (var mailid in mailRequest.ToEmailList!)
                         email.To.Add(MailboxAddress.Parse(mailid));
                 }
                 email.Subject = mailRequest.Subject;

@@ -6,8 +6,8 @@ namespace PMS_API{
     {
         [Key]
         public int ChangePasswordId{get; set;}
-        public string  NewPassword{get;set;}
-        public string  ConfirmPassword{get;set;}
+        public string? NewPassword{get;set;}
+        public string? ConfirmPassword{get;set;}
         [DefaultValue(true)]
         public bool IsActive{get;set;}
         

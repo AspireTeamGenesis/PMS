@@ -7,7 +7,7 @@ namespace PMS_API
     {
 
         ProfileData profileData;
-        private ILogger<ProfileService> _logger;
+        private readonly ILogger<ProfileService> _logger;
         private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
 
         public ProfileService(ILogger<ProfileService> logger)
@@ -47,9 +47,9 @@ namespace PMS_API
                 personalDetails.CreatedBy = personalDetails.ProfileId;
                 personalDetails.CreatedOn = DateTime.Now;
                 string Imagedate = "";
-                Imagedate = ImageService.Getbase64String(personalDetails.base64header);
+                Imagedate = ImageService.Getbase64String(personalDetails.base64header!);
 
-                personalDetails.base64header = ImageService.Getbase64Header(personalDetails.base64header);
+                personalDetails.base64header = ImageService.Getbase64Header(personalDetails.base64header!);
 
                 personalDetails.Image = System.Convert.FromBase64String(Imagedate);
                 return profileData.AddPersonalDetail(personalDetails) ? true : false;
@@ -121,13 +121,13 @@ namespace PMS_API
                      dateofbirth = item.DateOfBirth,
                      nationality = item.Nationality,
                      dateofjoining = item.DateOfJoining,
-                     language = removeAdditionalDetailsExceptLanguage(item.language),
-                     socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia),
-                     
+                     language = removeAdditionalDetailsExceptLanguage(item.language!),
+                     socialmedia = removeAdditionalDetailsExceptSocialMedia(item.socialmedia!),
 
+                 }).FirstOrDefault(); 
 
+                 return getpersonaldetailsbyprofileid!;
 
-                 }).FirstOrDefault(); return getpersonaldetailsbyprofileid;
             }
             catch (Exception exception)
             {
@@ -202,9 +202,9 @@ namespace PMS_API
                     Profile.Nationality = personalDetails.Nationality;
                 
                 string Imagedate = "";
-                Imagedate = ImageService.Getbase64String(personalDetails.base64header);
+                Imagedate = ImageService.Getbase64String(personalDetails.base64header!);
 
-                Profile.base64header = ImageService.Getbase64Header(personalDetails.base64header);
+                Profile.base64header = ImageService.Getbase64Header(personalDetails.base64header!);
 
                 Profile.Image = System.Convert.FromBase64String(Imagedate);
                 Profile.UpdatedBy = personalDetails.CreatedBy;
@@ -277,7 +277,7 @@ namespace PMS_API
                     educationid = geteducationdetails.EducationId,
                     degree = geteducationdetails.Degree,
                     course = geteducationdetails.Course,
-                    college = geteducationdetails.college.CollegeName,
+                    college = geteducationdetails.college!.CollegeName,
                     collegeid = geteducationdetails.CollegeId,
                     starting = geteducationdetails.Starting,
                     ending = geteducationdetails.Ending,
@@ -622,8 +622,8 @@ namespace PMS_API
                 return new
                 {
                     skillid = getskilldetails.SkillId,
-                    domainname = getskilldetails.domain.DomainName,
-                    technologyname = getskilldetails.technology.TechnologyName,
+                    domainname = getskilldetails.domain!.DomainName,
+                    technologyname = getskilldetails.technology!.TechnologyName,
                     domainId = getskilldetails.DomainId,
                     technologyId = getskilldetails.TechnologyId
                 };
@@ -661,8 +661,8 @@ namespace PMS_API
                 new
                 {
                     skillid = item.SkillId,
-                    domainname = item.domain.DomainName,
-                    technologyname = item.technology.TechnologyName
+                    domainname = item.domain!.DomainName,
+                    technologyname = item.technology!.TechnologyName
                 }); return getallskilldetailsbyprofileid;
             }
             catch (Exception exception)
@@ -867,8 +867,8 @@ namespace PMS_API
             try
             {
                 string Imagedate = "";
-                Imagedate = ImageService.Getbase64String(achievement.base64header);
-                achievement.base64header = ImageService.Getbase64Header(achievement.base64header);
+                Imagedate = ImageService.Getbase64String(achievement.base64header!);
+                achievement.base64header = ImageService.Getbase64Header(achievement.base64header!);
                 achievement.AchievementImage = System.Convert.FromBase64String(Imagedate);
 
 
@@ -910,7 +910,7 @@ namespace PMS_API
                  new
                  {
                      achievementid = item.AchievementId,
-                     achievementtype = item.achievementtype.AchievementTypeName,
+                     achievementtype = item.achievementtype!.AchievementTypeName,
                      achievementimage = item.AchievementImage
 
                  }); return getachievementsbypersonalid;
@@ -1016,9 +1016,9 @@ namespace PMS_API
                 var getprofile = profileData.GetallProfiles().Select(item =>
                 new
                 {
-                    Status = item.profilestatus.ProfileStatusName,
-                    Name = item.personalDetails.users.Name,
-                    Designation = item.personalDetails.users.designation.DesignationName,
+                    Status = item.profilestatus!.ProfileStatusName,
+                    Name = item.personalDetails!.users!.Name,
+                    Designation = item.personalDetails.users.designation!.DesignationName,
                     ReportingPerson = item.personalDetails.users.ReportingPersonUsername,
 
 
@@ -1051,7 +1051,7 @@ namespace PMS_API
                 {
                     return new
                     {
-                        profilestatus = getprofile.profilestatus.ProfileStatusName,
+                        profilestatus = getprofile.profilestatus!.ProfileStatusName,
                         profileId = getprofile.ProfileId
                     };
                 }
@@ -1092,10 +1092,10 @@ namespace PMS_API
                 return profileData.GetFilteredProfile(userName,designationId, domainID, technologyId, collegeId, profileStatusId,currentdesignation)
                 .Select(user => new
                 {
-                    profileId = user.profile.ProfileId,
-                    profileStatus = user.profile.profilestatus.ProfileStatusName,
+                    profileId = user.profile!.ProfileId,
+                    profileStatus = user.profile.profilestatus!.ProfileStatusName,
                     name = user.Name,
-                    designation = user.designation.DesignationName,
+                    designation = user.designation!.DesignationName,
                     userId=user.UserId,
                     repotingPerson = user.ReportingPersonUsername,
                     image = user.personalDetails != null ? user.personalDetails.Image : null

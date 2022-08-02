@@ -8,11 +8,11 @@ namespace PMS_API
         [Key]
         public int PersonalDetailsId{get;set;}
         public int ProfileId{get;set;}
-        public string Objective{get;set;}
+        public string? Objective{get;set;}
         public DateTime DateOfBirth{get;set;}
-        public string Nationality{get;set;}
+        public string? Nationality{get;set;}
         public DateTime DateOfJoining{get;set;}
-        public string base64header {get;set;}
+        public string? base64header {get;set;}
 
         public byte[]? Image{get;set;}
         public DateTime? CreatedOn { get; set; }

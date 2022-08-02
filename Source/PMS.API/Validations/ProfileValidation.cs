@@ -64,7 +64,7 @@ namespace PMS_API
             //starting year validation
             if (string.IsNullOrEmpty((education.Starting).ToString()) || (education.Starting).Equals(0))//check starting year is null or empty
                 throw new ValidationException($"StartingYear not be empty and user supplied StartingYear as \"{education.Starting}\"");
-            if (!Regex.IsMatch(education.Starting.ToString(), "^[0-9]{4}$"))
+            if (!Regex.IsMatch(education.Starting.ToString()!, "^[0-9]{4}$"))
                 throw new ValidationException($"Starting year is Invalid\"{education.Starting}\"");
             if (education.Starting.Equals(DateTime.Today.Year) || (education.Starting > (DateTime.Today.Year)))//check starting year is not this year and future year
                 throw new ValidationException($"StartingYear should not be this year,future Year and user supplied StartingYear as \"{education.Starting}\"");
@@ -114,7 +114,7 @@ namespace PMS_API
             //     throw new ValidationException($"Designation should not be numbers alone and user supplied Designation as \"{project.Designation}\"");
             // if (Regex.IsMatch(project.Designation, "^[^\\w]+$"))//check Designation only contains specialcharacters
             //     throw new ValidationException($"Designation should not be specialcharacters and user supplied Designation as \"{project.Designation}\"");
-            if (!Regex.IsMatch(project.Designation, "^[A-Za-z ]{2,100}$"))//check Designation only contains specialcharacters
+            if (!Regex.IsMatch(project.Designation!, "^[A-Za-z ]{2,100}$"))//check Designation only contains specialcharacters
                 throw new ValidationException($"Designation should not contain special characters, numbers and user supplied Designation as \"{project.Designation}\"");
 
 
@@ -125,14 +125,14 @@ namespace PMS_API
                 throw new ValidationException($"Tools should not be special characters and user supplied Designation as \"{project.ToolsUsed}\"");
 
             //Project starting month
-            if (string.IsNullOrEmpty((project.StartingMonth).ToString()))
+            if (string.IsNullOrEmpty((project.StartingMonth!).ToString()))
                 throw new ValidationException($"StartingMonth not be empty and user supplied StartingMonth as \"{project.StartingMonth}\"");
             if (!Regex.IsMatch(project.StartingMonth, "^[A-Za-z]{3,9}$"))
                 throw new ValidationException($"Starting month is Invalid \"{project.StartingMonth}\"");
 
 
             //Project Ending Month
-            if (string.IsNullOrEmpty((project.EndingMonth).ToString()))
+            if (string.IsNullOrEmpty((project.EndingMonth!).ToString()))
                 throw new ValidationException($"EndingMonth not be empty and user supplied EndingMonth as \"{project.EndingMonth}\"");
             if (!Regex.IsMatch(project.EndingMonth, "^[A-Za-z]{3,9}$"))
                 throw new ValidationException($"Ending month is Invalid \"{project.EndingMonth}\"");

@@ -4,13 +4,9 @@ using System.ComponentModel;
 namespace PMS_API{
      public class Gender
     {
-        public Gender()
-        {
-        }
-
         [Key]
         public int GenderId{get; set;}
-        public string  GenderName{get;set;}
+        public string? GenderName{get;set;}
         
         [InverseProperty("gender")] 
         public ICollection<User>? users{get;set;}=default!;

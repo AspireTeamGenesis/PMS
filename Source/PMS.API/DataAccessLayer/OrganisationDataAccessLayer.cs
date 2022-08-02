@@ -3,15 +3,14 @@ namespace PMS_API
 {
     public class OrganisationDataAccessLayer : IOrganisationDataAccessLayer
     {
-        private Context _db = DbContextDataFactory.GetDbContextObject();
-        private ILogger<OrganisationDataAccessLayer> _logger;
-
-        //Getting the List of Organisations
-        public List<Organisation> GetOrganisations() 
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<OrganisationDataAccessLayer> _logger = default!;
+        
+         public List<Organisation> GetOrganisations() // List of Organisations
         {
             try
             {
-                return _db.Organisations.ToList();
+                return _db.Organisations!.ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {
@@ -28,8 +27,8 @@ namespace PMS_API
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
-
+                throw;
+                
             }
         }
 

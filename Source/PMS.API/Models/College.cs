@@ -8,7 +8,7 @@ namespace PMS_API{
         public int CollegeId{get; set;}
         [Required]
         [StringLength(80)] 
-        public string CollegeName{get;set;}
+        public string? CollegeName{get;set;}
         [InverseProperty("college")]
         public virtual ICollection<Education>? education  {get;set;}
         [DefaultValue(true)]

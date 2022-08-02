@@ -4,15 +4,14 @@ namespace PMS_API
 {
     public class ProfileStatusDataAccessLayer : IProfileStatusDataAccessLayer
     {
-        private Context _db = DbContextDataFactory.GetDbContextObject();
-        private ILogger<ProfileStatusDataAccessLayer> _logger;
-
-        //Getting the List of Profile Status
-        public List<ProfileStatus> GetProfileStatuss()
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<ProfileStatusDataAccessLayer> _logger = default!;
+        
+         public List<ProfileStatus> GetProfileStatuss() // List of ProfileStatus
         {
             try
             {
-                return _db.ProfileStatuss.ToList();
+                return _db.ProfileStatuss!.ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {
@@ -29,8 +28,8 @@ namespace PMS_API
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
-
+                 throw;
+                
             }
         }
 

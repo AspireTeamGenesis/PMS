@@ -7,7 +7,7 @@ namespace PMS_API
     {
         [Key]
         public int LanguageId{get;set;}
-        public string LanguageName{get;set;}
+        public string? LanguageName{get;set;}
         public bool Read{get;set;}
         public bool Write{get;set;}
         public bool Speak{get;set;}

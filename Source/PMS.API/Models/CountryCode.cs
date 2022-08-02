@@ -6,7 +6,7 @@ namespace PMS_API{
     {
         [Key]
         public int CountryCodeId{get; set;}
-        public string  CountryCodeName{get;set;}
+        public string? CountryCodeName{get;set;}
         [InverseProperty("countrycode")]
         public virtual ICollection<User>?  users{get;set;}
         [DefaultValue(true)]

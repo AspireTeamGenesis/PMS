@@ -5,15 +5,14 @@ namespace PMS_API
 {
     public class DesignationDataAccessLayer : IDesignationDataAccessLayer
     {
-        private Context _db = DbContextDataFactory.GetDbContextObject();
-        private ILogger<DesignationDataAccessLayer> _logger;
-
-        //Getting The List of Designations
-        public List<Designation> GetDesignations() 
+       private readonly Context _db = DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<DesignationDataAccessLayer> _logger = default!;
+        
+         public List<Designation> GetDesignations() //List of Designtion
         {
             try
             {
-                return _db.Designations.Include(d => d.users).ToList();
+                return _db.Designations!.Include(d=>d.users).ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {
@@ -30,9 +29,7 @@ namespace PMS_API
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
-
-
+                throw;  
             }
         }
 

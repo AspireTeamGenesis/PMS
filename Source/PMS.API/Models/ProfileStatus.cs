@@ -6,7 +6,7 @@ namespace PMS_API{
     {
         [Key]
         public int ProfileStatusId{get; set;}
-        public string  ProfileStatusName{get;set;}
+        public string? ProfileStatusName{get;set;}
         [DefaultValue(true)]
         public bool IsActive{get;set;}
         

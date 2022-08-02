@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AnalysisConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
-  <SonarConfigDir>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf</SonarConfigDir>
-  <SonarOutputDir>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\out</SonarOutputDir>
-  <SonarBinDir>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\bin</SonarBinDir>
-  <SonarScannerWorkingDirectory>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API</SonarScannerWorkingDirectory>
+  <SonarConfigDir>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf</SonarConfigDir>
+  <SonarOutputDir>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\out</SonarOutputDir>
+  <SonarBinDir>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\bin</SonarBinDir>
+  <SonarScannerWorkingDirectory>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API</SonarScannerWorkingDirectory>
   <HasBeginStepCommandLineCredentials>true</HasBeginStepCommandLineCredentials>
   <SonarQubeHostUrl>http://localhost:9000</SonarQubeHostUrl>
   <SonarQubeVersion>9.5.0.56709</SonarQubeVersion>
-  <SonarProjectKey>PMS-yoga</SonarProjectKey>
+  <SonarProjectKey>PMS</SonarProjectKey>
   <AdditionalConfig>
     <ConfigSetting Id="BuildUri" />
     <ConfigSetting Id="TfsUri" />
@@ -110,7 +110,7 @@
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">147B411E-AYIU-tYnFr1OR-CKXb_X</Property>
-    <Property Name="sonar.core.startTime">19-07-2022 11:45:21</Property>
+    <Property Name="sonar.core.startTime">01-08-2022 14:44:09</Property>
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.host.url">http://localhost:9000</Property>
@@ -118,8 +118,8 @@
   <AnalyzersSettings>
     <AnalyzerSettings>
       <Language>cs</Language>
-      <RulesetPath>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\Sonar-cs.ruleset</RulesetPath>
-      <DeactivatedRulesetPath>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\Sonar-cs-none.ruleset</DeactivatedRulesetPath>
+      <RulesetPath>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\Sonar-cs.ruleset</RulesetPath>
+      <DeactivatedRulesetPath>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\Sonar-cs-none.ruleset</DeactivatedRulesetPath>
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.40.0.48530" StaticResourceName="SonarAnalyzer-8.40.0.48530.zip">
           <AssemblyPaths>
@@ -141,13 +141,13 @@
         </AnalyzerPlugin>
       </AnalyzerPlugins>
       <AdditionalFilePaths>
-        <Path>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\cs\SonarLint.xml</Path>
+        <Path>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\cs\SonarLint.xml</Path>
       </AdditionalFilePaths>
     </AnalyzerSettings>
     <AnalyzerSettings>
       <Language>vbnet</Language>
-      <RulesetPath>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\Sonar-vbnet.ruleset</RulesetPath>
-      <DeactivatedRulesetPath>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\Sonar-vbnet-none.ruleset</DeactivatedRulesetPath>
+      <RulesetPath>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\Sonar-vbnet.ruleset</RulesetPath>
+      <DeactivatedRulesetPath>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\Sonar-vbnet-none.ruleset</DeactivatedRulesetPath>
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.40.0.48530" StaticResourceName="SonarAnalyzer-8.40.0.48530.zip">
           <AssemblyPaths>
@@ -169,7 +169,7 @@
         </AnalyzerPlugin>
       </AnalyzerPlugins>
       <AdditionalFilePaths>
-        <Path>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\vbnet\SonarLint.xml</Path>
+        <Path>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\vbnet\SonarLint.xml</Path>
       </AdditionalFilePaths>
     </AnalyzerSettings>
   </AnalyzersSettings>

@@ -1,6 +1,6 @@
 namespace PMS_API
 {
-    public class UserDataFactory{
+    public static class UserDataFactory{
         public static Context Getusercontext(){
             return new Context();
         }

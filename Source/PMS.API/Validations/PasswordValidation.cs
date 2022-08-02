@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace PMS_API
 {
-    public class PasswordValidation
+    public static class PasswordValidation
     {
         public static bool IsValidPassword(string NewPassword,string ConfirmPassword)
         {

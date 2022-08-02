@@ -14,31 +14,30 @@ namespace PMS_API
         {
             optionsBuilder.UseSqlServer("server=ASPLAP1916;database=PMS;trusted_connection=true;");
         }
-        public DbSet<User> users { get; set; }
-        public DbSet<Profile> profile { get; set; }
-        public DbSet<PersonalDetails> personalDetails { get; set; }
-        public DbSet<Education> educations { get; set; }
-        public DbSet<Language> languages { get; set; }
-        public DbSet<BreakDuration> breakDurations { get; set; }
-        public DbSet<Projects> projects { get; set; }
-        public DbSet<Skills> skills { get; set; }
-        public DbSet<SocialMedia> SocialMedias { get; set; }
-        public DbSet<College> Colleges { get; set; }
-        public DbSet<Designation> Designations { get; set; }
-        public DbSet<Domain> Domains { get; set; }
-        public DbSet<Technology> Technologies { get; set; }
-        public DbSet<Organisation> Organisations { get; set; }
-        public DbSet<ProfileStatus> ProfileStatuss { get; set; }
-        public DbSet<AchievementType> achievementtype { get; set; }
-        public DbSet<Achievements> achievements { get; set; }
-        public DbSet<ProfileHistory> profilehistory { get; set; }
-        public DbSet<CountryCode> CountryCodes { get; set; }
-        public DbSet<ChangePassword> ChangePasswords { get; set; }
+        public DbSet<User>? users { get; set; }
+        public DbSet<Profile>? profile { get; set; }
+        public DbSet<PersonalDetails>? personalDetails { get; set; }
+        public DbSet<Education>? educations { get; set; }
+        public DbSet<Language>? languages { get; set; }
+        public DbSet<BreakDuration>? breakDurations { get; set; }
+        public DbSet<Projects>? projects { get; set; }
+        public DbSet<Skills>? skills { get; set; }
+        public DbSet<SocialMedia>? SocialMedias { get; set; }
+        public DbSet<College>? Colleges { get; set; }
+        public DbSet<Designation>? Designations { get; set; }
+        public DbSet<Domain>? Domains { get; set; }
+        public DbSet<Technology>? Technologies { get; set; }
+        public DbSet<Organisation>? Organisations { get; set; }
+        public DbSet<ProfileStatus>? ProfileStatuss { get; set; }
+        public DbSet<AchievementType>? achievementtype { get; set; }
+        public DbSet<Achievements>? achievements { get; set; }
+        public DbSet<ProfileHistory>? profilehistory { get; set; }
+        public DbSet<CountryCode>? CountryCodes { get; set; }
+        public DbSet<ChangePassword>? ChangePasswords { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<College>()
                         .HasData(
                          new College { CollegeId = 1, CollegeName = "SKCET", IsActive = true },

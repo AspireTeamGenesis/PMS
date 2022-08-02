@@ -19,41 +19,41 @@ namespace PMS_API
 
     public class UserData : IUserData
     {
-        private Context _context;
-        private ILogger<UserServices> _logger;
+        private readonly Context _context;
+        private readonly ILogger<UserServices> _logger;
         public UserData(Context context, ILogger<UserServices> logger)
         {
             _context = context;
             _logger = logger;
         }
-        private UserValidation _validation = UserDataFactory.GetValidationObject();
+        private readonly UserValidation _validation = UserDataFactory.GetValidationObject();
         //getting all users 
         public List<User> GetallForCard(int profileStatusId, int designationId)
         {
             try
             {
-                return _context.users.Include(user => user.designation).Include(user => user.profile).Include(user => user.profile.profilestatus).Include(user => user.personalDetails).Where(user => user.profile != null).WhereIf(profileStatusId != 0, user => user.profile.ProfileStatusId == profileStatusId).WhereIf(designationId != 0, user => user.DesignationId > designationId).ToList();
+                return _context.users!.Include(user => user.designation).Include(user => user.profile).Include(user => user.profile!.profilestatus).Include(user => user.personalDetails).Where(user => user.profile != null).WhereIf(profileStatusId != 0, user => user.profile!.ProfileStatusId == profileStatusId).WhereIf(designationId != 0, user => user.DesignationId > designationId).ToList();
             }
 
             catch (Exception exception)
             {
                 _logger.LogError($"UserData-GetallForCard()-{exception.Message}");
                 _logger.LogInformation($"UserData-GetallForCard()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public List<User> GetallUsers()
         {
             try
             {
-                return _context.users.Include(user => user.gender).Include(user => user.designation).Include(user => user.organisation).Include(user => user.countrycode).ToList();
+                return _context.users!.Include(user => user.gender).Include(user => user.designation).Include(user => user.organisation).Include(user => user.countrycode).ToList();
             }
 
             catch (Exception exception)
             {
                 _logger.LogError($"UserData-GetallUsers()-{exception.Message}");
                 _logger.LogInformation($"UserData-GetallUsers()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public User GetUser(int id)
@@ -64,29 +64,29 @@ namespace PMS_API
 
             try
             {
-                User user = GetallUsers().Where(x => x.UserId == id).First();
-                if (user == null) throw new NullReferenceException($"Id not found-{id}");
+                User user = GetallUsers().First(x => x.UserId == id);
+                if (user == null) throw new ArgumentNullException($"Id not found-{id}");
                 return user;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"UserData-GetUser()-{exception.Message}");
                 _logger.LogInformation($"UserData-GetUser()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public bool AddUser(User item)
         {
             if (item == null)
-                throw new ArgumentNullException("user object is not provided to DAL");
+                throw new ArgumentException("user object is not provided to DAL");
             _validation.userValidate(item);
             if (string.IsNullOrEmpty(item.UserName))
                 throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
             try
             {
 
-                item.Password = HashPassword.Sha256(item.Password);
-                _context.users.Add(item);
+                item.Password = HashPassword.Sha256(item.Password!);
+                _context.users!.Add(item);
                 _context.SaveChanges();
                 return true;
             }
@@ -109,8 +109,8 @@ namespace PMS_API
 
             try
             {
-                var user = _context.users.Find(id);
-                if (user == null) throw new NullReferenceException($"User Id not found{id}");
+                var user = _context.users!.Find(id);
+                if (user == null) throw new ArgumentNullException($"User Id not found{id}");
                 user.IsActive = false;
                 _context.users.Update(user);
                 _context.SaveChanges();
@@ -140,15 +140,15 @@ namespace PMS_API
 
             try
             {
-                var user = _context.users.Find(item.UserId);
-                if (user == null) throw new NullReferenceException($"User Id not found{item.UserId}");
+                var user = _context.users!.Find(item.UserId);
+                if (user == null) throw new ArgumentNullException($"User Id not found{item.UserId}");
                 user.UserId = item.UserId;
                 user.Name = item.Name;
                 user.Email = item.Email;
                 user.UserName = item.UserName;
                 user.Password = item.Password;
                 user.GenderId = item.GenderId;
-                user.CountryCodeId = user.CountryCodeId;
+                user.CountryCodeId = item.CountryCodeId;
                 user.MobileNumber = item.MobileNumber;
                 user.OrganisationId = item.OrganisationId;
                 user.DesignationId = item.DesignationId;
@@ -178,19 +178,19 @@ namespace PMS_API
         {
             try
             {
-                if (!_context.users.Any(x => x.UserName == UserName))
+                if (!_context.users!.Any(x => x.UserName == UserName))
                     throw new ValidationException($"No User Found : {UserName}");
 
-                if (!_context.users.Any(x => x.UserName == UserName && x.Password == HashPassword.Sha256(Password)))
+                if (_context.users!.Any(x => x.UserName == UserName && x.Password == HashPassword.Sha256(Password)))
                     throw new ValidationException($"Wrong Password!");
 
-                var user = GetallUsers().Where(user => user.UserName == UserName).First();
+                var user = GetallUsers().First(user => user.UserName == UserName);
                 return user;
             }
             catch (Exception exception)
             {
                 _logger.LogInformation($"Exception on User DAL : LoginCrendentials(string UserName, string password) : {exception.Message}");
-                throw exception;
+                throw;
             }
         }
         public bool EditPassword(string OldPassword, string NewPassword, string ConfirmPassword, int currentUser)
@@ -199,7 +199,7 @@ namespace PMS_API
             try
             {
 
-                var edit = _context.users.Find(currentUser);
+                var edit = _context.users!.Find(currentUser);
                 var pass = HashPassword.Sha256(OldPassword);
                 if (edit == null)
                     throw new ValidationException("No User is found wiith the given user id");
@@ -225,10 +225,10 @@ namespace PMS_API
                 _logger.LogInformation($"User DAL : EditPassword(string OldPassword,string NewPassword,string ConfirmPassword,int currentUser) : {exception.Message}");
                 return false;
             }
-            catch (ValidationException userNotFound)
-            {
-                throw userNotFound;
-            }
+            // catch (ValidationException userNotFound)
+            // {
+            //     throw userNotFound;
+            // }
 
             catch (Exception exception)
             {
@@ -243,14 +243,14 @@ namespace PMS_API
         {
             try
             {
-                return _context.users.Include(user => user.designation).Include(user => user.profile).Include(user => user.profile.profilestatus).Include(user => user.personalDetails).Where(user => user.profile != null).WhereIf(designationId != 0, user => user.DesignationId > designationId).ToList();
+                return _context.users!.Include(user => user.designation).Include(user => user.profile).Include(user => user.profile!.profilestatus).Include(user => user.personalDetails).Where(user => user.profile != null).WhereIf(designationId != 0, user => user.DesignationId > designationId).ToList();
             }
 
             catch (Exception exception)
             {
                 _logger.LogError($"UserData-GetAllUsersByDesignation()-{exception.Message}");
                 _logger.LogInformation($"UserData-GetAllUsersByDesignation()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
     }

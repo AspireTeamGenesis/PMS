@@ -3,15 +3,15 @@
   <ProjectName>PMS_API</ProjectName>
   <ProjectLanguage>C#</ProjectLanguage>
   <ProjectType>Product</ProjectType>
-  <ProjectGuid>2941f784-2c6b-4d14-a77c-c9e3f6d9a0a1</ProjectGuid>
-  <FullPath>C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\PMS_API.csproj</FullPath>
+  <ProjectGuid>d0dcd681-8612-4c7f-b1b4-e197e555bef7</ProjectGuid>
+  <FullPath>C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\PMS_API.csproj</FullPath>
   <IsExcluded>false</IsExcluded>
   <AnalysisResults>
-    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\conf\0\FilesToAnalyze.txt" />
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\conf\0\FilesToAnalyze.txt" />
   </AnalysisResults>
   <AnalysisSettings>
-    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\out\0\Issues.json</Property>
-    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\yoga.govind\Documents\GitHub\Profile_Management\Source\PMS.API\.sonarqube\out\0</Property>
+    <Property Name="sonar.cs.roslyn.reportFilePaths">C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\out\0\Issues.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPaths">C:\Users\yoga.govind\Documents\GitHub\PMS\Source\PMS.API\.sonarqube\out\0</Property>
   </AnalysisSettings>
   <Configuration>Debug</Configuration>
   <Platform>AnyCPU</Platform>

@@ -8,16 +8,16 @@ namespace PMS_API
 
     public class UserServices : IUserServices
     {
-        private UserData userData;
+        private readonly  UserData userData;
 
-        private ILogger<UserServices> _logger;
+        private readonly ILogger<UserServices> _logger;
 
         public UserServices(ILogger<UserServices> logger)
         {
             _logger = logger;
             userData = UserDataFactory.GetUserObject(logger);
         }
-        private UserValidation _validation = UserDataFactory.GetValidationObject();
+        private readonly UserValidation _validation = UserDataFactory.GetValidationObject();
         public object GetallUsers(int profilestatusId, int designationId)
         {
             try
@@ -27,9 +27,9 @@ namespace PMS_API
                     {
                         UserId = user.UserId,
                         Name = user.Name,
-                        UserDesignation = user.designation.DesignationName,
+                        UserDesignation = user.designation!.DesignationName,
                         ReportingPerson = user.ReportingPersonUsername,
-                        UserProfileStatus = user.profile.profilestatus.ProfileStatusName,
+                        UserProfileStatus = user.profile!.profilestatus!.ProfileStatusName,
                         UserProfileImage = user.personalDetails != null ? user.personalDetails!.Image : null,
                         UserProfileId = user.profile.ProfileId
                     }
@@ -50,7 +50,7 @@ namespace PMS_API
                 {
                     Name = var.Name,
                     UserId = var.UserId,
-                    Designation = var.designation.DesignationName,
+                    Designation = var.designation!.DesignationName,
                     ReportingPerson = var.ReportingPersonUsername
                 }
                 );
@@ -58,7 +58,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogInformation($"User Service : GetSpecificUserDetails() : {exception.Message} : {exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public object GetUser(int id)
@@ -78,15 +78,15 @@ namespace PMS_API
                         username = getuser.UserName,
                         password = getuser.Password,
                         genderId = getuser.GenderId,
-                        gender = getuser.gender.GenderName,
+                        gender = getuser.gender!.GenderName,
                         CountryCodeId = getuser.CountryCodeId,
-                        countryCode = getuser.countrycode.CountryCodeName,
+                        countryCode = getuser.countrycode!.CountryCodeName,
                         mobilenumber = getuser.MobileNumber,
                         designationId = getuser.DesignationId,
-                        designation = getuser.designation.DesignationName,
+                        designation = getuser.designation!.DesignationName,
                         reportingpersonUsername = getuser.ReportingPersonUsername,
                         organisationId = getuser.OrganisationId,
-                        organisation = getuser.organisation.OrganisationName
+                        organisation = getuser.organisation!.OrganisationName
 
                     };
                 }
@@ -98,7 +98,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogError($"UserServices:GetUser()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
         public bool AddUser(User item, int userId)
@@ -118,12 +118,12 @@ namespace PMS_API
             catch (ValidationException exception)
             {
                 _logger.LogInformation($"UserServices:AddUser()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
+                throw;
             }
             catch (ArgumentNullException exception)
             {
                 _logger.LogInformation($"UserServices:AddUser()-{exception.Message}\n{exception.StackTrace}");
-                throw exception;
+                throw;
             }
             catch (Exception exception)
             {
@@ -208,7 +208,7 @@ namespace PMS_API
 
                 _logger.LogInformation($"User service :ChangePassword(string OldPassword,string NewPassword,string ConfirmPassword): {passwordNotValid.Message}");
 
-                throw passwordNotValid;
+                throw;
 
             }
 
@@ -237,9 +237,9 @@ namespace PMS_API
                     {
                         UserId = user.UserId,
                         Name = user.Name,
-                        UserDesignation = user.designation.DesignationName,
+                        UserDesignation = user.designation!.DesignationName,
                         ReportingPerson = user.ReportingPersonUsername,
-                        UserProfileStatus = user.profile.profilestatus.ProfileStatusName,
+                        UserProfileStatus = user.profile!.profilestatus!.ProfileStatusName,
                         UserProfileImage = user.personalDetails != null ? user.personalDetails!.Image : null,
                         UserProfileId = user.profile.ProfileId
                     }

@@ -13,9 +13,10 @@ public class DesignationController : ControllerBase
     {
         _logger = logger;
     }
-    IDesignationServices DesignationService = DesignationDataFactory.GetDesignationServiceObject();
-
+    private readonly IDesignationServices DesignationService = DesignationDataFactory.GetDesignationServiceObject();
     //Getting the list of Designations
+
+
     [HttpGet]
     public IActionResult ViewDesignations() 
     {

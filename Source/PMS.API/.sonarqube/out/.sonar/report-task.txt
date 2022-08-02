@@ -1,6 +1,6 @@
-projectKey=PMS-yoga
+projectKey=PMS
 serverUrl=http://localhost:9000
 serverVersion=9.5.0.56709
-dashboardUrl=http://localhost:9000/dashboard?id=PMS-yoga
-ceTaskId=AYIZvgdTKlSojZqBsGOC
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYIZvgdTKlSojZqBsGOC
+dashboardUrl=http://localhost:9000/dashboard?id=PMS
+ceTaskId=AYJc1vJjQYlRHdyNx4mr
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYJc1vJjQYlRHdyNx4mr

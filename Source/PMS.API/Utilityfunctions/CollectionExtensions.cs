@@ -1,5 +1,5 @@
 using System.Linq.Expressions;
-
+namespace PMS_API;
 public static class CollectionExtensions
 {
     public static IQueryable<TSource> WhereIf<TSource>(

@@ -75,12 +75,12 @@ namespace PMS_API
 
 
             if (profile == null)
-                throw new ArgumentNullException("PersonalDetails object is not provided to DAL");
+                throw new ArgumentException("PersonalDetails object is not provided to DAL");
 
             try
             {
                 profile.IsActive = true;
-                _context.profile.Add(profile);
+                _context.profile!.Add(profile);
                 _context.SaveChanges();
                 return true;
             }
@@ -103,7 +103,7 @@ namespace PMS_API
 
             try
             {
-                return _context.personalDetails.Include(s => s.language).Include(s => s.breakDuration).Include(s => s.socialmedia).ToList();
+                return _context.personalDetails!.Include(s => s.language).Include(s => s.breakDuration).Include(s => s.socialmedia).ToList();
 
 
             }
@@ -112,7 +112,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallPersonalDetails()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallPersonalDetails()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -126,15 +126,15 @@ namespace PMS_API
 
             try
             {
-                var personalDetails = GetAllPersonalDetails().Where(x => x.PersonalDetailsId == Personalid).FirstOrDefault();
-                if (personalDetails == null) throw new Exception($"Id not found-{Personalid}");
+                var personalDetails = GetAllPersonalDetails().FirstOrDefault(x => x.PersonalDetailsId == Personalid);
+                if (personalDetails == null) throw new ArgumentNullException($"Id not found-{Personalid}");
                 return personalDetails;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetPersonalDetailsById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetPersonalDetailsById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -144,12 +144,12 @@ namespace PMS_API
 
 
             if (personalDetails == null)
-                throw new ArgumentNullException("PersonalDetails object is not provided to DAL");
+                throw new ArgumentException("PersonalDetails object is not provided to DAL");
 
             try
             {
                 personalDetails.IsActive = true;
-                _context.personalDetails.Add(personalDetails);
+                _context.personalDetails!.Add(personalDetails);
                 _context.SaveChanges();
                 return true;
             }
@@ -172,7 +172,7 @@ namespace PMS_API
 
             try
             {
-                _context.personalDetails.Update(personalDetails);
+                _context.personalDetails!.Update(personalDetails);
                 _context.SaveChanges();
                 return true;
             }
@@ -193,8 +193,8 @@ namespace PMS_API
 
             try
             {
-                var personalDetails = _context.personalDetails.Find(PersonalDetailsid);
-                if (personalDetails == null) throw new NullReferenceException($"PersonalDetails Id not found{PersonalDetailsid}");
+                var personalDetails = _context.personalDetails!.Find(PersonalDetailsid);
+                if (personalDetails == null) throw new ArgumentNullException($"PersonalDetails Id not found{PersonalDetailsid}");
                 personalDetails.IsActive = false;
                 _context.personalDetails.Update(personalDetails);
                 _context.SaveChanges();
@@ -220,7 +220,7 @@ namespace PMS_API
             try
             {
 
-                return _context.educations.Include("college").ToList();
+                return _context.educations!.Include("college").ToList();
 
             }
 
@@ -229,7 +229,7 @@ namespace PMS_API
                 //log "if exception occures"
                 _logger.LogError($"ProfileData-GetallEducationDetails()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallEducationDetails()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -242,15 +242,15 @@ namespace PMS_API
 
             try
             {
-                var education = GetallEducationDetails().Where(x => x.EducationId == Educationid && x.IsActive).First();
-                if (education == null) throw new NullReferenceException($"Id not found-{Educationid}");
+                var education = GetallEducationDetails().First(x => x.EducationId == Educationid && x.IsActive);
+                if (education == null) throw new ArgumentNullException($"Id not found-{Educationid}");
                 return education;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetEducationDetailsById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetEducationDetailsById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -260,13 +260,13 @@ namespace PMS_API
 
 
             if (education == null)
-                throw new ArgumentNullException("Education detail object is not provided to DAL");
+                throw new ArgumentException("Education detail object is not provided to DAL");
 
 
             try
             {               
                 education.IsActive = true;
-                _context.educations.Add(education);
+                _context.educations!.Add(education);
                 _context.SaveChanges();
                 return true;
             }
@@ -286,7 +286,7 @@ namespace PMS_API
                 throw new ValidationException("Profile's education details are not provided to DAL");
             try
             {
-                _context.educations.Update(education);
+                _context.educations!.Update(education);
                 _context.SaveChanges();
                 return true;
             }
@@ -309,8 +309,8 @@ namespace PMS_API
 
             try
             {
-                var education = _context.educations.Find(Educationid);
-                if (education == null) throw new NullReferenceException($"Education Id not found{Educationid}");
+                var education = _context.educations!.Find(Educationid);
+                if (education == null) throw new ArgumentNullException($"Education Id not found{Educationid}");
                 education.IsActive = false;
                 _context.educations.Update(education);
                 _context.SaveChanges();
@@ -334,12 +334,12 @@ namespace PMS_API
 
 
             if (project == null)
-                throw new ArgumentNullException("project detail object is not provided to DAL");
+                throw new ArgumentException("project detail object is not provided to DAL");
 
             try
             {
                 project.IsActive = true;
-                _context.projects.Add(project);
+                _context.projects!.Add(project);
                 _context.SaveChanges();
                 return true;
             }
@@ -362,7 +362,7 @@ namespace PMS_API
             try
             {
 
-                return _context.projects.ToList();
+                return _context.projects!.ToList();
 
             }
 
@@ -370,7 +370,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallProjectDetails()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallProjectDetails()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -383,15 +383,15 @@ namespace PMS_API
 
             try
             {
-                var project = GetallProjectDetails().Where(x => x.ProjectId == Projectid && x.IsActive).First();
-                if (project == null) throw new NullReferenceException($"Id not found-{Projectid}");
+                var project = GetallProjectDetails().First(x => x.ProjectId == Projectid && x.IsActive);
+                if (project == null) throw new ArgumentNullException($"Id not found-{Projectid}");
                 return project;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetProjectDetailsById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetProjectDetailsById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -405,7 +405,7 @@ namespace PMS_API
             try
             {
                 projects.IsActive = true;
-                _context.projects.Update(projects);
+                _context.projects!.Update(projects);
                 _context.SaveChanges();
                 return true;
             }
@@ -427,9 +427,9 @@ namespace PMS_API
 
             try
             {
-                var projects = _context.projects.Find(Projectid);
+                var projects = _context.projects!.Find(Projectid);
                 if (projects == null)
-                    throw new NullReferenceException($"Project Id not found{Projectid}");
+                    throw new ArgumentNullException($"Project Id not found{Projectid}");
 
                 projects.IsActive = false;
                 _context.projects.Update(projects);
@@ -452,12 +452,12 @@ namespace PMS_API
 
 
             if (skill == null)
-                throw new ArgumentNullException("Skill detail object is not provided to DAL");
+                throw new ArgumentException("Skill detail object is not provided to DAL");
 
             try
             {
                 skill.IsActive = true;
-                _context.skills.Add(skill);
+                _context.skills!.Add(skill);
                 _context.SaveChanges();
                 return true;
             }
@@ -480,7 +480,7 @@ namespace PMS_API
             try
             {
 
-                return _context.skills.Include("domain").Include("technology").ToList();
+                return _context.skills!.Include("domain").Include("technology").ToList();
 
             }
 
@@ -488,7 +488,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallSkillDetails()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallSkillDetails()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -501,15 +501,15 @@ namespace PMS_API
 
             try
             {
-                var skills = GetallSkillDetails().Where(x => x.SkillId == Skillid && x.IsActive).First();
-                if (skills == null) throw new NullReferenceException($"Id not found-{Skillid}");
+                var skills = GetallSkillDetails().First(x => x.SkillId == Skillid && x.IsActive);
+                if (skills == null) throw new ArgumentNullException($"Id not found-{Skillid}");
                 return skills;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetSkillDetailsById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetSkillDetailsById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -521,7 +521,7 @@ namespace PMS_API
             try
             {
                 skill.IsActive = true;
-                _context.skills.Update(skill);
+                _context.skills!.Update(skill);
                 _context.SaveChanges();
                 return true;
             }
@@ -542,8 +542,8 @@ namespace PMS_API
 
             try
             {
-                var skills = _context.skills.Find(Skillid);
-                if (skills == null) throw new NullReferenceException($"Skill Id not found{Skillid}");
+                var skills = _context.skills!.Find(Skillid);
+                if (skills == null) throw new ArgumentNullException($"Skill Id not found{Skillid}");
                 skills.IsActive = false;
                 _context.skills.Update(skills);
                 _context.SaveChanges();
@@ -567,12 +567,12 @@ namespace PMS_API
 
 
             if (language == null)
-                throw new ArgumentNullException("Language details object is not provided to DAL");
+                throw new ArgumentException("Language details object is not provided to DAL");
 
             try
             {
                 language.IsActive=true;
-                _context.languages.Add(language);
+                _context.languages!.Add(language);
                 _context.SaveChanges();
                 return true;
             }
@@ -597,8 +597,8 @@ namespace PMS_API
 
             try
             {
-                var languages = _context.languages.Find(Languageid);
-                if (languages == null) throw new NullReferenceException($"Language Id not found{Languageid}");
+                var languages = _context.languages!.Find(Languageid);
+                if (languages == null) throw new ArgumentNullException($"Language Id not found{Languageid}");
                 languages.IsActive = false;
                 _context.languages.Update(languages);
                 _context.SaveChanges();
@@ -618,11 +618,11 @@ namespace PMS_API
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null)
-                throw new ArgumentNullException("social media details object is not provided to DAL");
+                throw new ArgumentException("social media details object is not provided to DAL");
             try
             {
                 media.IsActive=true;
-                _context.SocialMedias.Add(media);
+                _context.SocialMedias!.Add(media);
                 _context.SaveChanges();
                 return true;
             }
@@ -645,8 +645,8 @@ namespace PMS_API
 
             try
             {
-                var SocialMedias = _context.SocialMedias.Find(SocialMediaid);
-                if (SocialMedias == null) throw new NullReferenceException($"SocialMedia Id not found{SocialMediaid}");
+                var SocialMedias = _context.SocialMedias!.Find(SocialMediaid);
+                if (SocialMedias == null) throw new ArgumentNullException($"SocialMedia Id not found{SocialMediaid}");
                 SocialMedias.IsActive = false;
                 _context.SocialMedias.Update(SocialMedias);
                 _context.SaveChanges();
@@ -669,7 +669,7 @@ namespace PMS_API
             try
             {
 
-                return _context.Technologies.ToList();
+                return _context.Technologies!.ToList();
 
             }
 
@@ -677,7 +677,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallTechnologies()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallTechnologies()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -690,15 +690,15 @@ namespace PMS_API
 
             try
             {
-                Technology technology = GetallTechnologies().Where(x => x.TechnologyId == Technologyid && x.IsActive).First();
-                if (technology == null) throw new NullReferenceException($"Id not found-{technology}");
+                Technology technology = GetallTechnologies().First(x => x.TechnologyId == Technologyid && x.IsActive);
+                if (technology == null) throw new ArgumentNullException($"Id not found-{technology}");
                 return technology;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetTechnologyById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetTechnologyById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -706,11 +706,11 @@ namespace PMS_API
         public bool AddAchievements(Achievements achievements)
         {
             if (achievements == null)
-                throw new ArgumentNullException("Social media details object is not provided to DAL");
+                throw new ArgumentException("Social media details object is not provided to DAL");
             try
             {
                 achievements.IsActive = true;
-                _context.achievements.Add(achievements);
+                _context.achievements!.Add(achievements);
                 _context.SaveChanges();
                 return true;
             }
@@ -732,7 +732,7 @@ namespace PMS_API
             try
             {
 
-                return _context.achievements.Include("achievementtype").ToList();
+                return _context.achievements!.Include("achievementtype").ToList();
 
             }
 
@@ -740,7 +740,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallAchievements()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallAchievements()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -749,12 +749,12 @@ namespace PMS_API
         {
             if (AchievementId <= 0)
 
-                throw new ArgumentNullException("achievement Id is not provided to DAL");
+                throw new ArgumentException("achievement Id is not provided to DAL");
 
             try
             {
-                var achievement = _context.achievements.Find(AchievementId);
-                if (achievement == null) throw new NullReferenceException($"SocialMedia Id not found{AchievementId}");
+                var achievement = _context.achievements!.Find(AchievementId);
+                if (achievement == null) throw new ArgumentNullException($"SocialMedia Id not found{AchievementId}");
                 achievement.IsActive = false;
                 _context.achievements.Update(achievement);
                 _context.SaveChanges();
@@ -778,7 +778,7 @@ namespace PMS_API
 
             try
             {
-                var result = _context.profile.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e => e.profilestatus).Include("user").ToList();
+                var result = _context.profile!.Include("personalDetails").Include("education").Include("projects").Include("skills").Include("achievements").Include(e => e.profilestatus).Include("user").ToList();
                 return result;
             }
 
@@ -786,7 +786,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-GetallProfile()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetallProfile()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -799,7 +799,7 @@ namespace PMS_API
             try
             {
 
-                return _context.profile.Where(x => x.ProfileId == Profileid).Include(p => p.profilestatus).Select(p => p.profilestatus).First();
+                return _context.profile!.Where(x => x.ProfileId == Profileid).Include(p => p.profilestatus).Select(p => p.profilestatus).First()!;
             }
             catch
             {
@@ -814,20 +814,20 @@ namespace PMS_API
         {
             if (ProfileId <= 0)
 
-                throw new ArgumentNullException("Profile id is not provided to DAL");
+                throw new ArgumentException("Profile id is not provided to DAL");
 
             try
             {
 
-                Profile profile = GetallProfiles().Where(x => x.ProfileId == ProfileId && x.IsActive).First();
-                if (profile == null) throw new NullReferenceException($"Id not found-{ProfileId}");
+                Profile profile = GetallProfiles().First(x => x.ProfileId == ProfileId && x.IsActive);
+                if (profile == null) throw new ArgumentNullException($"Id not found-{ProfileId}");
                 return profile;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetProfileById()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetProfileById()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -835,13 +835,13 @@ namespace PMS_API
         public Profile GetProfileIdByUserId(int Userid)
         {
             if (Userid <= 0)
-                throw new ArgumentNullException("User id is not provided to DAL");
+                throw new ArgumentException("User id is not provided to DAL");
             try
             {
-                Profile profile=_context.profile.Include(e => e.profilestatus).Where(x => x.UserId == Userid).FirstOrDefault();
+                Profile profile=_context.profile!.Include(e => e.profilestatus).FirstOrDefault(x => x.UserId == Userid)!;
                 return profile;
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 System.Console.WriteLine("error");
                 throw;
@@ -853,18 +853,18 @@ namespace PMS_API
         {
             try
             {
-                return _context.users
+                return _context.users!
                    .Include(e => e.designation)
                    .Include(e => e.profile)
-                   .Include(e => e.profile.personalDetails)
-                   .Include(e => e.profile.profilestatus)
+                   .Include(e => e.profile!.personalDetails)
+                   .Include(e => e.profile!.profilestatus)
                    .Where(user => user.profile != null && user.DesignationId > currentdesignation  && user.personalDetails != null)
-                   .WhereIf(String.IsNullOrEmpty(userName) == false, users =>users.DesignationId > currentdesignation && users.Name.Contains(userName) == true)
+                   .WhereIf(String.IsNullOrEmpty(userName) == false, users =>users.DesignationId > currentdesignation && users.Name!.Contains(userName) == true)
                    .WhereIf(designationId != 0,users => users.DesignationId > currentdesignation && users.DesignationId == designationId)
-                   .WhereIf(domainID != 0, users => users.DesignationId > currentdesignation && users.profile.skills.Any(s => s.DomainId == domainID) == true)
-                   .WhereIf(technologyId != 0, users => users.DesignationId > currentdesignation && users.profile.skills.Any(s => s.TechnologyId == technologyId) == true)
-                   .WhereIf(collegeId != 0, users => users.DesignationId > currentdesignation && users.profile.education.Any(s => s.CollegeId == collegeId) == true)
-                   .WhereIf(profileStatusId != 0, users => users.DesignationId > currentdesignation && users.profile.ProfileStatusId == profileStatusId)
+                   .WhereIf(domainID != 0, users => users.DesignationId > currentdesignation && users.profile!.skills!.Any(s => s.DomainId == domainID) == true)
+                   .WhereIf(technologyId != 0, users => users.DesignationId > currentdesignation && users.profile!.skills!.Any(s => s.TechnologyId == technologyId) == true)
+                   .WhereIf(collegeId != 0, users => users.DesignationId > currentdesignation && users.profile!.education!.Any(s => s.CollegeId == collegeId) == true)
+                   .WhereIf(profileStatusId != 0, users => users.DesignationId > currentdesignation && users.profile!.ProfileStatusId == profileStatusId)
                    .ToList(); 
                 
             }
@@ -884,7 +884,7 @@ namespace PMS_API
 
             try
             {
-                Profile status = _context.profile.Find(profileId);
+                Profile status = _context.profile!.Find(profileId)!;
                 if (response == 2)
                     throw new ValidationException("Cannot change to waiting for approval");
                 else if (status.ProfileStatusId.Equals(1) || status.ProfileStatusId.Equals(3))
@@ -897,7 +897,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-AcceptOrRejectProfile()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-AcceptOrRejectProfile()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
 
         }
@@ -908,17 +908,17 @@ namespace PMS_API
 
             if (ProfileId <= 0)
 
-                throw new ArgumentNullException("Profile id is not provided to DAL");
+                throw new ArgumentException("Profile id is not provided to DAL");
 
             try
             {
-                return _context.profile.Find(ProfileId);
+                return _context.profile!.Find(ProfileId)!;
             }
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileData-GetProfile()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-GetProfile()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -928,11 +928,11 @@ namespace PMS_API
             if (profile == null || profile.ProfileId <= 0 || profile.UserId <= 0)
                 throw new ValidationException("profileId should not null");
 
-            if (!_context.profile.Any(e => e.ProfileId.Equals(profile.ProfileId)))
+            if (_context.profile!.Any(e => e.ProfileId.Equals(profile.ProfileId)))
                 throw new ValidationException("Profile does not exists");
             try
             {
-                _context.profile.Update(profile);
+                _context.profile!.Update(profile);
                 _context.SaveChanges();
                 return true;
             }
@@ -940,7 +940,7 @@ namespace PMS_API
             {
                 _logger.LogError($"ProfileData-updateProfileStatus()-{exception.Message}");
                 _logger.LogInformation($"ProfileData-updateProfileStatus()-{exception.StackTrace}");
-                throw exception;
+                throw;
             }
         }
 
@@ -949,10 +949,10 @@ namespace PMS_API
         {
             try{
                 var result=_context.profile;
-                var Approved = result.Where(p => p.ProfileStatusId == 1 && p.user.DesignationId>currentdesignation).Count();
-                var Rejected = result.Where(p => p.ProfileStatusId == 3  && p.user.DesignationId>currentdesignation).Count();
-                var Waiting = result.Where(p => p.ProfileStatusId == 2  && p.user.DesignationId>currentdesignation).Count();
-                var total = result.Where(p => p.user.DesignationId>currentdesignation).Count();
+                var Approved = result!.Where(p => p.ProfileStatusId == 1 && p.user!.DesignationId>currentdesignation).Count();
+                var Rejected = result!.Where(p => p.ProfileStatusId == 3  && p.user!.DesignationId>currentdesignation).Count();
+                var Waiting = result!.Where(p => p.ProfileStatusId == 2  && p.user!.DesignationId>currentdesignation).Count();
+                var total = result!.Where(p => p.user!.DesignationId>currentdesignation).Count();
                 var ans = new Dictionary<string, int>();
                 ans.Add("ApprovedProfiles", Approved);
                 ans.Add("RejectedProfiles", Rejected);
@@ -964,8 +964,7 @@ namespace PMS_API
             catch (Exception exception)
             {
                 _logger.LogError($"ProfileService:GetProfileCount()-{exception.Message}\n{exception.StackTrace}");
-
-                throw exception;
+                throw;
             }
         }
 

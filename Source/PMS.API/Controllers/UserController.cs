@@ -11,8 +11,8 @@ namespace PMS_API
     public class UserController : Controller
     {
 
-        private IUserServices _userServices;
-        private ILogger _logger;
+        private readonly IUserServices _userServices;
+        private readonly ILogger _logger;
         public UserController(IUserServices userServices, ILogger<UserController> logger)
         {
             _userServices = userServices;
@@ -26,7 +26,7 @@ namespace PMS_API
         {
             try
             {
-                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId").Value);
+                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value);
                 return Ok(_userServices.GetallUsers(profilestatusId, currentDesignation));
             }
 
@@ -45,7 +45,7 @@ namespace PMS_API
             try
             {
 
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
 
                 return Ok(_userServices.GetUser(currentUser));
 
@@ -112,7 +112,7 @@ namespace PMS_API
             }
             try
             {
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
                 return _userServices.AddUser(userValues, currentUser) ? Ok(new { message = "User Added Successfully" }) : Problem("Sorry internal error occured");
             }
             catch (ValidationException exception)
@@ -189,7 +189,7 @@ namespace PMS_API
             try
 
             {
-                int currentUser = Convert.ToInt32(User.FindFirst("UserId").Value);
+                int currentUser = Convert.ToInt32(User.FindFirst("UserId")?.Value);
                 return _userServices.ChangePassword(OldPassword, NewPassword, ConfirmPassword, currentUser) ? Ok(new { message = "Password Changed Successfully" }) : BadRequest(new { message = "Sorry internal error occured" });
 
 
@@ -228,7 +228,7 @@ namespace PMS_API
         {
             try
             {
-                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId").Value);
+                int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value);
                 return Ok(_userServices.GetAllUsersByDesignation(currentDesignation));
             }
             catch (Exception exception)

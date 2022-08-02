@@ -7,7 +7,7 @@ namespace PMS_API{
         [Key]
         public int TechnologyId{get; set;}
         [Required]
-        public string TechnologyName{get;set;}
+        public string? TechnologyName{get;set;}
       
         [InverseProperty("technology")]
         public virtual ICollection<Skills>? skills {get;set;}

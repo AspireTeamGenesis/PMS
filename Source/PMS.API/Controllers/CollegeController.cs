@@ -14,9 +14,9 @@ public class CollegeController : ControllerBase
     {
         _logger = logger;
     }
-    ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); 
-
+    private readonly ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); 
     //Getting The List of Colleges
+    
     [HttpGet]
     public IActionResult ViewColleges() 
     {

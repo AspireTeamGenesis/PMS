@@ -10,9 +10,9 @@ namespace PMS_API
 {
     public class LoginService:ILoginService
     {
-        private IUserData _userData;
-        private ILogger<LoginService> _logger;
-        private IConfiguration _configuration;
+        private readonly IUserData _userData;
+        private readonly ILogger<LoginService> _logger;
+        private readonly IConfiguration _configuration;
 
         public LoginService(ILogger<LoginService> logger, IConfiguration configuration, IUserData userData)
         {
@@ -21,17 +21,17 @@ namespace PMS_API
             _userData = userData;
         }
 
-        public object AuthLogin(string Username, string password)
+        public object AuthLogin(string UserName, string Password)
         {
             try
             {
-                var user =_userData.LoginCrendentials(Username,password);
+                var user =_userData.LoginCrendentials(UserName,Password);
 
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Username",user.UserName),
+                        new Claim("Username",user.UserName!),
                         new Claim("UserId",user.UserId.ToString()),                      
                         new Claim("DesignationId",user.DesignationId.ToString()),
                     };
@@ -59,12 +59,12 @@ namespace PMS_API
             catch (ValidationException loginCredentialsNotValid)
             {
                 _logger.LogInformation($"User DAL : LoginCredentails throwed an exception : {loginCredentialsNotValid.Message}");
-                throw loginCredentialsNotValid;
+                throw;
             }
             catch (Exception exception)
             {
                 _logger.LogInformation($"User DAL : LoginCredentails throwed an exception : {exception.Message}");
-                throw exception;
+                throw;
             }
         }
 

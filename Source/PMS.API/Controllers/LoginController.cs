@@ -6,10 +6,11 @@ namespace PMS_API
 {
     [ApiController]
     [Route("[controller]/[Action]")]
-    public class LoginController :Controller{
-        
-        private ILoginService _loginServices;
-         private readonly ILogger<LoginController> _logger;
+    public class LoginController : Controller
+    {
+
+        private readonly ILoginService _loginServices;
+        private readonly ILogger<LoginController> _logger;
         public LoginController(ILoginService loginServices, ILogger<LoginController> logger)
         {
 
@@ -26,13 +27,13 @@ namespace PMS_API
             try
             {
                 
-                var Result = _loginServices.AuthLogin(userlogin.UserName,userlogin.Password);                
+                var Result = _loginServices.AuthLogin(userlogin.UserName!,userlogin.Password!);                
                 return Ok(Result);
             }
             catch (ValidationException validationException)
             {
                 _logger.LogInformation($"Login Service : AuthLogin() : {validationException.Message}");
-                return BadRequest(new{message=validationException.Message});
+                return BadRequest(new { message = validationException.Message });
             }
             catch (Exception exception)
             {
@@ -40,6 +41,6 @@ namespace PMS_API
                 return Problem("Sorry some internal error occured");
             }
         }
-     
-}
+
+    }
 }

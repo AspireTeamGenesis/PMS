@@ -8,8 +8,8 @@ namespace PMS_API
         [Key]
         public int EducationId{get;set;}
         public int ProfileId{get;set;}
-        public string Degree{get;set;}
-        public string Course{get;set;}
+        public string? Degree{get;set;}
+        public string? Course{get;set;}
         // public string College { get; set; }
         public int CollegeId {get;set;}
         // // [NotMapped]

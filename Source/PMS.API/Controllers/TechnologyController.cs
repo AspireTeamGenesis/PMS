@@ -13,9 +13,9 @@ public class TechnologyController : ControllerBase
     {
         _logger = logger;
     }
-    ITechnologyServices technologyService = TechnologyDataFactory.GetTechnologyServiceObject();
-
+    private readonly ITechnologyServices technologyService = TechnologyDataFactory.GetTechnologyServiceObject();
     //Getting the list of Technologies
+    
     [HttpGet]
     public IActionResult ViewTechnologies() 
     {

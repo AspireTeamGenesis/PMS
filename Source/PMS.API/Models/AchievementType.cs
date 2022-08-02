@@ -7,7 +7,7 @@ namespace PMS_API
     {
         [Key]
         public int AchievementTypeId{get;set;}
-        public string AchievementTypeName{get;set;}
+        public string? AchievementTypeName{get;set;}
 
         [InverseProperty("achievementtype")]
         public virtual ICollection<Achievements>? achievements{get;set;}

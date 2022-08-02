@@ -3,15 +3,14 @@ namespace PMS_API.DataAccessLayer
 {
     public class DomainDataAccessLayer : IDomainDataAccessLayer
     {
-        private Context _db = DbContextDataFactory.GetDbContextObject();
-        private ILogger<DomainDataAccessLayer> _logger;
-
-        //Getting The List of Domains
-        public List<Domain> GetDomains()
+       private readonly Context _db =DbContextDataFactory.GetDbContextObject();  
+       private readonly ILogger<DomainDataAccessLayer> _logger = default!;
+        
+         public List<Domain> GetDomains() // List of Domains
         {
             try
             {
-                return _db.Domains.ToList();
+                return _db.Domains!.ToList();
             }
             catch (DbUpdateException ex)              //DB Update Exception Occured
             {
@@ -28,8 +27,8 @@ namespace PMS_API.DataAccessLayer
             catch (Exception ex)                      //unknown exception occured
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
-                throw ex;
-
+                throw;
+                
             }
         }
 
