@@ -1,99 +1,131 @@
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
-
 <div class="container d-flex justify-content-center table-box">
-  <form action="#" class="form form-border">
-
-    <div class="progressbar">
-      <div class="progress" id="progress"></div>
-
-      <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
+    <form [formGroup]="educationForm" class="form form-border">
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+            <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
             <div [routerLink]="['/languagesocial']" class="progress-step " data-title="Language & SocialMedia"></div>
             <div [routerLink]="['/education']" class="progress-step progress-step-active " data-title="Education"></div>
             <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
             <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
             <div [routerLink]="['/achievement']" class="progress-step " data-title="Achievements"></div>
-    </div>
-
-    <div class="form-step form-step-active">
-      <h3>Education Details 
-      
-      <div class="tooltip1"> 
-
-      <button class="plus" (click)="toogletag()"  > + </button>
-      <span class="tooltip1text">Click here to add educational details</span>
-      </div>
-    </h3>
-      <!-- <button (click)="toogletag()" (click)="footer()" > + </button> -->
-      <div *ngIf="showMe" >
-      <div class="input-group">
-        <label for="degree">Degree</label>
-        <input type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
-          required />
-      </div>
-      <br>
-      <div class="input-group">
-        <label for="course">Course</label>
-        <input type="text" name="course" id="course" placeholder="Enter your course" [(ngModel)]="user.course"
-          required />
-      </div>
-      <br>
-      <div class="input-group">
-        <label for="College">College</label>
-        <select id="college" name="college" [(ngModel)]="user.collegeId" required>
-          <option value="0">Select college/University</option>
-          <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
-        </select>
-      </div>
-      <br>
-      <table>
-        <tr>
-          <!-- <div class="input-group"> -->
-          <td>
-            <label for="personaldetails">Duration</label>
-          </td>
-          <!-- </div> -->
-        </tr>
-      </table>
-      <!-- <div class="input-group"> -->
-      <label for="personaldetails">From</label>
-      <select name="starting" [(ngModel)]="user.starting" required="">
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-      </select>
-
-      <br>
-
-      <!-- <input type="date" name="from" id="personaldetails"  [(ngModel)]="user.starting_Year" required /> -->
-      <!-- </div> -->
-      <div class="input-group">
-        <label for="personaldetails">To</label>
-        <!-- <input type="date" name="to" id="personaldetails"  [(ngModel)]="user.ending_Year" required/> -->
-        <select name="ending" [(ngModel)]="user.ending" required="">
-          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-        </select>
-      </div>
-      <br>
-      <div class="input-group">
-        <label for="percentage">Percentage</label>
-        <input type="number" name="percentage" id="percentage" placeholder="Enter percentage of marks"
-          [(ngModel)]="user.percentage" required />
-      </div>
-      <div class="button">
-        <a class="btn btn-next width-50 ml-auto" (click)="educationSubmit()" (click)="toogletag()">Add</a>
-      </div>
-    </div>
-      <br>
-      <!-- <app-educationcard [profileId]="profileId"></app-educationcard> -->
-      <div class="row" *ngIf="foot">
-        <app-educationcard></app-educationcard>
-
-        <a [routerLink]="['/languagesocial']" class="btn btn-next width-50 ml-auto">Previous</a>
-
-        <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
-
-        <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
-
-      </div>
-    </div>
-  </form>
+        </div>
+        <div class="form-step form-step-active">
+            <h3>Education Details
+                <div class="tooltip1">
+                    <button class="plus" (click)="toogletag()"> + </button>
+                    <span class="tooltip1text">Click here to add educational details</span>
+                </div>
+            </h3>
+            <div *ngIf="showMe">
+                <div class="input-group">
+                    <label for="degree">Degree</label>
+                    <input type="text" name="Degree" id="Degree" placeholder="Enter Degree"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['Degree'].invalid )||educationForm.controls['Degree'].invalid && educationForm.controls['Degree'].touched"
+                        formControlName="Degree">
+                    <div
+                        *ngIf="(formSubmitted)||educationForm.controls['Degree'].invalid && educationForm.controls['Degree'].touched">
+                        <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['required']">Degree
+                            is
+                            required</span>
+                        <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['minlength']">Degree
+                            is too
+                            short</span>
+                        <span class="text-danger" *ngIf="educationForm.controls['Degree'].errors?.['maxlength']">Degree
+                            is too
+                            long</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="Course">Course</label>
+                    <input type="text" name="Course" id="Course" placeholder="Enter Course"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['Course'].invalid )||educationForm.controls['Course'].invalid && educationForm.controls['Course'].touched"
+                        formControlName="Course">
+                    <div
+                        *ngIf="(formSubmitted)||educationForm.controls['Course'].invalid && educationForm.controls['Course'].touched">
+                        <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['required']">Course
+                            is
+                            required</span>
+                        <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['minlength']">Course
+                            is too
+                            short</span>
+                        <span class="text-danger" *ngIf="educationForm.controls['Course'].errors?.['maxlength']">Course
+                            is too
+                            long</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="College">Domain</label>
+                    <select id="College" name="collegeId" formControlName="College"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['College'].invalid )|| educationForm.controls['College'].invalid && educationForm.controls['College'].touched||educationForm.controls['College'].untouched"
+                        required>
+                        <option value="" selected>Select college/University</option>
+                        <option *ngFor="let item of collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+                    </select>
+                    <div
+                        *ngIf="formSubmitted || (educationForm.controls['College'].invalid && educationForm.controls['College'].touched)">
+                        <span class="text-danger" *ngIf="educationForm.controls['College'].errors?.['required']">
+                            Select the College</span>
+                    </div>
+                    <div>
+                        <h5 class="text-center text-danger">{{error}}</h5>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="StartingYear">Starting Year</label>
+                    <select placeholder="Enter StartingYear"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['StartingYear'].invalid)||educationForm.controls['StartingYear'].invalid && educationForm.controls['StartingYear'].touched"
+                        name="StartingYear" id="StartingYear" formControlName="StartingYear" required="">
+                        <option value="" selected>Select Starting Year</option>
+                        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                    <div
+                        *ngIf="(formSubmitted)||educationForm.controls['StartingYear'].invalid && educationForm.controls['StartingYear'].touched">
+                        <span class="text-danger"
+                            *ngIf="educationForm.controls['StartingYear'].errors?.['required']">Starting Year is
+                            required</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="EndingYear">Ending Year</label>
+                    <select placeholder="Enter EndingYear"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['EndingYear'].invalid)||educationForm.controls['EndingYear'].invalid && educationForm.controls['EndingYear'].touched"
+                        name="EndingYear" id="StartingYear" formControlName="EndingYear" required="">
+                        <option value="" selected>Select Ending Year</option>
+                        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                    </select>
+                    <div
+                        *ngIf="(formSubmitted)||educationForm.controls['EndingYear'].invalid && educationForm.controls['EndingYear'].touched">
+                        <span class="text-danger"
+                            *ngIf="educationForm.controls['EndingYear'].errors?.['required']">Ending Year is
+                            required</span>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group">
+                    <label for="Percentage">Percentage</label>
+                    <input type="number" name="Percentage" id="Percentage" placeholder="Enter Percentage"
+                        [class.is-invalid]="(formSubmitted && educationForm.controls['Percentage'].invalid )||educationForm.controls['Percentage'].invalid && educationForm.controls['Percentage'].touched"
+                        formControlName="Percentage">
+                    <div
+                        *ngIf="(formSubmitted)||educationForm.controls['Percentage'].invalid && educationForm.controls['Percentage'].touched">
+                        <span class="text-danger"
+                            *ngIf="educationForm.controls['Percentage'].errors?.['required']">Percentage is
+                            required</span>
+                    </div>
+                </div>
+                <div class="button">
+                    <a class="btn btn-next width-50 ml-auto" (click)="educationSubmit()" (click)="toogletag()">Add</a>
+                </div>
+            </div>
+            <br>
+            <div class="row" *ngIf="foot">
+                <app-educationcard></app-educationcard>
+                <a [routerLink]="['/languagesocial']" class="btn btn-next width-50 ml-auto">Previous</a>
+                <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
+                <a [routerLink]="['/project']" class="btn btn-next width-50 ml-auto">Next</a>
+            </div>
+        </div>
+    </form>
 </div>
