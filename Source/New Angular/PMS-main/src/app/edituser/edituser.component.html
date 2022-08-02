@@ -94,7 +94,7 @@
           <label for="personaldetails">Organisation</label>
           <select id="personaldetails" name="OrganisationValue" [(ngModel)]="userDetails.organisationId">
             <option value="">Select organisation</option>
-            <option *ngFor="let item of organisationValue" [selected]="item.organisationId==organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
+            <option *ngFor="let item of organisationValue" [selected]="item.organisationId===organisationValue" value={{item.organisationId}}>{{item.organisationName}}</option>
           </select>
         </div>
 
@@ -110,7 +110,7 @@
           <label for="personaldetails">Designation</label>
           <select id="personaldetails" name="DesignationValue" [(ngModel)]="userDetails.designationId">
             <option value="">Select Designation</option>
-            <option *ngFor="let item of designationValue" [selected]="item.designationId==designationValue" value={{item.designationId}}>{{item.designationName}}</option>
+            <option *ngFor="let item of designationValue" [selected]="item.designationId===designationValue" value={{item.designationId}}>{{item.designationName}}</option>
 
             
             <!-- <option *ngFor="let item of designationValue" [value]="userDetails.designationId">
