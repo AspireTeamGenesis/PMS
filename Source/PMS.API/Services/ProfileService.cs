@@ -244,7 +244,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
-            // _profileValidate.Educationdetailvalidation(education);
+            _profileValidate.Educationdetailvalidation(education);
             try
             {
                 education.CreatedBy = education.ProfileId;

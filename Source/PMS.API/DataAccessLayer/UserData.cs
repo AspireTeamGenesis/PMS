@@ -19,14 +19,14 @@ namespace PMS_API
 
     public class UserData : IUserData
     {
-        private readonly Context _context;
-        private readonly ILogger<UserServices> _logger;
+        private  Context _context;
+        private  ILogger<UserServices> _logger;
         public UserData(Context context, ILogger<UserServices> logger)
         {
             _context = context;
             _logger = logger;
         }
-        private readonly UserValidation _validation = UserDataFactory.GetValidationObject();
+        private  UserValidation _validation = UserDataFactory.GetValidationObject();
         //getting all users 
         public List<User> GetallForCard(int profileStatusId, int designationId)
         {
@@ -183,10 +183,10 @@ namespace PMS_API
         {
             try
             {
-                if (!_context.users!.Any(x => x.UserName == UserName))
+                if (!_context.users.Any(x => x.UserName == UserName))
                     throw new ValidationException($"No User Found : {UserName}");
 
-                if (_context.users!.Any(x => x.UserName == UserName && x.Password == HashPassword.Sha256(Password)))
+                if (!_context.users.Any(x => x.UserName == UserName && x.Password == HashPassword.Sha256(Password)))
                     throw new ValidationException($"Wrong Password!");
 
                 var user = GetallUsers().First(user => user.UserName == UserName);

@@ -9,8 +9,8 @@ namespace PMS_API
     public class LoginController : Controller
     {
 
-        private readonly ILoginService _loginServices;
-        private readonly ILogger<LoginController> _logger;
+        private ILoginService _loginServices;
+        private ILogger<LoginController> _logger;
         public LoginController(ILoginService loginServices, ILogger<LoginController> logger)
         {
 

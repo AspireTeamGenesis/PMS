@@ -43,7 +43,7 @@
                     too long</span>
             </div>
 
-            <div class="mt-3 container border bg-body rounded" *ngFor="let item of personalDetails[0]['language']">
+            <div class="mt-3 container border bg-body rounded" *ngFor="let item of personalDetails['language']">
                 <div>
                     <div class="card-body">
                         <div class="row">
@@ -65,8 +65,7 @@
                         <label for="personaldetails">Social Media &nbsp;&nbsp;</label>
                     </td>
                     <td>
-                        <!-- <button class="btn  " style="background-color:#866ec7; border-radius: 500%;">
-                            <i (click)="addSocialMedia()" class="fa fa-plus fa-xs"></i></button> -->
+                       
                         <button class="plus1" (click)="addSocialMedia()"> + </button>
                     </td>
                 </tr>
@@ -110,7 +109,7 @@
 
         </div>
         <div class="mt-3 container  border bg-body rounded"
-            *ngFor="let item of personalDetails[0]['socialmedia']">
+            *ngFor="let item of personalDetails['socialmedia']">
             <div>
                 <div class="card-body">
                     <div class="row">

@@ -109,7 +109,7 @@ export class LanguageandsocialComponent implements OnInit {
     next:(data:any)=>{
       this.personalDetails=data,
       console.log(this.personalDetails) 
-      console.log(this.personalDetails[0].personaldetailsid)   
+      console.log(this.personalDetails.personaldetailsid)   
     }
   });
  } 
@@ -134,7 +134,7 @@ export class LanguageandsocialComponent implements OnInit {
   }
 addLanguage()
 {
-  this.languageDetails.personalDetailsId=this.personalDetails[0].personaldetailsid;
+  this.languageDetails.personalDetailsId=this.personalDetails.personaldetailsid;
   console.log(this.languageDetails);
   this.service.addLanguage(this.languageDetails).subscribe(
     {
@@ -152,7 +152,7 @@ addLanguage()
 }
 addSocialMedia()
 {
-  this.socialMedia.personalDetailsId=this.personalDetails[0].personaldetailsid;
+  this.socialMedia.personalDetailsId=this.personalDetails.personaldetailsid;
   console.log(this.socialMedia)
   this.service.addSocialMedia(this.socialMedia).subscribe(
     {
