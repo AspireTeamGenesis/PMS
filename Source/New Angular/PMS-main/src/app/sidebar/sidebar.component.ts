@@ -38,7 +38,8 @@ export class SidebarComponent implements OnInit {
 
   profileId: number;
   profileDetails = {
-    username: ''
+    username: '',
+    image:''
   };
   profileIdDetails: any;
   isShowDivIf = false;
@@ -52,7 +53,8 @@ export class SidebarComponent implements OnInit {
   getUserProfile() {
     this.service.getUserProfile().subscribe({
       next: (data) => {
-        this.profileDetails = data
+        this.profileDetails = data,
+        console.log(this.profileDetails)
       }
     })
   }

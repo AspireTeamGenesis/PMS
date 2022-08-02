@@ -6,10 +6,22 @@
         </button>
     </div>
     <div *ngIf="!isShowDivIf" class="p-4 pt-5">
-        <div >
+        <div *ngIf="profileDetails.image!==''&&profileDetails.image!==null">
+            <a href="#" class="img logo rounded-circle mb-6"><img [src]="'data:image/jpg;base64,'+profileDetails.image" alt="Admin Logo" class="sidebar-image"></a>
+            <h4 class="text-light admin-text mt-3 sidebar-h4">{{profileDetails.username}}</h4>
+        </div>
+        <div *ngIf="profileDetails.image===null||profileDetails.image===''">
             <a href="#" class="img logo rounded-circle mb-6"><img src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Admin Logo" class="sidebar-image"></a>
             <h4 class="text-light admin-text mt-3 sidebar-h4">{{profileDetails.username}}</h4>
         </div>
+        <!-- <div *ngIf="profileDetails.userProfileImage!==''&&profileDetails.userProfileImage!==null">
+            <img class="n-rounded"
+                [src]="'data:image/jpg;base64,'+profileDetails.userProfileImage" width="60%" />
+          </div>
+          <div *ngIf="item.userProfileImage===null||item.userProfileImage===''">
+            <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
+                src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Card image cap" width="50%"></a>
+          </div> -->
         <ul class="list-unstyled components mb-5 sidebar-items">
             <li>
                 <a [routerLink]="['/dashboard']" ><i class="fa-solid fa-person ml-4 sidebar-dashboard"></i>Dashboard</a>
