@@ -22,11 +22,11 @@
       <div class="card-body">
         <div class="row rone ">
           <div class="col-md-8">
-            <div *ngIf="item.userProfileImage!=''&&item.userProfileImage!=null">
+            <div *ngIf="item.userProfileImage!==''&&item.userProfileImage!==null">
               <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
                   [src]="'data:image/jpg;base64,'+item.userProfileImage" width="60%" /></a>
             </div>
-            <div *ngIf="item.userProfileImage==null||item.userProfileImage==''">
+            <div *ngIf="item.userProfileImage===null||item.userProfileImage===''">
               <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
                   src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Card image cap" width="50%"></a>
             </div>

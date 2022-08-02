@@ -44,7 +44,7 @@
         <label for="College">College</label>
         <select   id="college" name="college" [(ngModel)]="user.collegeid" required>
           <option value="">Select college/University</option>
-          <option *ngFor="let item of collegeValue" [selected]="item.collegeId==collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
+          <option *ngFor="let item of collegeValue" [selected]="item.collegeId===collegeValue" value={{item.collegeId}}>{{item.collegeName}}</option>
         </select>
       </div>
       <!-- <div

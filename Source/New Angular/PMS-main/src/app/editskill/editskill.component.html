@@ -28,7 +28,7 @@
           [class.is-invalid]="(formSubmitted && skillForm.controls['domainType'].invalid )|| skillForm.controls['domainType'].invalid && skillForm.controls['domainType'].touched||skillForm.controls['domainType'].untouched"
           formControlName="domainType" required>
           <option value="" hidden>Select Domain</option>
-          <option *ngFor="let item of domainValue" [selected]="item.domainId==domainValue" value={{item.domainId}}>
+          <option *ngFor="let item of domainValue" [selected]="item.domainId===domainValue" value={{item.domainId}}>
             {{item.domainName}}</option>
         </select>
         <div
@@ -47,7 +47,7 @@
           [class.is-invalid]="(formSubmitted && skillForm.controls['technologyType'].invalid )|| skillForm.controls['technologyType'].invalid && skillForm.controls['technologyType'].touched||skillForm.controls['technologyType'].untouched"
           formControlName="technologyType" required>
           <option value="" hidden>Select Technology</option>
-          <option *ngFor="let item of technologyValue" [selected]="item.technologyId==technologyValue"
+          <option *ngFor="let item of technologyValue" [selected]="item.technologyId===technologyValue"
             value={{item.technologyId}}>{{item.technologyName}}</option>
         </select>
         <div>
