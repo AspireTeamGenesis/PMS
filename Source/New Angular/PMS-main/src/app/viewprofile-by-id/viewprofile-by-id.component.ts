@@ -4,6 +4,17 @@ import { Packer } from "docx";
 import { saveAs } from 'file-saver'; 
 import { DocumentCreator } from "../profile-generator";
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Toaster } from 'ngx-toast-notifications';
+
+import {
+  AlignmentType,
+  Document,
+  HeadingLevel,
+  Paragraph,
+  TabStopPosition,
+  TabStopType,
+  TextRun
+} from "docx";
 @Component({
   selector: 'app-viewprofile-by-id',
   templateUrl: './viewprofile-by-id.component.html',
@@ -11,7 +22,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ViewprofileByIdComponent implements OnInit {
 
-  constructor(private service:UserserviceService,private view:DocumentCreator,private route: ActivatedRoute) { }
+  constructor(private service:UserserviceService,private view:DocumentCreator,private route: ActivatedRoute,private toaster: Toaster) { }
   profileId:number;
   profileIdDetails:any;
   name:any;
@@ -143,7 +154,9 @@ export class ViewprofileByIdComponent implements OnInit {
      }
  })
  }
- 
+ editToUpdate(){
+  this.toaster.open({ text: 'Request to update sent successfully via mail', position: 'top-center', type: 'success' })
+}
  getPersonalDetailByProfileId(profileId:number)
  {
    this.service.getPersonalDetailByProfileId(profileId).subscribe( {

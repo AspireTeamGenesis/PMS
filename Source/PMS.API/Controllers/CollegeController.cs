@@ -4,7 +4,7 @@ using System.Net;
 
 
 namespace PMS_API;
-// [Authorize]
+//[Authorize]
 [ApiController]
 [Route("[controller]/[Action]")]
 public class CollegeController : ControllerBase
@@ -14,17 +14,19 @@ public class CollegeController : ControllerBase
     {
         _logger = logger;
     }
-    ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); //Calling Object
+    ICollegeServices collegeService = CollegeDataFactory.GetCollegeServiceObject(); 
+
+    //Getting The List of Colleges
     [HttpGet]
-    public IActionResult ViewColleges() //Getting The List of Colleges
+    public IActionResult ViewColleges() 
     {
         try
         {
-             _logger.LogInformation("List of Colleges......"); //Passing Information to log
+             _logger.LogInformation("List of Colleges......"); 
             return Ok(collegeService.ViewColleges());
            
         }
-        catch (Exception exception) // Handling Exception
+        catch (Exception exception) 
         {
              _logger.LogError($"CollegeController:ViewColleges()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

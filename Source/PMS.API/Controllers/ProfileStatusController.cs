@@ -14,16 +14,18 @@ public class ProfileStatusController : ControllerBase
         _logger = logger;
     }
      IProfileStatusServices ProfileStatusService = ProfileStatusDataFactory.GetProfileStatusServiceObject();
+
+    //Getting the list of ProfileStatuss
     [HttpGet]
-    public IActionResult ViewProfileStatuss() //Getting the list of ProfileStatuss
+    public IActionResult ViewProfileStatuss() 
     {
         try
         {
-             _logger.LogInformation("List of ProfileStatuss......"); //Passing Information to log
+             _logger.LogInformation("List of ProfileStatuss......"); 
             return Ok(ProfileStatusService.ViewProfileStatuss());
            
         }
-        catch (Exception exception) // Handling Exception
+        catch (Exception exception) 
         {
               _logger.LogError($"ProfileStatusController:ViewProfileStatuss()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

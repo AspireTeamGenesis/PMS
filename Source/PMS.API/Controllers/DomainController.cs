@@ -14,16 +14,18 @@ public class DomainController : ControllerBase
         _logger = logger;
     }
     IDomainServices DomainService = DomainDataFactory.GetDomainServiceObject();
+
+    //Getting the list of Domains
     [HttpGet]
-    public IActionResult ViewDomains() //Getting the list of Domains
+    public IActionResult ViewDomains() 
     {
         try
         {
-             _logger.LogInformation("List of Domains......"); //Passing Information to log
+             _logger.LogInformation("List of Domains......"); 
             return Ok(DomainService.ViewDomains());
            
         }
-        catch (Exception exception) // Handling Exception
+        catch (Exception exception) 
         {
              _logger.LogError($"DomainController:ViewDomains()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-    // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]/[Action]")]
     public class ProfileController : Controller
@@ -19,6 +19,8 @@ namespace PMS_API
             _logger = logger;
             _mailService = mailService;
         }
+
+        //Adding a Profile
         [HttpPost]
         public IActionResult AddProfile(Profile profile)
         {
@@ -42,6 +44,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Adding Personal details for a Profile
         [HttpPost]
         public IActionResult AddPersonalDetail(PersonalDetails personalDetails)
         {
@@ -70,6 +74,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Getting Personal details of all Profiles
         [HttpGet]
         public IActionResult GetallPersonalDetails()
         {
@@ -86,6 +92,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting Personal detail of a Profile using Pesronal details Id
         [HttpGet]
         public IActionResult GetPersonalDetailsById(int Personalid)
         {
@@ -110,6 +118,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting Personal detail of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetPersonalDetailsByProfileId(int Profileid)
         {
@@ -135,7 +145,7 @@ namespace PMS_API
             }
         }
 
-
+        //Updation of Personal details
         [HttpPut]
         public IActionResult UpdatePersonalDetail(PersonalDetails personalDetails)
 
@@ -164,6 +174,7 @@ namespace PMS_API
             }
         }
 
+        //Disable Personal details
         [HttpDelete]
         public IActionResult DisablePersonalDetails(int PersonalDetailsId)
         {
@@ -187,6 +198,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Education details for a Profile
         [HttpPost]
         public IActionResult AddEducation(Education education)
         {
@@ -217,6 +230,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting Education details of all Profiles
         [HttpGet]
         public IActionResult GetallEducationDetails()
         {
@@ -230,6 +245,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting Education details of a Profile using Education Id
         [HttpGet]
         public IActionResult GetEducationDetailsById(int Educationid)
         {
@@ -251,6 +268,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting all the Education details of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetAllEducationDetailsByProfileId(int Profileid)
         {
@@ -272,6 +291,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Updation of Education details
         [HttpPut]
         public IActionResult UpdateEducation(Education education)
 
@@ -299,6 +320,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Disable Education details
         [HttpDelete]
         public IActionResult DisableEducationalDetails(int EducationId)
         {
@@ -322,6 +345,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Project details for a Profile
         [HttpPost]
         public IActionResult AddProjects(Projects projects)
         {
@@ -351,6 +376,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting all Project details
         [HttpGet]
         public IActionResult GetallProjectDetails()
         {
@@ -367,6 +394,8 @@ namespace PMS_API
 
 
         }
+        
+        //Getting Project details of a Profile using Project Id
         [HttpGet]
         public IActionResult GetProjectDetailsById(int Projectid)
         {
@@ -388,6 +417,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting all the Project details of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetAllProjectDetailsByProfileId(int Profileid)
         {
@@ -410,6 +441,7 @@ namespace PMS_API
             }
         }
 
+        //Updation of Project details
         [HttpPut]
         public IActionResult UpdateProjects(Projects projects)
 
@@ -437,6 +469,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Disable Project details
         [HttpDelete]
         public IActionResult DisableProjectDetails(int ProjectsId)
         {
@@ -460,6 +494,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Skill details for a Profile
         [HttpPost]
         public IActionResult AddSkills(Skills skill)
         {
@@ -489,6 +525,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting all Skill details
         [HttpGet]
         public IActionResult GetallSkillDetails()
         {
@@ -505,6 +543,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting Skill details of a Profile using Skill Id
         [HttpGet]
         public IActionResult GetSkillDetailsById(int Skillid)
         {
@@ -526,6 +566,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting all the Skill details of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetAllSkillDetailsByProfileId(int Profileid)
         {
@@ -548,6 +590,7 @@ namespace PMS_API
             }
         }
 
+        //Updation of Skills
         [HttpPut]
         public IActionResult UpdateSkills(Skills skill)
 
@@ -575,6 +618,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Disable Skill details 
         [HttpDelete]
         public IActionResult DisableSkillDetails(int SkillId)
         {
@@ -598,6 +643,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Languages known for a Profile
         [HttpPost]
         public IActionResult AddLanguage(Language language)
         {
@@ -627,6 +674,8 @@ namespace PMS_API
             }
 
         }
+
+        //Disable Langugages known
         [HttpDelete]
         public IActionResult DisableLanguage(int Language_Id)
         {
@@ -649,6 +698,8 @@ namespace PMS_API
                 return Problem("Sorry some internal error occured");
             }
         }
+
+        //Adding Social Media details for a Profile
         [HttpPost]
         public IActionResult AddSocialMedia(SocialMedia media)
         {
@@ -678,6 +729,8 @@ namespace PMS_API
             }
 
         }
+
+        //Disable Social Media details
         [HttpDelete]
         public IActionResult DisableSocialMedia(int SocialMedia_Id)
         {
@@ -701,6 +754,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Achievement details for a Profile
         [HttpPost]
         public IActionResult AddAchievement(Achievements achievement)
         {
@@ -729,6 +784,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Getting Achievement details of all Profiles
         [HttpGet]
         public IActionResult GetallAchievements()
         {
@@ -745,6 +802,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting all the Achievement details of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetAllAchievementDetailsByProfileId(int Profileid)
         {
@@ -766,6 +825,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Disable Achievement details
         [HttpDelete]
         public IActionResult DisableAchievements(int achievementId)
         {
@@ -788,6 +849,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting all Profile details
         [HttpGet]
         public IActionResult GetallProfiles()
         {
@@ -803,7 +866,7 @@ namespace PMS_API
             }
         }
 
-
+        //Getting Profile details of a Profile using Profile Id
         [HttpGet]
         public IActionResult GetProfileById(int id)
         {
@@ -828,6 +891,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting Profile Id by the User Id passed
         [HttpGet]
         public IActionResult GetProfileIdByGivenUserId(int userId)
         {
@@ -845,6 +910,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Profile Id by the logged in user's User Id
         [HttpGet]
         public IActionResult GetProfileIdByUserId()
         {
@@ -863,6 +930,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Count of Profiles
         [AllowAnonymous]
         [HttpGet]
         public IActionResult GetProfileCount()
@@ -879,6 +948,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Getting Profiles based on Filters applied
         [HttpPost]
         public IActionResult GetFilteredProfile(CascadeFilter filterValues)
         {
@@ -893,6 +964,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Accepting or Rejecting of a Profile
         [HttpPost]
         public IActionResult AcceptOrRejectProfile(int profileId, int response)
         {
@@ -917,6 +990,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Requesting to Update a Profile
         [HttpPost]
         public IActionResult RequestToUpdate(int profileId)
         {
@@ -941,6 +1016,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Sharing a Profile
         [HttpPost]
         public IActionResult ShareProfile(string profileUrl, int profileId, string toEmailName)
         {
@@ -965,6 +1042,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Updation of Profile Status for a Profile
         [HttpPut]
         public IActionResult updateProfileStatus(Profile profile)
         {

@@ -16,6 +16,8 @@ namespace PMS_API
             profileData = ProfileDataFactory.GetProfileData(logger);
 
         }
+
+        //Adding a Profile
         public bool AddProfile(Profile profile)
         {
             if (profile == null) throw new ArgumentNullException($"Values cannot be null values are {profile}");
@@ -34,6 +36,7 @@ namespace PMS_API
 
         }
 
+        //Adding Personal details for a Profile
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($"Values cannot be null values are {personalDetails}");
@@ -58,6 +61,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Personal details of all Profiles
         public IEnumerable<PersonalDetails> GetAllPersonalDetails()
         {
             try
@@ -70,6 +75,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Personal detail of a Profile using Pesronal details Id
         public object GetPersonalDetailsById(int Personalid)
         {
             if (Personalid <= 0)
@@ -97,6 +104,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Personal detail of a Profile using Profile Id
         public object GetPersonalDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -126,6 +135,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Removing additional details in Personal details except Languages known
         private ICollection<Language> removeAdditionalDetailsExceptLanguage(ICollection<Language> languages)
         {
             foreach (var item in languages)
@@ -141,6 +152,7 @@ namespace PMS_API
             return languages;
         }
        
+        //Removing additional details in Personal details except Social Media
         private ICollection<SocialMedia> removeAdditionalDetailsExceptSocialMedia(ICollection<SocialMedia> socialMedias)
         {
             foreach (var item in socialMedias)
@@ -154,6 +166,8 @@ namespace PMS_API
             }
             return socialMedias;
         }
+
+        //Getting Personal details using Personal details Id
         public PersonalDetails GetPersonalById(int PersonalDetailsId)
         {
             try
@@ -169,6 +183,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Updation of Personal details
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($" ProfileService:UpdatePersonalDetail()-Personal values not be null{personalDetails}");
@@ -203,7 +219,7 @@ namespace PMS_API
 
         }
 
-
+        //Disable Personal details
         public bool DisablePersonalDetails(int PersonalDetailid)
         {
             if (PersonalDetailid <= 0)
@@ -224,6 +240,7 @@ namespace PMS_API
             }
         }
 
+        //Adding Education details for a Profile
         public bool AddEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($"Values cannot be null values are {education}");
@@ -247,6 +264,7 @@ namespace PMS_API
             }
         }
 
+        //Getting Education details of a Profile using Education Id
         public Object GetEducationDetailsById(int Educationid)
         {
             if (Educationid <= 0)
@@ -273,6 +291,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Education details of all Profiles
         public IEnumerable<Education> GetallEducationDetails()
         {
             try
@@ -289,6 +309,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all the Education details of a Profile using Profile Id
         public IEnumerable<Object> GetAllEducationDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -314,6 +336,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Education details by Education Id 
         public Education GetEducationById(int EducationId)
         {
             try
@@ -330,6 +354,8 @@ namespace PMS_API
             }
 
         }
+
+        //Updation of Education details
         public bool UpdateEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($" ProfileService:UpdateEducation()-Education values not be null{education}");
@@ -362,6 +388,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Disable Education details
         public bool DisableEducationalDetails(int EducationalDetailid)
         {
             if (EducationalDetailid <= 0)
@@ -382,6 +410,7 @@ namespace PMS_API
             }
         }
 
+        //Adding Project details for a Profile
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
@@ -402,6 +431,7 @@ namespace PMS_API
 
         }
 
+        //Getting Project details of a Profile using Project Id
         public object GetProjectDetailsById(int Projectid)
         {
             if (Projectid <= 0)
@@ -429,6 +459,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all Project details
         public IEnumerable<Projects> GetallProjectDetails()
         {
             try
@@ -442,6 +474,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all the Project details of a Profile using Profile Id
         public IEnumerable<Object> GetAllProjectDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -476,6 +510,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Project details by Project Id
         public Projects GetProjectById(int ProjectId)
         {
             try
@@ -492,6 +528,8 @@ namespace PMS_API
             }
 
         }
+
+        //Updation of Project details
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null) throw new ArgumentNullException($" ProfileService:UpdateProjects()-Project values not be null{projects}");
@@ -531,6 +569,8 @@ namespace PMS_API
 
             }
         }
+
+        //Disable Project details
         public bool DisableProjectDetails(int ProjectDetailid)
         {
             if (ProjectDetailid <= 0)
@@ -551,6 +591,7 @@ namespace PMS_API
             }
         }
 
+        //Adding Skill details for a Profile
         public bool AddSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($"Values cannot be null values are {skill}");
@@ -570,6 +611,7 @@ namespace PMS_API
 
         }
 
+        //Getting Skill details of a Profile using Skill Id
         public object GetSkillDetailsById(int Skillid)
         {
             if (Skillid <= 0)
@@ -592,6 +634,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all Skill details
         public IEnumerable<Skills> GetallSkillDetails()
         {
             try
@@ -605,6 +649,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all the Skill details of a Profile using Profile Id
         public IEnumerable<Object> GetAllSkillDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -625,6 +671,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Skill details by Skill Id
         public Skills GetSkillById(int SkillId)
         {
             try
@@ -641,6 +689,8 @@ namespace PMS_API
             }
 
         }
+
+        //Updation of Skill details
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($" ProfileService:UpdateSkills()-skill values not be null{skill}");
@@ -667,6 +717,7 @@ namespace PMS_API
             }
         }
 
+        //Disable Skill details 
         public bool DisableSkillDetails(int SkillDetailid)
         {
             if (SkillDetailid <= 0)
@@ -686,6 +737,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Adding Languages known for a Profile
         public bool AddLanguage(Language language)
         {
             if (language == null) throw new ArgumentNullException($"Values cannot be null values are {language}");
@@ -705,7 +758,7 @@ namespace PMS_API
 
         }
 
-
+        //Disable Langugages known
         public bool DisableLanguage(int Languageid)
         {
             if (Languageid <= 0)
@@ -725,6 +778,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Adding Social Media details for a Profile
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null) throw new ArgumentNullException($"Values cannot be null values are {media}");
@@ -748,6 +803,8 @@ namespace PMS_API
 
 
         }
+
+        //Disable Social Media details
         public bool DisableSocialMedia(int SocialMediaid)
         {
             if (SocialMediaid <= 0)
@@ -768,8 +825,7 @@ namespace PMS_API
             }
         }
 
-
-
+        //Getting Technology by Technology Id
         public object GetTechnologyById(int Technologyid)
         {
             if (Technologyid <= 0)
@@ -788,6 +844,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting list of Technologies
         public IEnumerable<Technology> GetallTechnologies()
         {
             try
@@ -800,6 +858,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Adding Achievement details for a Profile
         public bool AddAchievements(Achievements achievement)
         {
             if (achievement == null) throw new ArgumentNullException($"Values cannot be null values are {achievement}");
@@ -823,6 +883,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting Achievement details of all Profiles
         public IEnumerable<Achievements> GetallAchievements()
         {
             try
@@ -836,6 +898,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting all the Achievement details of a Profile using Profile Id
         public IEnumerable<Object> GetAllAchievementDetailsByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -857,6 +921,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Disable Achievement details
         public bool DisableAchievement(int achievementId)
         {
             if (achievementId <= 0)
@@ -876,6 +942,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Getting all Profile details
         public IEnumerable<Profile> GetallProfiles()
         {
             try
@@ -892,6 +960,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Status of a Profile using Profile Id
         public object GetProfileStatusByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -907,6 +977,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Profile details of a Profile using Profile Id
         public object GetProfileById(int Profileid)
         {
             if (Profileid <= 0)
@@ -934,6 +1006,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Specific user details of a Profile
         public object GetSpecificProfile()
         {
 
@@ -958,6 +1032,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Profile Id by the logged in user's User Id
         public object GetProfileIdByUserId(int Userid)
         {
             if (Userid <= 0)
@@ -988,6 +1064,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Count of Profiles
         public object GetProfileCount(int currentdesignation)
         {
             try
@@ -1004,6 +1082,7 @@ namespace PMS_API
 
         }
 
+        //Getting Profiles based on Filters applied
         public object GetFilteredProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId,int currentdesignation)
         {
 
@@ -1028,6 +1107,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Accepting or Rejecting of a Profile
         public bool AcceptOrRejectProfile(int profileId, int response)
         {
             if (profileId <= 0)
@@ -1048,6 +1129,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Updation of Profile Status to Waiting when Edit Profile is activated
         public bool updateProfileStatus(Profile profile)
         {
             if (profile == null)
@@ -1056,7 +1139,7 @@ namespace PMS_API
             {
                 Profile result = profileData.GetProfile(profile.ProfileId);
                 if (profile.UserId != result.UserId)
-                    throw new ValidationException("user doesnot exist");
+                    throw new ValidationException("User does not exist");
 
                 result.ProfileStatusId = 2;
                 result.UpdatedOn = DateTime.Now;

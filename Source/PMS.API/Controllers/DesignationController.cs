@@ -14,16 +14,18 @@ public class DesignationController : ControllerBase
         _logger = logger;
     }
     IDesignationServices DesignationService = DesignationDataFactory.GetDesignationServiceObject();
+
+    //Getting the list of Designations
     [HttpGet]
-    public IActionResult ViewDesignations() //Getting the list of Designation
+    public IActionResult ViewDesignations() 
     {
         try
         {
-             _logger.LogInformation("List of Designations......"); // Passing Information to log
+             _logger.LogInformation("List of Designations......"); 
             return Ok(DesignationService.ViewDesignations());
            
         }
-         catch (Exception exception) // Handling Exception
+         catch (Exception exception) 
         {
              _logger.LogError($"DesignationController:ViewDesignations()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

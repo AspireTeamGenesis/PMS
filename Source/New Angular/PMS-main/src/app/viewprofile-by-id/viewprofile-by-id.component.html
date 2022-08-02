@@ -204,7 +204,11 @@
                     <i [routerLink]="['/sharepage',userDetails.name]" class="mtr-1 fa-solid fa-share-nodes"></i>
                 <!-- </div> -->
                   <!-- <div class="tooltip1"> -->
-                    <i [routerLink]="['/editoriginalpersonal']" class="fa-solid fa-pen mtr-1"></i>
+					<!-- <div class="tooltip1"> -->
+						<i class="fa fa-paper-plane mtr-1" (click)="editToUpdate()"></i>
+						<span class="tooltip1text"></span>
+					  <!-- </div> -->
+                    <!-- <i [routerLink]="['/editoriginalpersonal']" class="fa-solid fa-pen mtr-1"></i> -->
                     <!-- <span class="tooltip1text">Click here to edit</span> -->
                   <!-- </div> -->
                   <!-- <div class="tooltip1"> -->

@@ -38,8 +38,6 @@ namespace PMS_API
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Profile>()
-            //     .HasOne<User>(p=>p.user).WithOne(p=>p.profile).HasForeignKey<Profile>(p => p.UserId);
 
             modelBuilder.Entity<College>()
                         .HasData(

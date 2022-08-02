@@ -67,6 +67,8 @@ namespace PMS_API
             _context = context;
             _logger = logger;
         }
+
+        //Adding a Profile
         public bool AddProfile(Profile profile)
         {
             profile.IsActive = true;
@@ -94,6 +96,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting Personal details of all Profiles
         public List<PersonalDetails> GetAllPersonalDetails()
         {
 
@@ -111,6 +115,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Personal detail of a Profile using Pesronal details Id
         public PersonalDetails GetPersonalDetailsById(int Personalid)
         {
 
@@ -132,6 +138,7 @@ namespace PMS_API
             }
         }
 
+        //Adding Personal details for a Profile
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
 
@@ -155,9 +162,9 @@ namespace PMS_API
 
                 return false;
             }
-
-
         }
+
+        //Updation of Personal details
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null)
@@ -178,6 +185,7 @@ namespace PMS_API
 
         }
 
+        //Disable Personal details
         public bool DisablePersonalDetails(int PersonalDetailsid)
         {
             if (PersonalDetailsid <= 0)
@@ -204,6 +212,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Education details of all Profiles
         public List<Education> GetallEducationDetails()
         {
 
@@ -222,6 +232,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+         //Getting Education details of a Profile using Education Id
         public Education GetEducationDetailsById(int Educationid)
         {
             if (Educationid <= 0)
@@ -242,6 +254,7 @@ namespace PMS_API
             }
         }
 
+        //Adding Education details for a Profile
         public bool AddEducation(Education education)
         {
 
@@ -264,9 +277,9 @@ namespace PMS_API
                 _logger.LogInformation($"ProfileData-AddEducation()-{exception.StackTrace}");
                 throw;
             }
-
-
         }
+
+        //Updation of Education details
         public bool UpdateEducation(Education education)
         {
             if (education == null)
@@ -287,7 +300,7 @@ namespace PMS_API
 
         }
 
-
+        //Disable Education details
         public bool DisableEducationalDetails(int Educationid)
         {
             if (Educationid <= 0)
@@ -314,6 +327,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Project details for a Profile
         public bool AddProjects(Projects project)
         {
 
@@ -339,6 +354,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting all Project details
         public List<Projects> GetallProjectDetails()
         {
 
@@ -356,6 +373,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Project details of a Profile using Project Id
         public Projects GetProjectDetailsById(int Projectid)
         {
             if (Projectid <= 0)
@@ -375,6 +394,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Updation of Project details
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null)
@@ -396,6 +417,8 @@ namespace PMS_API
             }
 
         }
+
+        //Disable Project details
         public bool DisableProjectDetails(int Projectid)
         {
             if (Projectid <= 0)
@@ -422,6 +445,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Skill details for a Profile
         public bool AddSkills(Skills skill)
         {
 
@@ -447,6 +472,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting all Skill details
         public List<Skills> GetallSkillDetails()
         {
 
@@ -464,6 +491,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Skill details of a Profile using Skill Id
         public Skills GetSkillDetailsById(int Skillid)
         {
             if (Skillid <= 0)
@@ -483,6 +512,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Updation of Skill details
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null)
@@ -501,6 +532,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Disable Skill details
         public bool DisableSkillDetails(int Skillid)
         {
             if (Skillid <= 0)
@@ -527,6 +560,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Languages known for a Profile
         public bool AddLanguage(Language language)
         {
 
@@ -552,6 +587,8 @@ namespace PMS_API
 
 
         }
+
+        //Disable Langugages known
         public bool DisableLanguage(int Languageid)
         {
             if (Languageid <= 0)
@@ -576,6 +613,8 @@ namespace PMS_API
             }
 
         }
+
+        //Adding Social Media details for a Profile
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null)
@@ -596,6 +635,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Disable Social Media details
         public bool DisableSocialMedia(int SocialMediaid)
         {
             if (SocialMediaid <= 0)
@@ -620,6 +661,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting list of Technologies
         public List<Technology> GetallTechnologies()
         {
 
@@ -638,6 +681,7 @@ namespace PMS_API
             }
         }
 
+        //Getting Technology by Technology Id
         public Technology GetTechnologyById(int Technologyid)
         {
             if (Technologyid <= 0)
@@ -657,6 +701,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Adding Achievement details for a Profile
         public bool AddAchievements(Achievements achievements)
         {
             if (achievements == null)
@@ -678,6 +724,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Getting Achievement details of all Profiles
         public List<Achievements> GetallAchievements()
         {
 
@@ -695,6 +743,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Disable Achievement details
         public bool DisableAchievement(int AchievementId)
         {
             if (AchievementId <= 0)
@@ -721,6 +771,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting all Profile details
         public List<Profile> GetallProfiles()
         {
 
@@ -737,6 +789,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Status of a Profile using Profile Id
         public ProfileStatus GetProfileStatusByProfileId(int Profileid)
         {
             if (Profileid <= 0)
@@ -754,6 +808,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Profile details of a Profile using Profile Id
         public Profile GetProfileById(int ProfileId)
         {
             if (ProfileId <= 0)
@@ -775,6 +831,7 @@ namespace PMS_API
             }
         }
 
+        //Getting Profile Id by the logged in user's User Id
         public Profile GetProfileIdByUserId(int Userid)
         {
             if (Userid <= 0)
@@ -790,6 +847,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Getting Profiles based on Filters applied
         public List<User> GetFilteredProfile(string userName, int designationId, int domainID, int technologyId, int collegeId, int profileStatusId,int currentdesignation)
         {
             try
@@ -816,6 +875,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Accepting or Rejecting of a Profile
         public bool AcceptOrRejectProfile(int profileId, int response)
         {
             if (profileId <= 0)
@@ -840,6 +901,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting a Profile using Profile Id
         public Profile GetProfile(int ProfileId)
         {
 
@@ -858,6 +921,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Updation of Profile Status to Waiting when Edit Profile is activated
         public bool updateProfileStatus(Profile profile)
         {
             if (profile == null || profile.ProfileId <= 0 || profile.UserId <= 0)
@@ -878,6 +943,8 @@ namespace PMS_API
                 throw exception;
             }
         }
+
+        //Getting Count of Profiles
         public object GetProfileCount(int currentdesignation)
         {
             try{

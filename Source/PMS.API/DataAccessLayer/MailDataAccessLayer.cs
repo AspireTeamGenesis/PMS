@@ -20,6 +20,8 @@ namespace PMS_API
             _context = context;
             _logger = logger;
         }
+
+        //Getting Mail Id of User by the User Id
         public string GetUserEmail(int Userid)
         {
             try
@@ -32,6 +34,8 @@ namespace PMS_API
                 throw getUserEmailException;
             }
         }
+
+        //Getting User name of User by the User Id
         public string GetUserName(int Userid)
         {
             try
@@ -45,6 +49,7 @@ namespace PMS_API
             }
         }
 
+        //Getting User name and Profile Id of an User by the Profile Id
         public string GetUserNameWithProfileId(int profileId)
         {
             try

@@ -14,6 +14,8 @@ public class MailController : ControllerBase
     {
         _mailService = mailService;
     }
+
+    //Mail
     [HttpPost("send")]
     public async Task<IActionResult> SendMail([FromForm]MailRequest request)
     {

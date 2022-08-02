@@ -14,16 +14,18 @@ public class TechnologyController : ControllerBase
         _logger = logger;
     }
     ITechnologyServices technologyService = TechnologyDataFactory.GetTechnologyServiceObject();
+
+    //Getting the list of Technologies
     [HttpGet]
-    public IActionResult ViewTechnologies() //Getting the list of Technologies
+    public IActionResult ViewTechnologies() 
     {
         try
         {
-             _logger.LogInformation("List of Technologies......"); //Passing the Information to log
+             _logger.LogInformation("List of Technologies......"); 
             return Ok(technologyService.ViewTechnologies());
            
         }
-        catch (Exception exception) // Handling Exception
+        catch (Exception exception) 
         {
              _logger.LogError($"TechnologyController:ViewTechnologies()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

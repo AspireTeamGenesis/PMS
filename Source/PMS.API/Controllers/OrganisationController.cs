@@ -14,16 +14,18 @@ public class OrganisationController : ControllerBase
         _logger = logger;
     }
     IOrganisationServices organisationService = OrganisationDataFactory.GetOrganisationServiceObject();
+
+    //Getting the list of Organisations
     [HttpGet]
-    public IActionResult ViewOrganisations() //Getting the list of Organisations
+    public IActionResult ViewOrganisations() 
     {
         try
         {
-             _logger.LogInformation("List of Organisations......"); //Passing the Information to log
+             _logger.LogInformation("List of Organisations......"); 
             return Ok(organisationService.ViewOrganisations());
            
         }
-        catch (Exception exception) // Handling Exception
+        catch (Exception exception) 
         {
             _logger.LogError($"OrganisationController:ViewOrganisations()-{exception.Message}{exception.StackTrace}");
             return Problem(exception.Message);

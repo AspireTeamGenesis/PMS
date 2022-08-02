@@ -4,7 +4,7 @@ using System.Net;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-//    [ApiController]
+    [ApiController]
     [Route("[controller]/[Action]")]
     public class LoginController :Controller{
         
@@ -16,13 +16,17 @@ namespace PMS_API
             _loginServices = loginServices;
             _logger = logger;
         }
+
+        //Login
         [HttpPost("Login")]
-        public IActionResult AuthLogin(string Username, string password)
+        public IActionResult AuthLogin(UserLogin userlogin)
         {
+            if (userlogin.UserName == null && userlogin.Password == null)
+                return BadRequest("User name and Password cannot be null");
             try
             {
                 
-                var Result = _loginServices.AuthLogin(Username, password);                
+                var Result = _loginServices.AuthLogin(userlogin.UserName,userlogin.Password);                
                 return Ok(Result);
             }
             catch (ValidationException validationException)

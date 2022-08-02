@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 namespace PMS_API
 {
-    // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("[controller]/[Action]")]
     public class UserController : Controller
@@ -19,6 +19,8 @@ namespace PMS_API
             _logger = logger;
 
         }
+
+        //Getting all the Users by using Profile Status Id
         [HttpGet]
         public IActionResult Getallusers(int profilestatusId)
         {
@@ -27,13 +29,15 @@ namespace PMS_API
                 int currentDesignation = Convert.ToInt32(User.FindFirst("DesignationId").Value);
                 return Ok(_userServices.GetallUsers(profilestatusId, currentDesignation));
             }
-           
+
             catch (Exception exception)
             {
                 _logger.LogInformation($"UserController :GetAllUsers()- exception occured while fetching record{exception.Message}{exception.StackTrace}");
                 return Problem(exception.Message);
             }
         }
+
+        //Getting the logged in user's Profile
         [HttpGet]
         public IActionResult GetUserProfile()
         {
@@ -57,6 +61,8 @@ namespace PMS_API
             }
 
         }
+
+        //Getting Specific user details of an User
         [HttpGet]
         public IActionResult GetSpecificUserDetails()
         {
@@ -73,6 +79,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting User details by User Id
         [HttpGet]
         public IActionResult GetUserById(int id)
         {
@@ -92,6 +100,8 @@ namespace PMS_API
                 return Problem(exception.Message);
             }
         }
+
+        //Adding User details
         [HttpPost]
         public IActionResult AddUser(User userValues)
         {
@@ -121,6 +131,8 @@ namespace PMS_API
                 return Problem("Sorry Internal error occured");
             }
         }
+
+        //Updation of User details
         [HttpPut]
         public IActionResult UpdateUser(User user, int id)
         {
@@ -129,9 +141,6 @@ namespace PMS_API
                 _logger.LogInformation("UserController :UpdateUser()-user tries to enter null values");
                 return BadRequest("User values not be null");
             }
-
-            //updating user via userservices
-
             try
             {
 
@@ -146,6 +155,8 @@ namespace PMS_API
             }
 
         }
+
+        //Disable User
         [HttpDelete(Name = "Disable")]
         public IActionResult Disable(int id)
         {
@@ -164,7 +175,7 @@ namespace PMS_API
         }
 
 
-
+        //Changing the Password for an User 
         [HttpPut("Change Password")]
 
         public IActionResult ChangePassword(string OldPassword, string NewPassword, string ConfirmPassword)
@@ -210,6 +221,8 @@ namespace PMS_API
 
 
         }
+
+        //Getting all users by the logged in user's Designation 
         [HttpGet]
         public IActionResult GetAllUsersByDesignation()
         {
