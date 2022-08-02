@@ -3,18 +3,22 @@ import { UserserviceService } from '../service/userservice.service';
 import { Packer } from "docx";
 import { saveAs } from 'file-saver';
 import { DocumentCreator } from "../profile-generator";
+import { formatDate } from '@angular/common';
+
 @Component({
     selector: 'app-viewprofile',
     templateUrl: './viewprofile.component.html',
     styleUrls: ['./viewprofile.component.css']
 })
 export class ViewprofileComponent implements OnInit {
+    update: string;
 
     constructor(private service: UserserviceService, private view: DocumentCreator) { }
     profileId: number;
     profileIdDetails = {
         profileId: 0,
-        profilestatus: ''
+        profilestatus: '',
+        updateddate:''
     };
     education: any;
     project: any;
@@ -114,7 +118,9 @@ export class ViewprofileComponent implements OnInit {
         this.service.getProfileIdByUserId().subscribe({
             next: (data: any) => {
                 this.profileIdDetails = data,
+                console.log(this.profileIdDetails),
                 this.profileId = this.profileIdDetails.profileId,
+                this.update = formatDate(this.profileIdDetails.updateddate, 'dd-MM-YYYY', 'en'),
                 this.getProfileByProfileId(this.profileId),
                 this.getEducationDetailsByProfileId(this.profileId)
                 this.getProjectDetailsByProfileId(this.profileId)
@@ -138,6 +144,7 @@ export class ViewprofileComponent implements OnInit {
             profileId: this.profileIdDetails.profileId,
             profileStatusId: 2
         }
+        console.log(profile);
         this.service.updateProfileStatus(profile).subscribe();
     }
 

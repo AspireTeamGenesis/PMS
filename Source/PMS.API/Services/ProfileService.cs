@@ -1052,7 +1052,8 @@ namespace PMS_API
                     return new
                     {
                         profilestatus = getprofile.profilestatus!.ProfileStatusName,
-                        profileId = getprofile.ProfileId
+                        profileId = getprofile.ProfileId,
+                        updateddate=getprofile.UpdatedOn
                     };
                 }
                 return getprofile;

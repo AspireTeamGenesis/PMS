@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import { DocumentCreator } from "../profile-generator";
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Toaster } from 'ngx-toast-notifications';
+import { formatDate } from '@angular/common';
 
 import {
   AlignmentType,
@@ -21,6 +22,7 @@ import {
   styleUrls: ['./viewprofile-by-id.component.css']
 })
 export class ViewprofileByIdComponent implements OnInit {
+  update: any;
 
   constructor(private service:UserserviceService,private view:DocumentCreator,private route: ActivatedRoute,private toaster: Toaster) { }
   profileId:number;
@@ -50,7 +52,8 @@ export class ViewprofileByIdComponent implements OnInit {
  userDetailsValue:any;
  profileIdDetailsInCard={
   profilestatus:'',
-  profileId:0
+  profileId:0,
+  updateddate:''
  };
  
 
@@ -80,6 +83,8 @@ export class ViewprofileByIdComponent implements OnInit {
   {
     this.service.getProfileIdDetailsByUserId(userId).subscribe( {
       next:(data:any)=>{this.profileIdDetailsInCard=data,
+        console.log(this.profileIdDetailsInCard),
+        this.update = formatDate(this.profileIdDetailsInCard.updateddate, 'dd-MM-YYYY', 'en'),
         this.getProfileByProfileId(this.profileIdDetailsInCard.profileId)
         this.getEducationDetailsByProfileId(this.profileIdDetailsInCard.profileId)
       this.getProjectDetailsByProfileId(this.profileIdDetailsInCard.profileId)
