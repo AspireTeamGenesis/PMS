@@ -41,6 +41,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Getting Specific user details of an User
         public Object GetSpecificUserDetails()
         {
             try
@@ -61,6 +63,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Getting the logged in user's Profile
         public object GetUser(int id)
         {
             if (id <= 0)
@@ -86,7 +90,8 @@ namespace PMS_API
                         designation = getuser.designation!.DesignationName,
                         reportingpersonUsername = getuser.ReportingPersonUsername,
                         organisationId = getuser.OrganisationId,
-                        organisation = getuser.organisation!.OrganisationName
+                        organisation = getuser.organisation!.OrganisationName,
+                        image=getuser.personalDetails != null ? getuser.personalDetails.Image : null
 
                     };
                 }
@@ -101,6 +106,8 @@ namespace PMS_API
                 throw;
             }
         }
+
+        //Adding User details
         public bool AddUser(User item, int userId)
 
         {
@@ -132,6 +139,8 @@ namespace PMS_API
 
             }
         }
+
+        //Disable User
         public bool Disable(int id)
         {
             if (id <= 0)
@@ -151,6 +160,8 @@ namespace PMS_API
                 return false;
             }
         }
+
+        //Updation of User details
         public bool UpdateUser(User item)
         {
 
@@ -172,6 +183,8 @@ namespace PMS_API
 
             }
         }
+
+        //Changing the Password for an User
         public bool ChangePassword(string OldPassword, string NewPassword, string ConfirmPassword, int currentUser)
 
         {
@@ -223,11 +236,14 @@ namespace PMS_API
             }
 
         }
+
+        //Save
         public bool Save()
         {
             return userData.save();
         }
 
+        //Getting all users by the logged in user's Designation 
         public object GetAllUsersByDesignation(int designationId)
         {
             try
