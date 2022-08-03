@@ -64,6 +64,7 @@ namespace PMS_API
         private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
 
 
+        private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
         public ProfileData(Context context, ILogger<ProfileService> logger)
         {
             _context = context;
@@ -173,7 +174,7 @@ namespace PMS_API
             _profileValidate.PersonalDetailsvalidate(personalDetails);
             if (personalDetails == null)
                 throw new ValidationException("Profile's personal detail is not provided to DAL");
-
+             _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
                 _context.personalDetails!.Update(personalDetails);
@@ -939,7 +940,7 @@ namespace PMS_API
             if (profile == null || profile.ProfileId <= 0 || profile.UserId <= 0)
                 throw new ValidationException("profileId should not null");
 
-            if (_context.profile!.Any(e => e.ProfileId.Equals(profile.ProfileId)))
+            if (!_context.profile.Any(e => e.ProfileId.Equals(profile.ProfileId)))
                 throw new ValidationException("Profile does not exists");
             try
             {
