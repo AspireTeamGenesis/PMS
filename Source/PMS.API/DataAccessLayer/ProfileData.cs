@@ -61,6 +61,8 @@ namespace PMS_API
     {
         private readonly Context _context;
         private readonly ILogger<ProfileService> _logger;
+        private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
+
 
         public ProfileData(Context context, ILogger<ProfileService> logger)
         {
@@ -142,6 +144,7 @@ namespace PMS_API
         public bool AddPersonalDetail(PersonalDetails personalDetails)
         {
 
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
 
             if (personalDetails == null)
                 throw new ArgumentException("PersonalDetails object is not provided to DAL");
@@ -167,6 +170,7 @@ namespace PMS_API
         //Updation of Personal details
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
             if (personalDetails == null)
                 throw new ValidationException("Profile's personal detail is not provided to DAL");
 
@@ -258,7 +262,7 @@ namespace PMS_API
         public bool AddEducation(Education education)
         {
 
-
+            _profileValidate.Educationdetailvalidation(education);
             if (education == null)
                 throw new ArgumentException("Education detail object is not provided to DAL");
 
@@ -282,6 +286,7 @@ namespace PMS_API
         //Updation of Education details
         public bool UpdateEducation(Education education)
         {
+            _profileValidate.Educationdetailvalidation(education);
             if (education == null)
                 throw new ValidationException("Profile's education details are not provided to DAL");
             try
@@ -332,7 +337,7 @@ namespace PMS_API
         public bool AddProjects(Projects project)
         {
 
-
+            _profileValidate.ProjectDetailvalidation(project);
             if (project == null)
                 throw new ArgumentException("project detail object is not provided to DAL");
 
@@ -398,6 +403,7 @@ namespace PMS_API
         //Updation of Project details
         public bool UpdateProjects(Projects projects)
         {
+            _profileValidate.ProjectDetailvalidation(projects);
             if (projects == null)
                 throw new ValidationException("Profile's Project details are not provided to DAL");
 
@@ -453,7 +459,7 @@ namespace PMS_API
 
             if (skill == null)
                 throw new ArgumentException("Skill detail object is not provided to DAL");
-
+            _profileValidate.SkillDetailValidation(skill);
             try
             {
                 skill.IsActive = true;
@@ -516,8 +522,10 @@ namespace PMS_API
         //Updation of Skill details
         public bool UpdateSkills(Skills skill)
         {
+            
             if (skill == null)
                 throw new ValidationException("Profile's skilldetails are not provided to DAL");
+            _profileValidate.SkillDetailValidation(skill);
             try
             {
                 skill.IsActive = true;
@@ -565,10 +573,10 @@ namespace PMS_API
         public bool AddLanguage(Language language)
         {
 
-
+            
             if (language == null)
                 throw new ArgumentException("Language details object is not provided to DAL");
-
+            _profileValidate.languageValidation(language);
             try
             {
                 language.IsActive=true;
@@ -617,8 +625,10 @@ namespace PMS_API
         //Adding Social Media details for a Profile
         public bool AddSocialMedia(SocialMedia media)
         {
+
             if (media == null)
                 throw new ArgumentException("social media details object is not provided to DAL");
+            _profileValidate.SocialMediaDetailValidation(media);
             try
             {
                 media.IsActive=true;
@@ -707,6 +717,7 @@ namespace PMS_API
         {
             if (achievements == null)
                 throw new ArgumentException("Social media details object is not provided to DAL");
+            _profileValidate.AchievementValidation(achievements);
             try
             {
                 achievements.IsActive = true;
