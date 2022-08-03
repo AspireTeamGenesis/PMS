@@ -11,8 +11,8 @@ namespace PMS_API
 
             if (string.IsNullOrEmpty(personalDetails.Objective))
                 throw new ValidationException($"Objective not be null user supplied Nationality as \"{personalDetails.Objective}\"");
-            //  else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
-            //     throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
+             else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
+                throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
 
             //nationality validations              
             if (string.IsNullOrEmpty(personalDetails.Nationality))
@@ -106,7 +106,7 @@ namespace PMS_API
             //project description
             if (string.IsNullOrEmpty(project.ProjectDescription))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
-            if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ]{3,500}$"))//check project description is null or empty
+            if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ][(),-.]{3,500}$"))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
 
             //project Designation
@@ -157,8 +157,6 @@ namespace PMS_API
                 throw new ValidationException($"Social Media name is Invalid \"{socialmedia.SocialMedia_Name}\"");
             if (string.IsNullOrEmpty(socialmedia.SocialMedia_Link))
                 throw new ValidationException($"SocialMedia_Link not be null and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link}\"");
-            else if (Regex.IsMatch(socialmedia.SocialMedia_Link, "^[A-Za-z0-9!@#$%^&*()_-+=]+$"))
-                throw new ValidationException($"socialmedia link is invalid and user supplied SocialMedia_Link as \"{socialmedia.SocialMedia_Link} \"");
             return true;
         }
         

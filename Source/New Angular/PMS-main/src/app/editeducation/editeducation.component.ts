@@ -105,6 +105,12 @@ export class EditeducationComponent implements OnInit {
             this.toaster.open({ text: 'Education updated successfully', position: 'top-center', type: 'success' });
           }
         });
+        setTimeout(
+          () => {
+              location.reload(); // the code to execute after the timeout
+          },
+          500// the time to sleep to delay for
+      );
     
       }
       toogletag()

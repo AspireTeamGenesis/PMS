@@ -188,7 +188,7 @@ namespace PMS_API
         public bool UpdatePersonalDetail(PersonalDetails personalDetails)
         {
             if (personalDetails == null) throw new ArgumentNullException($" ProfileService:UpdatePersonalDetail()-Personal values not be null{personalDetails}");
-            // _profileValidate.PersonalDetailsvalidate(personalDetails);
+            _profileValidate.PersonalDetailsvalidate(personalDetails);
             try
             {
                 var Profile = GetPersonalById(personalDetails.PersonalDetailsId);
@@ -359,7 +359,7 @@ namespace PMS_API
         public bool UpdateEducation(Education education)
         {
             if (education == null) throw new ArgumentNullException($" ProfileService:UpdateEducation()-Education values not be null{education}");
-            // _profileValidate.Educationdetailvalidation(education);
+            _profileValidate.Educationdetailvalidation(education);
             try
             {
                 Education Profile = GetEducationById(education.EducationId);
@@ -414,7 +414,7 @@ namespace PMS_API
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
-            // _profileValidate.ProjectDetailvalidation(project);
+            _profileValidate.ProjectDetailvalidation(project);
             try
             {
                 project.IsActive = true;
@@ -533,7 +533,7 @@ namespace PMS_API
         public bool UpdateProjects(Projects projects)
         {
             if (projects == null) throw new ArgumentNullException($" ProfileService:UpdateProjects()-Project values not be null{projects}");
-            // _profileValidate.ProjectDetailvalidation(projects);
+            _profileValidate.ProjectDetailvalidation(projects);
             try
             {
                 var Profile = GetProjectById(projects.ProjectId);
@@ -694,7 +694,7 @@ namespace PMS_API
         public bool UpdateSkills(Skills skill)
         {
             if (skill == null) throw new ArgumentNullException($" ProfileService:UpdateSkills()-skill values not be null{skill}");
-            // _profileValidate.SkillDetailValidation(skill);
+            _profileValidate.SkillDetailValidation(skill);
             try
             {
                 var skills = GetSkillById(skill.SkillId);
@@ -742,7 +742,7 @@ namespace PMS_API
         public bool AddLanguage(Language language)
         {
             if (language == null) throw new ArgumentNullException($"Values cannot be null values are {language}");
-            // _profileValidate.languageValidation(language);
+            _profileValidate.languageValidation(language);
             try
             {
                 language.CreatedBy = language.PersonalDetailsId;
@@ -783,7 +783,7 @@ namespace PMS_API
         public bool AddSocialMedia(SocialMedia media)
         {
             if (media == null) throw new ArgumentNullException($"Values cannot be null values are {media}");
-            // _profileValidate.SocialMediaDetailValidation(media);
+            _profileValidate.SocialMediaDetailValidation(media);
             try
             {
                 media.CreatedBy = media.PersonalDetailsId;

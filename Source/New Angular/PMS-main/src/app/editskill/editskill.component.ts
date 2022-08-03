@@ -97,6 +97,12 @@ export class EditskillComponent implements OnInit {
     }
       
     );
+    setTimeout(
+      () => {
+          location.reload(); // the code to execute after the timeout
+      },
+      500// the time to sleep to delay for
+  );
   }
 
   toogletag()
