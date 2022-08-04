@@ -48,6 +48,13 @@ export class AchievementcardComponent implements OnInit {
       if (value)
         this.service.cancelAchievement(achievementid).subscribe(() => this.getAchievementByProfileId());
     });
+
+    setTimeout(
+      () => {
+          location.reload(); // the code to execute after the timeout
+      },
+      500// the time to sleep to delay for
+  );
   }
 
 

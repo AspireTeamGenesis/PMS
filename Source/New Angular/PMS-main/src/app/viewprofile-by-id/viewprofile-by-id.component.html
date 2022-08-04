@@ -8,7 +8,8 @@
 			<h1>{{userDetails.username}}</h1>
 		</div>
 		<div class="text-right col-lg-5 col-md-5 col-12 col-xl-5 col-xxl-5 plr-2" id="status1">
-			<h4>Status &nbsp;:&nbsp;<span id="status" class="approved">{{profileIdDetailsInCard.profilestatus}}</span><br>
+			<h4>Status &nbsp;:&nbsp;<span id="status"
+					class="approved">{{profileIdDetailsInCard.profilestatus}}</span><br>
 
 			</h4>
 
@@ -20,8 +21,8 @@
 			<div class="col-lg-4 col-md-4 col-12 col-xl-4 col-xxl-4 pt-5">
 				<div class="n-card">
 					<div class="img text-center">
-						<img class="n-rounded"
-							[src]="'data:image/jpg;base64,'+profileDetails?.personaldetails.image" width="80%" />
+						<img class="n-rounded" [src]="'data:image/jpg;base64,'+profileDetails?.personaldetails.image"
+							width="80%" />
 					</div>
 
 					<h2 class="ml-4">{{userDetails.name}} </h2>
@@ -192,35 +193,35 @@
 			</div>
 		</div>
 		<hr>
-		
-        <div class="row mb-2 footer " >
-            <div class=" col-lg-6 col-md-6 col-12 col-xl-6 col-xxl-6 plr-2" id="last">
-              <h5>Last Updated Date : {{update}}</h5>
-              <!-- {{profileDetails['personaldetails'][0].updateddate|date:'yyyy/MM/dd'}} -->
-            </div>
-            <div class="text-right col-lg-6 col-md-6 col-12 col-xl-6 col-xxl-6 plr-2">
-              <h3>
-                <div class="footer-icons" >
-                    <i [routerLink]="['/sharepage',userDetails.name]" class="mtr-1 fa-solid fa-share-nodes"></i>
-                <!-- </div> -->
-                  <!-- <div class="tooltip1"> -->
-					<!-- <div class="tooltip1"> -->
-						<i class="fa fa-paper-plane mtr-1" (click)="editToUpdate()"></i>
-						<span class="tooltip1text"></span>
-					  <!-- </div> -->
-                    <!-- <i [routerLink]="['/editoriginalpersonal']" class="fa-solid fa-pen mtr-1"></i> -->
-                    <!-- <span class="tooltip1text">Click here to edit</span> -->
-                  <!-- </div> -->
-                  <!-- <div class="tooltip1"> -->
-                    <i (click)="download()" class="fa-solid fa-download mtr-1"></i>
-                    <!-- <span class="tooltip1text">Click here to download</span> -->
-                  <!-- </div> -->
-                </div>
-              </h3>
-            </div>
-          </div>
+
+		<div class="row mb-2 footer ">
+			<div class=" col-lg-6 col-md-6 col-12 col-xl-6 col-xxl-6 plr-2" id="last">
+				<h5>Last Updated Date : {{update}}</h5>
+				<!-- {{profileDetails['personaldetails'][0].updateddate|date:'yyyy/MM/dd'}} -->
+			</div>
+			<div class="text-right col-lg-6 col-md-6 col-12 col-xl-6 col-xxl-6 plr-2">
+				<h3>
+					<div class="footer-icons">
+						<div class="tooltip1">
+							<i [routerLink]="['/sharepage',userDetails.name]" class="mtr-1 fa-solid fa-share-nodes"></i>
+							<span class="tooltip1text">Click here to Share</span>
+						</div>
+						<!-- <div class="tooltip1"> -->
+						<div class="tooltip1">
+							<i class="fa fa-paper-plane mtr-1" (click)="editToUpdate()"></i>
+							<span class="tooltip1text">Request to Update</span>
+						</div>
+						<!-- <i [routerLink]="['/editoriginalpersonal']" class="fa-solid fa-pen mtr-1"></i> -->
+						<!-- <span class="tooltip1text">Click here to edit</span> -->
+						<!-- </div> -->
+						<div class="tooltip1">
+							<i (click)="download()" class="fa-solid fa-download mtr-1"></i>
+							<span class="tooltip1text">Click here to Download</span>
+						</div>
+					</div>
+				</h3>
+			</div>
+		</div>
 
 
 	</div>
-
-	

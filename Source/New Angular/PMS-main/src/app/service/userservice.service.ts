@@ -27,6 +27,17 @@ export class UserserviceService {
     'Authorization': `Bearer ${AuthenticationService.GetData("token")}`
   })
 
+  initializeTokenHeader(token: string | null) {
+
+    this.headers = new HttpHeaders({
+
+      'Content-Type': 'application/json',
+
+      'Authorization': `Bearer ${token}`
+
+    })
+
+  }
   getUserDetails(userId:number)
   {
     return this.http.get<any>(`https://localhost:7021/User/GetUserById?id=${userId}`,{ headers: this.headers });
@@ -82,7 +93,7 @@ export class UserserviceService {
 
   Login(user:any)
   {
-       return this.http.post<any>(`https://localhost:7021/Login/AuthLogin/Login?Username=${user.UserName}&password=${user.Password}`, user, { headers: this.headers })
+       return this.http.post<any>(`https://localhost:7021/Login/AuthLogin/Login`, user, { headers: this.headers })
   
   }
   // Login(user: any) {

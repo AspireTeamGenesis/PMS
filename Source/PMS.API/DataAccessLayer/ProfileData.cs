@@ -64,7 +64,7 @@ namespace PMS_API
         private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
 
 
-        private static ProfileValidation _profileValidate = ProfileDataFactory.GetProfileVaidationObject();
+        
         public ProfileData(Context context, ILogger<ProfileService> logger)
         {
             _context = context;
@@ -153,7 +153,7 @@ namespace PMS_API
             try
             {
                 personalDetails.IsActive = true;
-                _context.personalDetails!.Add(personalDetails);
+                _context.personalDetails.Add(personalDetails);
                 _context.SaveChanges();
                 return true;
             }
@@ -337,11 +337,9 @@ namespace PMS_API
         //Adding Project details for a Profile
         public bool AddProjects(Projects project)
         {
-
-            _profileValidate.ProjectDetailvalidation(project);
             if (project == null)
                 throw new ArgumentException("project detail object is not provided to DAL");
-
+            // _profileValidate.ProjectDetailvalidation(project);
             try
             {
                 project.IsActive = true;
@@ -404,10 +402,10 @@ namespace PMS_API
         //Updation of Project details
         public bool UpdateProjects(Projects projects)
         {
-            _profileValidate.ProjectDetailvalidation(projects);
+            
             if (projects == null)
                 throw new ValidationException("Profile's Project details are not provided to DAL");
-
+            // _profileValidate.ProjectDetailvalidation(projects);
 
             try
             {

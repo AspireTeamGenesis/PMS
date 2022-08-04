@@ -38,12 +38,17 @@ namespace PMS_API
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                 var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var token = new JwtSecurityToken(
+                // var encryptingCredentials = new EncryptingCredentials(key, JwtConstants.DirectKeyUseAlg, SecurityAlgorithms.Aes256CbcHmacSha512);
+                var token = new JwtSecurityTokenHandler().CreateJwtSecurityToken(
                     _configuration["Jwt:Issuer"],
                     _configuration["Jwt:Audience"],
-                        claims,
+                    new ClaimsIdentity(claims),
+                    null,
                     expires: DateTime.UtcNow.AddHours(6),
-                    signingCredentials: signIn);
+                    null,
+                    signingCredentials: signIn
+                    // encryptingCredentials: encryptingCredentials
+                    );
 
                 var Result = new
                 {

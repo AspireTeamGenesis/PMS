@@ -63,6 +63,13 @@ export class EducationcardComponent implements OnInit {
       if(value)
       this.service.cancelEducation(educationid).subscribe(()=>this.getEducationByProfileId());    
     });
+
+    setTimeout(
+      () => {
+          location.reload(); // the code to execute after the timeout
+      },
+      500// the time to sleep to delay for
+  );
   }
 
 }

@@ -11488,3 +11488,43 @@ icon-right{
     top: 15px;
     right: 10px;
   }
+
+  .tooltip1 {
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted black; */
+  }
+  
+  .tooltip1 .tooltip1text {
+    /* visibility: hidden; */
+    width: 200px;
+    background-color: #555;
+    color: #ffffff;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 9px;
+    /* padding: 5px 0; */
+    position: absolute;
+    /* z-index: 1; */
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.0s;
+  }
+  
+  .tooltip1 .tooltip1text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 40%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip1:hover .tooltip1text {
+    visibility: visible;
+    opacity: 1;
+  }

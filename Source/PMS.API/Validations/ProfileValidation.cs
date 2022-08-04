@@ -106,7 +106,7 @@ namespace PMS_API
             //project description
             if (string.IsNullOrEmpty(project.ProjectDescription))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
-            if (!Regex.IsMatch(project.ProjectDescription,"^[A-Za-z ][(),-.]{3,500}$"))//check project description is null or empty
+            if (!Regex.IsMatch(project.ProjectDescription,@"^[A-Za-z]{3,500}$"))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
 
             //project Designation

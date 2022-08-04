@@ -97,6 +97,7 @@ export class EditoriginalpersonalComponent implements OnInit {
             dateOfJoining: this.doj,
             base64header: this.cardImageBase64,
         }
+        console.log(personal.personalDetailsId)
         this.service.updatePersonalDetail(personal).subscribe();
     }
 

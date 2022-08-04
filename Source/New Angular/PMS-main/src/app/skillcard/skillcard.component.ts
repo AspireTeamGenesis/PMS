@@ -52,5 +52,12 @@ export class SkillcardComponent implements OnInit {
       if (value)
         this.service.cancelSkill(skillid).subscribe(() => this.getSkillByProfileId());
     });
+
+    setTimeout(
+      () => {
+          location.reload(); // the code to execute after the timeout
+      },
+      500// the time to sleep to delay for
+  );
   }
 }
