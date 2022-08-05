@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Net;
 
 
-namespace PMS_API;
-//[Authorize]
+namespace PMS_API{
+[Authorize]
 [ApiController]
 [Route("[controller]/[Action]")]
 public class CollegeController : ControllerBase
@@ -33,5 +33,5 @@ public class CollegeController : ControllerBase
            
         }
     }
-
+}
 }

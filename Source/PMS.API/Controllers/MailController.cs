@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using System.Net;
 using PMS_API;
 
-namespace PMS_API;
-// [Authorize]
+namespace PMS_API{
+ [Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class MailController : ControllerBase
@@ -35,4 +35,5 @@ public class MailController : ControllerBase
         }
             
     }
+}
 }

@@ -15,9 +15,9 @@ namespace PMS_API
                 //IEnumerable<College> colleges = new List<College>();
                 return from college in _collegeDataAccessLayer.GetColleges() where college.IsActive == true select college; 
             }
-            catch (Exception ex)
+            catch (Exception ex) //unknown exception occurs
             {
-                _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
+                _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}"); 
                  throw;
                 
             }
