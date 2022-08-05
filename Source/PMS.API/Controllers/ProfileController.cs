@@ -955,7 +955,7 @@ namespace PMS_API
         {
             try
             {
-                int currentdesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value) ;
+                int currentdesignation = Convert.ToInt32(User.FindFirst("DesignationId")?.Value);
                 return Ok(_profileService.GetFilteredProfile(filterValues.UserName!,filterValues.DesignationId, filterValues.DomainID, filterValues.TechnologyId, filterValues.CollegeId, filterValues.ProfileStatusId,currentdesignation));
             }
             catch (Exception exception)

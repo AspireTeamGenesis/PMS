@@ -1,0 +1,66 @@
+[2022-08-04 17:28:52.420 +05:30  INF]  User profile is available. Using 'C:\Users\harini.rajkumar.ASPIRESYS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-04 17:29:23.473 +05:30  INF]  User profile is available. Using 'C:\Users\harini.rajkumar.ASPIRESYS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-04 17:29:23.692 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-04 17:29:23.694 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-04 17:29:23.700 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-04 17:29:23.702 +05:30  INF]  Hosting environment: Development
+[2022-08-04 17:29:23.704 +05:30  INF]  Content root path: C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-04 17:29:24.150 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/ - -
+[2022-08-04 17:29:24.249 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/ - - - 404 0 - 100.2834ms
+[2022-08-04 17:29:29.795 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 426
+[2022-08-04 17:29:29.802 +05:30  INF]  CORS policy execution successful.
+[2022-08-04 17:29:30.002 +05:30  INF]  Executing endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:29:30.047 +05:30  INF]  Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS_API.User) on controller PMS_API.UserController (PMS_API).
+[2022-08-04 17:33:44.007 +05:30  INF]  User profile is available. Using 'C:\Users\harini.rajkumar.ASPIRESYS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-04 17:33:44.118 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-04 17:33:44.118 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-04 17:33:44.123 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-04 17:33:44.123 +05:30  INF]  Hosting environment: Development
+[2022-08-04 17:33:44.123 +05:30  INF]  Content root path: C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-04 17:36:03.491 +05:30  INF]  Application is shutting down...
+[2022-08-04 17:44:12.344 +05:30  INF]  User profile is available. Using 'C:\Users\harini.rajkumar.ASPIRESYS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-04 17:44:12.470 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-04 17:44:12.470 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-04 17:44:12.474 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-04 17:44:12.474 +05:30  INF]  Hosting environment: Development
+[2022-08-04 17:44:12.475 +05:30  INF]  Content root path: C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-04 17:44:18.006 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 426
+[2022-08-04 17:44:18.052 +05:30  INF]  CORS policy execution successful.
+[2022-08-04 17:44:18.239 +05:30  INF]  Executing endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:44:18.256 +05:30  INF]  Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS_API.User) on controller PMS_API.UserController (PMS_API).
+[2022-08-04 17:44:18.677 +05:30  INF]  UserController :AddUser()-Name must not contain any special character,numbers or no more repeated character more than 2 times and Length should be minimum4 and maximum 15. User supplied name as aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   at PMS_API.UserValidation.userValidate(User user) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Validations\UserValidation.cs:line 12
+   at PMS_API.UserServices.AddUser(User item, Int32 userId) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Services\UserServices.cs:line 116
+   at PMS_API.UserController.AddUser(User userValues) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Controllers\UserController.cs:line 116
+[2022-08-04 17:44:18.688 +05:30  INF]  Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-08-04 17:44:18.696 +05:30  INF]  Executed action PMS_API.UserController.AddUser (PMS_API) in 434.6952ms
+[2022-08-04 17:44:18.696 +05:30  INF]  Executed endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:44:18.699 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 426 - 400 - text/plain;+charset=utf-8 694.3991ms
+[2022-08-04 17:45:59.585 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 362
+[2022-08-04 17:45:59.596 +05:30  INF]  CORS policy execution successful.
+[2022-08-04 17:45:59.599 +05:30  INF]  Executing endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:45:59.599 +05:30  INF]  Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS_API.User) on controller PMS_API.UserController (PMS_API).
+[2022-08-04 17:45:59.605 +05:30  INF]  UserController :AddUser()-Name must not contain any special character,numbers or no more repeated character more than 2 times and Length should be minimum4 and maximum 15. User supplied name as 20   at PMS_API.UserValidation.userValidate(User user) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Validations\UserValidation.cs:line 12
+   at PMS_API.UserServices.AddUser(User item, Int32 userId) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Services\UserServices.cs:line 116
+   at PMS_API.UserController.AddUser(User userValues) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Controllers\UserController.cs:line 116
+[2022-08-04 17:45:59.608 +05:30  INF]  Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-08-04 17:45:59.610 +05:30  INF]  Executed action PMS_API.UserController.AddUser (PMS_API) in 10.7903ms
+[2022-08-04 17:45:59.610 +05:30  INF]  Executed endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:45:59.610 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 362 - 400 - text/plain;+charset=utf-8 25.1789ms
+[2022-08-04 17:47:34.940 +05:30  INF]  Application is shutting down...
+[2022-08-04 17:47:39.954 +05:30  INF]  User profile is available. Using 'C:\Users\harini.rajkumar.ASPIRESYS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-04 17:47:40.108 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-04 17:47:40.109 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-04 17:47:40.113 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-04 17:47:40.114 +05:30  INF]  Hosting environment: Development
+[2022-08-04 17:47:40.114 +05:30  INF]  Content root path: C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-04 17:47:46.135 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 367
+[2022-08-04 17:47:46.174 +05:30  INF]  CORS policy execution successful.
+[2022-08-04 17:47:46.337 +05:30  INF]  Executing endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:47:46.365 +05:30  INF]  Route matched with {action = "AddUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddUser(PMS_API.User) on controller PMS_API.UserController (PMS_API).
+[2022-08-04 17:47:46.609 +05:30  INF]  UserController :AddUser()-Name must not contain any special character,numbers or no more repeated character more than 2 times and Length should be minimum4 and maximum 15. User supplied name as kavin29   at PMS_API.UserValidation.userValidate(User user) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Validations\UserValidation.cs:line 12
+   at PMS_API.UserServices.AddUser(User item, Int32 userId) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Services\UserServices.cs:line 116
+   at PMS_API.UserController.AddUser(User userValues) in C:\Users\harini.rajkumar.ASPIRESYS\Documents\GitHub\PMS\Source\PMS.API\Controllers\UserController.cs:line 116
+[2022-08-04 17:47:46.617 +05:30  INF]  Executing BadRequestObjectResult, writing value of type 'System.String'.
+[2022-08-04 17:47:46.624 +05:30  INF]  Executed action PMS_API.UserController.AddUser (PMS_API) in 254.8411ms
+[2022-08-04 17:47:46.625 +05:30  INF]  Executed endpoint 'PMS_API.UserController.AddUser (PMS_API)'
+[2022-08-04 17:47:46.627 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/User/AddUser application/json-patch+json 367 - 400 - text/plain;+charset=utf-8 494.8733ms

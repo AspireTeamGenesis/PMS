@@ -1,13 +1,21 @@
-    using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using PMS_API;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// adding serilog
+var _logger = new LoggerConfiguration()
+  .ReadFrom.Configuration(builder.Configuration)
+  .Enrich.FromLogContext()
+  .CreateLogger();
+
+// builder.Logging.ClearProviders(); //if its enabled console loggings won't work
+builder.Logging.AddSerilog(_logger);
 // Add services to the container.
 
 builder.Services.AddControllers();

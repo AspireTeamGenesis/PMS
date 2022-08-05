@@ -11,7 +11,7 @@ namespace PMS_API
 
             if (string.IsNullOrEmpty(personalDetails.Objective))
                 throw new ValidationException($"Objective not be null user supplied Nationality as \"{personalDetails.Objective}\"");
-             else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z]{3,500}$"))
+             else if (!Regex.IsMatch(personalDetails.Objective, @"[a-zA-Z .,\-]{3,500}$"))
                 throw new ValidationException($"Objective is invalid and user supplied Objective as \"{personalDetails.Objective}\"");
 
             //nationality validations              
@@ -40,7 +40,7 @@ namespace PMS_API
                 
             //base64 validations
             if (String.IsNullOrEmpty(personalDetails.base64header))
-                throw new ValidationException($"base64header not be empty and user supplied base64header as \"{personalDetails.base64header}\"");
+                throw new ValidationException($"base64header should not be empty and user supplied base64header as \"{personalDetails.base64header}\"");
             return true;
         }
         public bool Educationdetailvalidation(Education education)
@@ -106,7 +106,7 @@ namespace PMS_API
             //project description
             if (string.IsNullOrEmpty(project.ProjectDescription))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
-            if (!Regex.IsMatch(project.ProjectDescription,@"^[A-Za-z]{3,500}$"))//check project description is null or empty
+            if (!Regex.IsMatch(project.ProjectDescription,@"^[A-Za-z .,\-\(\)\[\]]{3,500}$"))//check project description is null or empty
                 throw new ValidationException($"project_Description not be null and user supplied project_Description as \"{project.ProjectDescription}\"");
 
             //project Designation

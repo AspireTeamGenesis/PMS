@@ -414,7 +414,7 @@ namespace PMS_API
         public bool AddProjects(Projects project)
         {
             if (project == null) throw new ArgumentNullException($"Values cannot be null values are {project}");
-            // _profileValidate.ProjectDetailvalidation(project);
+            _profileValidate.ProjectDetailvalidation(project);
             try
             {
                 project.IsActive = true;

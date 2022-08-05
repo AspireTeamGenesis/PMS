@@ -86,8 +86,7 @@ namespace PMS_API
             if (item == null)
                 throw new ArgumentException("user object is not provided to DAL");
             _validation.userValidate(item);
-            if (string.IsNullOrEmpty(item.UserName))
-                throw new ValidationException($"UserName not be null and user supplied UserName is {item.UserName}");
+           
             try
             {
 

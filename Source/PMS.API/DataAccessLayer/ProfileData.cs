@@ -339,7 +339,7 @@ namespace PMS_API
         {
             if (project == null)
                 throw new ArgumentException("project detail object is not provided to DAL");
-            // _profileValidate.ProjectDetailvalidation(project);
+            _profileValidate.ProjectDetailvalidation(project);
             try
             {
                 project.IsActive = true;
@@ -405,7 +405,7 @@ namespace PMS_API
             
             if (projects == null)
                 throw new ValidationException("Profile's Project details are not provided to DAL");
-            // _profileValidate.ProjectDetailvalidation(projects);
+            _profileValidate.ProjectDetailvalidation(projects);
 
             try
             {

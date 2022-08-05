@@ -125,7 +125,7 @@ namespace PMS_API
             catch (ValidationException exception)
             {
                 _logger.LogInformation($"UserServices:AddUser()-{exception.Message}\n{exception.StackTrace}");
-                throw;
+                throw exception;
             }
             catch (ArgumentNullException exception)
             {
