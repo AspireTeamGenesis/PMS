@@ -13,13 +13,13 @@ namespace PMS_API
             {
                 return _db.ProfileStatuss!.ToList();
             }
-            catch (InvalidOperationException ex)              //DB Update Exception Occured
+            catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
                 throw new InvalidOperationException();
 
             }
-            catch (Exception ex)                      //unknown exception occured
+            catch (Exception ex)                      //Unknown Exception Occurs
             {
                 _logger.LogInformation($"{ex.Message}\n {ex.StackTrace}");
                  throw;
