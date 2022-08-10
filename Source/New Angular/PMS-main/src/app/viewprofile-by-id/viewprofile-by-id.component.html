@@ -36,172 +36,159 @@
 						<div *ngFor="let item of profileDetails?.personaldetails.socialmedia">
 							<h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6>
 						</div>
-	
-						<h2 class="ml-4">{{userDetails.name}} </h2>
-						<hr class="mt-n1" />
-						<div class="card-body mt-n3">
-							<h6><i
-									class="fas fa-solid fa-house-chimney mr-3"></i>{{profileDetails?.personaldetails.nationality}}
-							</h6>
-							<h6><i class="fas fa-envelope mtr-1"></i>{{userDetails.email}}</h6>
-							<h6><i class="fas fa-phone-alt mtr-1"></i>{{userDetails.mobilenumber}}</h6>
-							<div *ngFor="let item of profileDetails?.personaldetails.socialmedia">
-								<h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6>
-							</div>
-							<!-- <h6><i class="fas fa fa-twitter mtr-1"></i>{{profileDetails['personaldetails'][0].socialmedia[0].socialMedia_Link}}</h6> -->
-							<!-- <h6><i class="fas fa fa-linkedin mtr-1"></i>https://www.linkedin.com/naga?_l=en_US</h6> -->
-	
-							<hr />
-							<!-- <div *ngIf="profileDetails['achievementdetails'].achievementtype== 'Certificates'"> -->
-							<div class="card-title" (click)="toggletag3()">
-								<h2 style="display: inline-block;"><i
-										class="fas fa-solid fa-stamp mr-2"></i>&nbsp;Achievements </h2><span
-									class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
-	
-								<div *ngIf="showMe3" class="card-body shadow-sm plr-2">
-	
-									<div *ngFor="let item of profileDetails['achievementdetails']">
-	
-										<div class="plr-2">
-											<img class="img" [src]="'data:image/jpg;base64,'+item.achievementimage"
-												width="80%" />
-										</div>
+						<!-- <h6><i class="fas fa fa-twitter mtr-1"></i>{{profileDetails['personaldetails'][0].socialmedia[0].socialMedia_Link}}</h6> -->
+						<!-- <h6><i class="fas fa fa-linkedin mtr-1"></i>https://www.linkedin.com/naga?_l=en_US</h6> -->
+
+						<hr />
+						<!-- <div *ngIf="profileDetails['achievementdetails'].achievementtype== 'Certificates'"> -->
+						<div class="card-title" (click)="toggletag3()">
+							<h2 style="display: inline-block;"><i
+									class="fas fa-solid fa-stamp mr-2"></i>&nbsp;Achievements </h2><span
+								class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
+
+							<div *ngIf="showMe3" class="card-body shadow-sm plr-2">
+
+								<div *ngFor="let item of profileDetails['achievementdetails']">
+
+									<div class="plr-2">
+										<img class="img" [src]="'data:image/jpg;base64,'+item.achievementimage"
+											width="80%" />
 									</div>
 								</div>
-								<!-- <div class="plr-2">
-					<img class="img" src="../image/certificate1.png  " width="80%" />
-					<img class="img" src="../image/certificate2.png  " width="80%" />
-				  </div> -->
 							</div>
-	
-							<hr>
-	
-	
-	
-	
-	
-							<!-- <h3><i class="fa fa-paper-plane mr-2"></i><b>Awards</b></h3>
-				<div class="n-card  shadow-sm plr-2 ">
-	
-				  <div *ngFor="let item of profileDetails['achievementdetails']">
-					<div *ngIf="item.achievementtype== 'Awards'">
-					<div class="plr-2">
-					  <img class="img" [src]="'data:image/jpg;base64,'+item.achievementimage" width="80%" />
-					</div>
-					</div>
-				  </div>
-	
-				</div> -->
-	
-	
-							<div class="card-title" (click)="toggletag4()">
-								<h2 class="lang"><i class="fas fa-globe mr-3 mt-3 mb-4"></i> Language</h2><span
-									class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
-	
-								<div *ngIf="showMe4">
-									<ul class="list-unstyled">
-										<div *ngFor="let item of profileDetails?.personaldetails.language">
-											<h6><i class="fas fa-globe mr-3 mt-3 mb-2"></i>{{item.languageName}}</h6>
-										</div>
-									</ul>
-								</div>
-	
-	
+							<!-- <div class="plr-2">
+                <img class="img" src="../image/certificate1.png  " width="80%" />
+                <img class="img" src="../image/certificate2.png  " width="80%" />
+              </div> -->
+						</div>
+
+						<hr>
+
+
+
+
+
+						<!-- <h3><i class="fa fa-paper-plane mr-2"></i><b>Awards</b></h3>
+            <div class="n-card  shadow-sm plr-2 ">
+
+              <div *ngFor="let item of profileDetails['achievementdetails']">
+                <div *ngIf="item.achievementtype== 'Awards'">
+                <div class="plr-2">
+                  <img class="img" [src]="'data:image/jpg;base64,'+item.achievementimage" width="80%" />
+                </div>
+                </div>
+              </div>
+
+            </div> -->
+
+
+						<div class="card-title" (click)="toggletag4()">
+							<h2 class="lang"><i class="fas fa-globe mr-3 mt-3 mb-4"></i> Language</h2><span
+								class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
+
+							<div *ngIf="showMe4">
+								<ul class="list-unstyled">
+									<div *ngFor="let item of profileDetails?.personaldetails.language">
+										<h6><i class="fas fa-globe mr-3 mt-3 mb-2"></i>{{item.languageName}}</h6>
+									</div>
+								</ul>
 							</div>
+
+
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8 col-md-8 col-12 col-xl-8 col-xxl-8 pt-5">
-					<div class="n-card mt-4 ">
-						<div class="card-body shadow-sm">
-							<h2>
-								Objective
-							</h2>
-							<h6>{{profileDetails?.personaldetails.objective}}
-							</h6>
+			</div>
+			<div class="col-lg-8 col-md-8 col-12 col-xl-8 col-xxl-8 pt-5">
+				<div class="n-card mt-4 ">
+					<div class="card-body shadow-sm">
+						<h2>
+							Objective
+						</h2>
+						<h6>{{profileDetails?.personaldetails.objective}}
+						</h6>
+					</div>
+				</div>
+
+				<div class="n-card mt-4 ">
+					<div class="card-body shadow-sm">
+						<div class="card-title" (click)="toggletag()">
+							<h2 style="display: inline-block;">
+								<i class="fas fa-cogs mr-3 mb-4" name="skilldetails"></i>Skills
+							</h2><span class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
+							<div *ngIf="showMe">
+								<h3>Domain</h3>
+								<div *ngFor="let item of profileDetails['skilldetails']">
+									<h6><i class="fas fa-cogs mr-3 mb-2"></i>{{item.domainname}}</h6>
+								</div>
+								<h3>Technology</h3>
+								<div *ngFor="let item of profileDetails['skilldetails']">
+									<h6><i class="fas fa-cogs mr-3 mb-2"></i>{{item.technologyname}}</h6>
+								</div>
+							</div>
 						</div>
 					</div>
-	
-					<div class="n-card mt-4 ">
-						<div class="card-body shadow-sm">
-							<div class="card-title" (click)="toggletag()">
+					<div class="n-card mt-4">
+						<div class="card-body shadow-sm ">
+							<div class="card-title" (click)="toggletag1()">
+								<h2 style="display: inline-block;" class="mb-2"> <i class="fas fa-certificate"></i>
+									Education </h2><span class="pull-right up-icon icon-right"><i
+										class="fa fa-chevron-down"></i></span>
+							</div>
+							<div *ngIf="showMe1">
+								<div>
+									<hr />
+									<div *ngFor="let item of profileDetails['educationdetails']">
+										<h5 class="mt-4">{{item.college}}</h5>
+										<h6><i class="fas fa-calendar my-2 mr-2"></i> {{item.startingyear}} -
+											{{item.endingyear}}</h6>
+										<h6>{{item.degree}}({{item.course}})</h6>
+										<h6>{{item.percentage}}</h6>
+									</div>
+
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="n-card shadow-sm">
+						<div class="card-body">
+							<div class="card-title" (click)="toggletag2()">
 								<h2 style="display: inline-block;">
-									<i class="fas fa-cogs mr-3 mb-4" name="skilldetails"></i>Skills
-								</h2><span class="pull-right up-icon icon-right"><i class="fa fa-chevron-down"></i></span>
-								<div *ngIf="showMe">
-									<h3>Domain</h3>
-									<div *ngFor="let item of profileDetails['skilldetails']">
-										<h6><i class="fas fa-cogs mr-3 mb-2"></i>{{item.domainname}}</h6>
-									</div>
-									<h3>Technology</h3>
-									<div *ngFor="let item of profileDetails['skilldetails']">
-										<h6><i class="fas fa-cogs mr-3 mb-2"></i>{{item.technologyname}}</h6>
-									</div>
-								</div>
+									<i class="fas fa-suitcase mb-2 mr-2"></i>Project Details
+								</h2><span class="pull-right up-icon icon-right"><i
+										class="fa fa-chevron-down"></i></span>
 							</div>
-						</div>
-						<div class="n-card mt-4">
-							<div class="card-body shadow-sm ">
-								<div class="card-title" (click)="toggletag1()">
-									<h2 style="display: inline-block;" class="mb-2"> <i class="fas fa-certificate"></i>
-										Education </h2><span class="pull-right up-icon icon-right"><i
-											class="fa fa-chevron-down"></i></span>
-								</div>
-								<div *ngIf="showMe1">
+							<div *ngIf="showMe2">
+								<div *ngFor="let item of profileDetails['projectdetails']">
+									<div class="card-title">
+
+										<h5 class="mt-4">{{item.projectname}}</h5>
+									</div>
 									<div>
+										<h6>
+											<i class="fas fa-calendar mr-3 my-3"></i>{{item.startingMonth}}
+											{{item.startingYear}} -
+											{{item.endingMonth}} {{item.endingYear}}
+										</h6>
+										<h6>
+											{{item.projectdescription}}
+										</h6>
+										<h6>
+											<strong>Role Played</strong> : {{item.role}}
+										</h6>
+										<h6>
+											<strong>Tool Used</strong> : {{item.toolsused}}
+										</h6>
 										<hr />
-										<div *ngFor="let item of profileDetails['educationdetails']">
-											<h5 class="mt-4">{{item.college}}</h5>
-											<h6><i class="fas fa-calendar my-2 mr-2"></i> {{item.startingyear}} -
-												{{item.endingyear}}</h6>
-											<h6>{{item.degree}}({{item.course}})</h6>
-											<h6>{{item.percentage}}</h6>
-										</div>
-	
-									</div>
-								</div>
-	
-	
-							</div>
-						</div>
-	
-						<div class="n-card shadow-sm">
-							<div class="card-body">
-								<div class="card-title" (click)="toggletag2()">
-									<h2 style="display: inline-block;">
-										<i class="fas fa-suitcase mb-2 mr-2"></i>Project Details
-									</h2><span class="pull-right up-icon icon-right"><i
-											class="fa fa-chevron-down"></i></span>
-								</div>
-								<div *ngIf="showMe2">
-									<div *ngFor="let item of profileDetails['projectdetails']">
-										<div class="card-title">
-	
-											<h5 class="mt-4">{{item.projectname}}</h5>
-										</div>
-										<div>
-											<h6>
-												<i class="fas fa-calendar mr-3 my-3"></i>{{item.startingMonth}}
-												{{item.startingYear}} -
-												{{item.endingMonth}} {{item.endingYear}}
-											</h6>
-											<h6>
-												{{item.projectdescription}}
-											</h6>
-											<h6>
-												<strong>Role Played</strong> : {{item.role}}
-											</h6>
-											<h6>
-												<strong>Tool Used</strong> : {{item.toolsused}}
-											</h6>
-											<hr />
-										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-	
 					</div>
+
 				</div>
 			</div>
 		</div>

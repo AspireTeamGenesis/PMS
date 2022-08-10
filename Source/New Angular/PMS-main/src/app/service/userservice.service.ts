@@ -55,33 +55,33 @@ export class UserserviceService {
 
   getDesignation()
   {
-    return this.http.get<Designation[]>('https://localhost:7021/Designation/ViewDesignations');
+    return this.http.get<Designation[]>('https://localhost:7021/Designation/ViewDesignations',{headers:this.headers});
   }
 
   getCollege()
   {
-    return this.http.get<any>('https://localhost:7021/College/ViewColleges');
+    return this.http.get<any>('https://localhost:7021/College/ViewColleges',{headers:this.headers});
   }
 
   getDomain()
   {
-    return this.http.get<any>('https://localhost:7021/Domain/ViewDomains');
+    return this.http.get<any>('https://localhost:7021/Domain/ViewDomains',{headers:this.headers});
   }
 
   getTechnology()
   {
-    return this.http.get<any>('https://localhost:7021/Technology/ViewTechnologies');
+    return this.http.get<any>('https://localhost:7021/Technology/ViewTechnologies',{headers:this.headers});
   }
 
   getProfileStatus()
   {
-    return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss');   
+    return this.http.get<any>('https://localhost:7021/ProfileStatus/ViewProfileStatuss',{headers:this.headers});   
   }
 
   
   getOrganisation():Observable<Organisation[]>
   {
-    return this.http.get<Organisation[]>('https://localhost:7021/Organisation/ViewOrganisations');
+    return this.http.get<Organisation[]>('https://localhost:7021/Organisation/ViewOrganisations',{headers:this.headers});
   }
 
   onSubmit(userPassword:any)

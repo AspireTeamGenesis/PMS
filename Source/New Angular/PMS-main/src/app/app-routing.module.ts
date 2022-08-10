@@ -38,7 +38,6 @@ import { LanguageandsocialComponent } from './languageandsocial/languageandsocia
 import { EditoriginalpersonalComponent } from './editoriginalpersonal/editoriginalpersonal.component';
 import { HomecardComponent } from './homecard/homecard.component';
 import { MyInfoComponent } from './my-info/my-info.component';
-import { TotalprofileorgComponent } from './totalprofileorg/totalprofileorg.component';
 import { DummyComponent } from './dummy/dummy.component';
 
 
@@ -82,7 +81,6 @@ const routes: Routes = [
   {path:"editoriginalpersonal",component:EditoriginalpersonalComponent},
   {path:"homecard",component:HomecardComponent},
   {path: "myinfo",component:MyInfoComponent},
-  {path:"totalprofileorg",component:TotalprofileorgComponent},
   {path:"dummy",component:DummyComponent},
   {path:"",component:LoginComponent}
 ];

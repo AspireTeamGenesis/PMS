@@ -63,7 +63,6 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HomecardComponent } from './homecard/homecard.component';
 import { MyInfoComponent } from './my-info/my-info.component';
 import { DummyComponent } from './dummy/dummy.component';
-import { TotalprofileorgComponent } from './totalprofileorg/totalprofileorg.component';
 @NgModule({
   declarations: [		
     AppComponent,
@@ -115,7 +114,6 @@ import { TotalprofileorgComponent } from './totalprofileorg/totalprofileorg.comp
       HomecardComponent,
       MyInfoComponent,
       DummyComponent,
-      TotalprofileorgComponent
    ],
   imports: [
     BrowserModule,
