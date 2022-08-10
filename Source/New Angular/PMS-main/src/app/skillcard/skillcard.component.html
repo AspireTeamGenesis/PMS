@@ -15,12 +15,10 @@
                 <i [routerLink]="['../editskill',item.skillid]" class="fa fa-pencil"></i>
                 <span class="tooltip1text">Click here to edit</span>
             </div>
-                <!-- <i routerLink="/editskill/{{item.skillid}}" class="fa fa-pencil fa-sm"></i> -->
                 <div class="tooltip1">
                     <i (click)="cancelSkill(item.skillid)" class="fa fa-trash"></i>
                     <span class="tooltip1text">Click here to delete</span>
                 </div>
-                <!-- <i (click)="DeleteEducation(item.educationId)" class="fa fa-trash"></i> -->
             </h2>
         </div>
     </div>

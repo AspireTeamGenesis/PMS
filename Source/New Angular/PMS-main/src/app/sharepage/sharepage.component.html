@@ -1,5 +1,4 @@
-<!-- <a href="#" class="btn">Close</a>
-<button type="button" class="close">×</button> -->
+<button type="button" class="close">×</button>
 <app-topbar></app-topbar>
 <app-sidebar></app-sidebar>
 <div class="container "  style="padding-top:13%;">
@@ -10,7 +9,6 @@
     </div>
     <div class="modal-body">
         <form [formGroup]="shareForm" style="border-radius: 2px; border-color: black;">
-            <!-- <h5>From:arasu@gmail.com</h5> -->
             <div class="row">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-between">
@@ -36,7 +34,6 @@
         </form>
     </div>
     <div class="modal-footer">
-        <!-- <a href="#" class="btn">Close</a> -->
         <a [routerLink]="['/dashboard']" class="btn btn-primary" (click)="share()">Send</a>
     </div>
     </div>

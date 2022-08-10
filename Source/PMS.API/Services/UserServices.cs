@@ -113,7 +113,7 @@ namespace PMS_API
         {
             if (item == null)
                 throw new ArgumentNullException($"UserServices:AddUser()-user values should not be null{item}");
-            _validation.userValidate(item);
+            // _validation.userValidate(item);
             try
             {
                 item.CreatedBy = userId;

@@ -88,6 +88,7 @@ export class EditoriginalpersonalComponent implements OnInit {
 
 
     updatePersonal() {
+        console.log("111");
         const personal = {
             personalDetailsId: this.personalDetails.personaldetailsid,
             profileId: this.profileIdDetails.profileId,
@@ -97,19 +98,19 @@ export class EditoriginalpersonalComponent implements OnInit {
             dateOfJoining: this.doj,
             base64header: this.cardImageBase64,
         }
-        console.log(personal.personalDetailsId)
+        console.log(personal.personalDetailsId);
         this.service.updatePersonalDetail(personal).subscribe();
     }
 
-    clearInputFields() {
+    // clearInputFields() {
 
-        this.formSubmitted = false;
-        setTimeout(() => {
-            this.response = '';
-            this.personalForm.reset();
-        }, 1000);
+    //     this.formSubmitted = false;
+    //     setTimeout(() => {
+    //         this.response = '';
+    //         this.personalForm.reset();
+    //     }, 1000);
 
-    }
+    // }
 
 
     fileChangeEvent(fileInput: any) {

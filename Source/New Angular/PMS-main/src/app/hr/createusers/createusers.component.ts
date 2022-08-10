@@ -131,7 +131,8 @@ export class CreateusersComponent implements OnInit {
     complete:()=>{
       this.toaster.open({ text: 'User has been created successfully', position: 'top-center', type: 'success' })
     }
-    });//data=>this.user.push(data)
+    });
+    //data=>this.user.push(data)
     setTimeout(
       () => {
         location.reload(); // the code to execute after the timeout

@@ -20,7 +20,7 @@ namespace PMS_API
                 throw new ValidationException($"Enter valid Email address and user supplied Email as {user.Email}");
             if(string.IsNullOrEmpty(user.UserName))
                 throw new ValidationException($"UserName should not be null and user supplied UserName as {user.UserName}");
-            if(!Regex.IsMatch(user.UserName, @"^[A-Z]{1}[a-z]\.[a-z]{5,15}$"))
+            if(!Regex.IsMatch(user.UserName, @"^[A-Z]{1}[a-z]{2,10}\.[a-z]{5,15}$"))
                 throw new ValidationException($"Enter valid UserName and user supplied UserName as {user.UserName}");
             if(string.IsNullOrEmpty(user.Password))
                 throw new ValidationException($"Password should not be null and user supplied Password as {user.Password}");
@@ -38,7 +38,7 @@ namespace PMS_API
             //     throw new ValidationException($"Designation not be null and user supplied Designation is {user.DesignationId}");
             if(string.IsNullOrEmpty(user.ReportingPersonUsername))
                 throw new ValidationException($"Reporting Person should not be null and user supplied Reporting Person as {user.ReportingPersonUsername}");
-            if(!Regex.IsMatch(user.ReportingPersonUsername, @"^[A-Z]{1}[a-z]\.[a-z]{5,15}$"))
+            if(!Regex.IsMatch(user.ReportingPersonUsername, @"^[A-Z]{1}[a-z]{2,10}\.[a-z]{5,15}$"))
                 throw new ValidationException($"Enter valid Reporting Person's UserName and user supplied Reporting Person as {user.ReportingPersonUsername}");
             return true;
 

@@ -13,7 +13,6 @@ import { Toaster } from 'ngx-toast-notifications';
 })
 export class ChangepasswordComponent implements OnInit {
 
-  //userValue: User[] = [];
   error: string  ;
   changepasswordForm:FormGroup;
   formSubmitted: boolean = false;
@@ -59,7 +58,6 @@ export class ChangepasswordComponent implements OnInit {
   }
 
   logout() {
-    //this.service.ClearToken();
     console.log('logout works') 
   }
 

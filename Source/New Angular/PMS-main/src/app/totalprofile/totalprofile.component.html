@@ -7,17 +7,8 @@
   
   <div class="main">
     <h1 class="heading1">Total Profiles</h1>
-    <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
     <div class="kcard" 
       *ngFor="let item of totalProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      
-      <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded" [src]="'data:image/jpg;base64,'+item.userProfileImage"
-        style="border-radius:50%;width:45%;height:45%"
-        width="50%" /></a>
-      <div class="status">
-        <p>Status </p>
-        <p class="card-text">{{item.userProfileStatus}}</p>
-      </div> -->
       <div class="card-body">
         <div class="row rone ">
           <div class="col-md-8">
