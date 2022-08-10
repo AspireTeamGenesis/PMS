@@ -1,0 +1,6 @@
+[2022-08-10 08:52:11.559 +05:30  INF]  User profile is available. Using 'C:\Users\chitrarasu.venu\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-10 08:52:12.677 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-10 08:52:12.679 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-10 08:52:12.697 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-10 08:52:12.698 +05:30  INF]  Hosting environment: Development
+[2022-08-10 08:52:12.698 +05:30  INF]  Content root path: C:\Users\chitrarasu.venu\Documents\GitHub\PMS\Source\PMS.API\

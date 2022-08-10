@@ -17,14 +17,7 @@ export class CreateprofileComponent implements OnInit {
   profileDetails:any;
   profileId:number=0;
   ngOnInit(): void {
-    this.getUserProfile();
-  }
-
-  getUserProfile(){
-    this.service.getUserProfile().subscribe( {
-      next:(data)=>{this.profileDetails=data,
-      console.log(this.profileDetails)}      
-    })
+    
   }
   createProfile()
   {

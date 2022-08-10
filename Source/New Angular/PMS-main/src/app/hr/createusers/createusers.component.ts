@@ -13,9 +13,7 @@ import { UserserviceService } from 'src/app/service/userservice.service';
   styleUrls: ['./createusers.component.css']
 })
 export class CreateusersComponent implements OnInit {
-  IsLoading:boolean=false;
   error:string=""
-  createusers:any;
   filteredOptions:any;
   Mobilenumber:any;
   Gender:any;
@@ -58,7 +56,7 @@ export class CreateusersComponent implements OnInit {
   // });
 
   constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient,private toaster: Toaster) { 
-    this.userForm=this.FB.group({});
+    
   }
   
  
@@ -71,6 +69,7 @@ export class CreateusersComponent implements OnInit {
       UserName: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(30),Validators.pattern("^[A-z][a-z|\.|\s]+$")]],
       Password: ['', [Validators.required,Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")]],
       Gender: ['', [Validators.required]],
+      CountryCode:['', [Validators.required]],
       MobileNumber: ['', [Validators.required,Validators.pattern('[0-9]*')]],
       Organisation: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
       Designation: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(40)]],
@@ -79,43 +78,46 @@ export class CreateusersComponent implements OnInit {
     this.getOrganisation();
     this.getDesignation();
   }
-  onSelectReportingPersonUsername(event:any)
-  {
-    this.selectedUsername = event.option.id;
-    console.log(this.selectedUsername)
-    // this.service.getProfileBytotalStatus(this.selectedUsername).subscribe(data=>{
-    // this.awardeeData=data;
-    // this.isAwardee=1;
-    // console.log(this.awardeeData);
-  }
+  // onSelectReportingPersonUsername(event:any)
+  // {
+  //   this.selectedUsername = event.option.id;
+  //   console.log(this.selectedUsername)
+  // }
   getDesignation()
   {
-    this.service.getDesignation().subscribe(data => this.designationValue=data);
+    this.service.getDesignation().subscribe({next:(data)=>{
+      this.designationValue=data;
+
+    }
+  });
     console.log(this.designationValue);
     // console.log(data);
   }
   getOrganisation()
   {
-    this.service.getOrganisation().subscribe(data => this.organisationValue=data);
+    this.service.getOrganisation().subscribe({next:(data)=>{
+      this.organisationValue=data;
+    }
+    
+  });
     console.log(this.organisationValue);
   }
 
   userdata(){
-    this.IsLoading=true
     this.formSubmitted = true ;
-    var userDetails:any={
-      "userId":0,
-     "name": this.Name,
-     "email": this.Email,
-     "userName": this.UserName,
-     "password": this.Password,
-    "countryCodeId": this.CountryCodeValue,
-     "mobileNumber": this.MobileNumber,
-     "genderId":this.GenderValue,
-     "organisationId":this.OrganisationValue,
+    const userDetails ={
+     userId:0,
+     name: this.userForm.value['Name'],
+     email: this.userForm.value['MailAddress'],
+     userName: this.userForm.value['UserName'],
+     password: this.userForm.value['Password'],
+     countryCodeId: this.userForm.value['CountryCode'],
+     mobileNumber: this.userForm.value['MobileNumber'],
+     genderId:this.userForm.value['Gender'],
+     organisationId:this.userForm.value['Organisation'],
     //  "organisationId":2,
-     "designationId":this.DesignationValue,
-     "reportingPersonUsername":this.ReportingPersonUsername,
+     designationId:this.userForm.value['Designation'],
+     reportingPersonUsername:this.userForm.value['ReportingPersonUsername'],
     };
  
 
@@ -124,7 +126,6 @@ export class CreateusersComponent implements OnInit {
     error:(error)=>{
       this.error=error.error;
       console.log(this.error);
-      this.IsLoading=false;
     },
     
     complete:()=>{

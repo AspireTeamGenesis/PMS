@@ -12,7 +12,7 @@ namespace PMS_API
         {
             try
             {
-                return _db.Designations!.Include(d=>d.users).ToList();
+                return _db.Designations!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {

@@ -2,95 +2,83 @@
 <app-sidebar></app-sidebar>
 <script src="https://kit.fontawesome.com/968b7ca54c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
-<div class="container d-flex justify-content-center table-box">
-  <div class="main">
-    <h1 class ="heading1"style="margin-top: 3%; text-align: center; font size: 15px; font-weight: bold;color:#967bb6 ;font family: sans-serif">  Waiting Profile</h1>
-    <!-- <app-search (SearchtextChanged)="searchActive($event)"></app-search> -->
-    <div class="kcard"
-      *ngFor="let item of waitingProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
-      <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
-          [src]="'data:image/jpg;base64,'+item.userProfileImage" 
-          style="border-radius:50%;width:45%;height:45%"
-          width="50%" /></a> -->
-      <!-- <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top" src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
-          alt="Card image cap"></a> -->
-      <!-- <div class="status">
-        <p>Status </p>
-        <p class="card-text">{{item.userProfileStatus}}</p>
-      </div> -->
-      <div class="card-body">
-        <div class="row rone ">
-          <div class="col-md-8">
-            <div *ngIf="item.userProfileImage!==''&&item.userProfileImage!==null">
-              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
-                  [src]="'data:image/jpg;base64,'+item.userProfileImage" width="60%" /></a>
+<div class="content">
+  <div class="container">
+      <h1 class ="heading1">  Waiting Profile</h1>
+      <div class="kcard"
+        *ngFor="let item of waitingProfiles | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+        <div class="card-body">
+          <div class="row rone ">
+            <div class="col-md-8">
+              <div *ngIf="item.userProfileImage!==''&&item.userProfileImage!==null">
+                <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="n-rounded"
+                    [src]="'data:image/jpg;base64,'+item.userProfileImage" width="60%" /></a>
+              </div>
+              <div *ngIf="item.userProfileImage===null||item.userProfileImage===''">
+                <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
+                    src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Card image cap" width="50%"></a>
+              </div>
             </div>
-            <div *ngIf="item.userProfileImage===null||item.userProfileImage===''">
-              <a [routerLink]="['../viewprofilebycard',item.userId]"><img class="card-img-top"
-                  src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png" alt="Card image cap" width="50%"></a>
+            <div class="col-md-4 pt-4">
+              <p>Status </p>
+              <p>{{item.userProfileStatus}}</p>
             </div>
           </div>
-          <div class="col-md-4 pt-4">
-            <p>Status </p>
-            <p>{{item.userProfileStatus}}</p>
-          </div>
         </div>
-      </div>
-      <div class="card-body">
-        <p class="card-text1"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
-          Person-{{item.reportingPerson}}</p>
-        <br>
-        <h2>
-          <!-- <div class="tooltip1">
-            <i [routerLink]="['/sharepage']" class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
-            <span class="tooltip1text">Click here to edit</span>
-          </div> -->
-         
-          <div class="tooltip1">
-            <i class="fa fa-paper-plane "></i>
-            <span class="tooltip1text">Request to Update</span>
+        <div class="card-body">
+          <p class="card-text1"><br>{{item.name}} - {{item.userDesignation}}<br>Reporting
+            Person-{{item.reportingPerson}}</p>
+          <br>
+          <h2>
+            <!-- <div class="tooltip1">
+              <i [routerLink]="['/sharepage']" class="fa fa-pen-to-square fa-xs" (click)="editToUpdate()"></i>
+              <span class="tooltip1text">Click here to edit</span>
+            </div> -->
+           
+            <div class="tooltip1">
+              <i class="fa fa-paper-plane "></i>
+              <span class="tooltip1text">Request to Update</span>
+            </div>
+            <div class="tooltip1">
+              <i [routerLink]="['/sharepage',item.name]" class="fa fa-share-nodes"  ></i>
+              <span class="tooltip1text">Click here to share</span>
+            </div>
+            <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
+            <i class="fa fa-trash"></i> -->
+  
+            <!-- <i class="fa fa-trash"></i> -->
+          </h2>
+          <div class="container">
+            <div class="div1">
+              <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)">
+                <button class="rounded1">
+                  <h2 class="button1">
+                    <div class="tooltip1">
+                      <i class="fa fa-check"></i>
+                      <span class="tooltip1text">Click here to approve</span>
+                    </div>
+                  </h2>
+                </button>
+              </a>
+            </div>
+            <div class="div1">
+              <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,3)">
+                <button class="rounded">
+                  <h2 class="button1">
+                    <div class="tooltip1">
+                      <i class="fa fa-xmark"></i>
+                      <span class="tooltip1text">Click here to decline</span>
+                    </div>
+                  </h2>
+                </button>
+              </a>
+            </div>
           </div>
-          <div class="tooltip1">
-            <i [routerLink]="['/sharepage',item.name]" class="fa fa-share-nodes"  ></i>
-            <span class="tooltip1text">Click here to share</span>
-          </div>
-          <!-- <i [routerLink]="['../editUser',item.userId]" class="fa fa-pencil fa-sm"></i><i class=""></i>
-          <i class="fa fa-trash"></i> -->
-
-          <!-- <i class="fa fa-trash"></i> -->
-        </h2>
-        <div class="container">
-          <div class="div1">
-            <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,1)">
-              <button class="rounded1">
-                <h2 class="button1">
-                  <div class="tooltip1">
-                    <i class="fa fa-check"></i>
-                    <span class="tooltip1text">Click here to approve</span>
-                  </div>
-                </h2>
-              </button>
-            </a>
-          </div>
-          <div class="div1">
-            <a [routerLink]="['/waitingprofile']" (click)="acceptorrejectprofile(item.userProfileId,3)">
-              <button class="rounded">
-                <h2 class="button1">
-                  <div class="tooltip1">
-                    <i class="fa fa-xmark"></i>
-                    <span class="tooltip1text">Click here to decline</span>
-                  </div>
-                </h2>
-              </button>
-            </a>
-          </div>
+  
         </div>
-
       </div>
     </div>
+    <div class="mt-3 pagination">
+      <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+    </div>
   </div>
-  <div class="mt-3 pagination">
-    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
-  </div>
-</div>

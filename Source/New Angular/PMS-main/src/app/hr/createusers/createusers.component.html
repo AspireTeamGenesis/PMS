@@ -1,21 +1,29 @@
 <app-topbar></app-topbar>
 <app-hrsidebar></app-hrsidebar>
 <div class="container d-flex justify-content-center table-box">
-  <form  class="form" style="margin-top:110px;">
+  <form [formGroup]="userForm" class="form" style="margin-top:110px;">
     <div class="progressbar">
       <div class="progress" id="progress"></div>
       <div class="form-step form-step-active">
         <h1 style="margin-top: -35px; text-align: center;">User Creation</h1>
         <div class="input-group">
-          <label for="personaldetails">Name</label>
-          <input type="text" name="Name" [(ngModel)]="Name" id="personaldetails" placeholder="Enter User's name" />
-          <!-- <div *ngIf="registerForm.controls['Name'].invalid && registerForm.controls['Name'].touched">
-            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['required']">Name is
-                required</span>
-            <span class="text-danger" *ngIf="registerForm.controls['Name'].errors?.['pattern']">Name should
-                contain only characters</span>
-        </div>  -->
-        </div>
+          <label for="Name">Name</label>
+          <input type="text" name="Name" id="Name" placeholder="Enter Name"
+              [class.is-invalid]="(formSubmitted && userForm.controls['Name'].invalid )||userForm.controls['Name'].invalid && userForm.controls['Name'].touched"
+              formControlName="Name">
+          <div
+              *ngIf="(formSubmitted)||userForm.controls['Name'].invalid && userForm.controls['Name'].touched">
+              <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['required']">Name
+                  is
+                  required</span>
+              <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['minlength']">Name
+                  is too
+                  short</span>
+              <span class="text-danger" *ngIf="userForm.controls['Name'].errors?.['maxlength']">Degree
+                  is too
+                  long</span>
+          </div>
+      </div>
         <div class="input-group">
           <label for="personaldetails">Mail Address</label>
           <input type="email" name="Email" [(ngModel)]="Email" id="personaldetails"

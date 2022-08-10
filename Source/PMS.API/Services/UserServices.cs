@@ -119,7 +119,7 @@ namespace PMS_API
                 item.CreatedBy = userId;
                 item.CreatedOn = DateTime.Now;
                 item.IsActive = true;
-                return userData.AddUser(item) ? true : false;              //Ternary operator
+                return userData.AddUser(item) ;             //Ternary operator
 
             }
             catch (ValidationException exception)

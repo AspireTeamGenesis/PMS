@@ -53,7 +53,7 @@ export class UserserviceService {
   // })
   // constructor(private http: HttpClient) { }
 
-  getDesignation():Observable<Designation[]>
+  getDesignation()
   {
     return this.http.get<Designation[]>('https://localhost:7021/Designation/ViewDesignations');
   }
@@ -112,9 +112,8 @@ export class UserserviceService {
 
   addEmployee(userValue:User):Observable<User>
   {
-  const url='https://localhost:7021/User/AddUser';
   console.warn(userValue);
-  return this.http.post<User>(url,userValue,{headers : this.headers});
+  return this.http.post<User>('https://localhost:7021/User/AddUser',userValue,{headers : this.headers});
   }
 
   CancelDrive(userId:number){

@@ -12,8 +12,8 @@ namespace PMS_API
         {
             try
             {
-                //IEnumerable<Designation>designations = new List<Designation>();
-                return from designation in _designationDataAccessLayer.GetDesignations() where designation.IsActive == true select designation;
+                
+                return from designation in _designationDataAccessLayer.GetDesignations() select designation;
             }
             catch (Exception ex)
             {
