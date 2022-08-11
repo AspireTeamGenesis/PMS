@@ -37,31 +37,10 @@ export class CreateusersComponent implements OnInit {
   userForm:FormGroup;
   formSubmitted: boolean = false;
   selectedUsername:any;
-  // error: any;
-  //TO get the input from the user
-
-
-
-  //  registerForm = this.FB.group({
-  //     Name: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  //     Email: ['', [Validators.required, Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
-  //     UserName: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  //     Password: ['', [Validators.required, Validators.pattern('')]],
-  //     GenderValue: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  //     CountryCodeValue:['',[Validators.required,Validators.pattern('[0-9][+]*')]],
-  //     MobileNumber:['',[Validators.required,Validators.pattern('[0-9]*')]],
-  //     organisationValue: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  //     DesignationValue: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  //     ReportingPerson: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-  // });
 
   constructor(private FB: FormBuilder,private service:UserserviceService,private http: HttpClient,private toaster: Toaster) { 
     
   }
-  
- 
-  
-
   ngOnInit(): void {
     this.userForm=this.FB.group({
       Name: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(30)]],
@@ -78,37 +57,38 @@ export class CreateusersComponent implements OnInit {
     this.getOrganisation();
     this.getDesignation();
   }
-  // onSelectReportingPersonUsername(event:any)
-  // {
-  //   this.selectedUsername = event.option.id;
-  //   console.log(this.selectedUsername)
-  // }
   getDesignation()
   {
-    this.service.getDesignation().subscribe(data => this.designationValue=data);
-    //console.log(this.designationValue);
+    this.service.getDesignation().subscribe({next:(data)=>{
+      this.designationValue=data;
+
+    }
+  });
+    console.log(this.designationValue);
     // console.log(data);
   }
   getOrganisation()
   {
-    this.service.getOrganisation().subscribe(data => this.organisationValue=data);
-    //console.log(this.organisationValue);
+    this.service.getOrganisation().subscribe({next:(data)=>{
+      this.organisationValue=data;
+    }
+    
+  });
+    console.log(this.organisationValue);
   }
 
   userdata(){
-    //this.IsLoading=true
     this.formSubmitted = true ;
-    var userDetails:any={
-      "userId":0,
-    "name": this.Name,
-    "email": this.Email,
-    "userName": this.UserName,
-    "password": this.Password,
-    "countryCodeId": this.CountryCodeValue,
-    "mobileNumber": this.MobileNumber,
-    "genderId":this.GenderValue,
-    "organisationId":this.OrganisationValue,
-    //  "organisationId":2,
+    const userDetails ={
+     userId:0,
+     name: this.userForm.value['Name'],
+     email: this.userForm.value['MailAddress'],
+     userName: this.userForm.value['UserName'],
+     password: this.userForm.value['Password'],
+     countryCodeId: this.userForm.value['CountryCode'],
+     mobileNumber: this.userForm.value['MobileNumber'],
+     genderId:this.userForm.value['Gender'],
+     organisationId:this.userForm.value['Organisation'],
      designationId:this.userForm.value['Designation'],
      reportingPersonUsername:this.userForm.value['ReportingPersonUsername'],
     };
@@ -125,7 +105,6 @@ export class CreateusersComponent implements OnInit {
       this.toaster.open({ text: 'User has been created successfully', position: 'top-center', type: 'success' })
     }
     });
-    //data=>this.user.push(data)
     setTimeout(
       () => {
         location.reload(); // the code to execute after the timeout
