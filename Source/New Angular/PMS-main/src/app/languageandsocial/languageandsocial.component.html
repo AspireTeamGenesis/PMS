@@ -6,7 +6,7 @@
         <div class="progressbar">
             <div class="progress" id="progress"></div>
 
-            <div [routerLink]="['/editoriginalpersonal']" class="progress-step " data-title="Personal"></div>
+            <div [routerLink]="['/personal']" class="progress-step " data-title="Personal"></div>
             <div class="progress-step progress-step-active" data-title="Language & Social Media"></div>
             <div [routerLink]="['/education']" class="progress-step " data-title="Education"></div>
             <div [routerLink]="['/project']" class="progress-step " data-title="Project"></div>
@@ -25,39 +25,91 @@
                     <td>
                         <!-- <button class="btn " style=" background-color:#866ec7; border-radius: 500%; ">
                             <i (click)="addLanguage()" class="fa fa-plus fa-xs"> </i> </button> -->
-                            <button class="plus" (click)="addLanguage()"  > + </button>
-                        </td>
+                        <button class="plus" (click)="addLanguage(read,write,speak)"> + </button>
+                    </td>
 
                 </tr>
             </table>
-            <input type="text" id="personaldetails" name="languageName" [(ngModel)]="languageDetails.languageName"
-                style="border-color: black;" placeholder="Enter your Language" value="{{languageDetails.languageName}}"
-                id="LanguagesKnown" [class.is-invalid]="(formSubmitted && langsocialForm.controls['LanguageName'].invalid )||langsocialForm.controls['LanguageName'].invalid && langsocialForm.controls['LanguageName'].touched"
-                formControlName="LanguageName">
-                <div
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" id="personaldetails" name="languageName" #lang
+                         style="border-color: black;"
+                        placeholder="Enter your Language" value="{{languageDetails.languageName}}" id="LanguagesKnown"
+                        [class.is-invalid]="(formSubmitted && langsocialForm.controls['LanguageName'].invalid )||langsocialForm.controls['LanguageName'].invalid && langsocialForm.controls['LanguageName'].touched"
+                        formControlName="LanguageName">
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col">
+                            <input type="checkbox" id="LanguagesKnown" name="read"
+                                 formControlName="Read" #read>
+                            <label for="flexCheckDefault">
+                                Read
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" id="LanguagesKnown" name="write"
+                                 formControlName="Write" #write>
+                            <label for="flexCheckChecked">
+                                Write
+                            </label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" id="personaldetails" name="speak" 
+                                 formControlName="Speak" #speak>
+                            <label for="flexCheckChecked">
+                                Speak
+                            </label>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div
                 *ngIf="(formSubmitted)||langsocialForm.controls['LanguageName'].invalid && langsocialForm.controls['LanguageName'].touched">
-                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['required']">Language Name is
-                  required</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['minlength']">Language Name is
-                  too short</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['maxlength']">Language Name is
-                  too long</span>
-              </div>    
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['required']">Language
+                    Name is
+                    required</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['minlength']">Language
+                    Name is
+                    too short</span>
+                <span class="text-danger" *ngIf="langsocialForm.controls['LanguageName'].errors?.['maxlength']">Language
+                    Name is
+                    too long</span>
+            </div>
 
-            <div class="mt-3 container shadow  bg-body rounded" *ngFor="let item of personalDetails?.language">
-                <div>
-                    <div class="card-body">
-                        <div class="row rone ">
-                            <div class="col-md-10">
-                                <p>{{item.languageName}}</p>
-                            </div>
-                            <div class="col-md-1">
-                                <button class="btn mx-4"><i (click)="disableLanguage(item.languageId)" class="fa fa-solid fa-trash"></i></button>
+            <div class="mt-4 container shadow  bg-body rounded" *ngFor="let item of personalDetails?.language">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>{{item.languageName}}</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" [checked]="item.read"><label
+                                        for="flexCheckChecked">Read</label>
+                                </div>
+                                <div class="col">
+                                    <input type="checkbox" [checked]="item.write"><label
+                                        for="flexCheckChecked">Write</label>
+                                </div>
+                                <div class="col">
+                                    <input type="checkbox" [checked]="item.speak"><label
+                                        for="flexCheckChecked">Speak</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn mx-4"><i (click)="disableLanguage(item.languageId)"
+                                            class="fa fa-solid fa-trash"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <br>
 
             <table>
@@ -66,7 +118,7 @@
                         <label for="personaldetails">Social Media &nbsp;&nbsp;</label>
                     </td>
                     <td>
-                       
+
                         <button class="plus1" (click)="addSocialMedia()"> + </button>
                     </td>
                 </tr>
@@ -76,34 +128,43 @@
 
             <label for="personaldetails">Social Media Name</label>
             <input name="socialMedia_Name" type="text" id="personaldetails" placeholder="Enter Social media name"
-                [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;" [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaName'].invalid )||langsocialForm.controls['SocialMediaName'].invalid && langsocialForm.controls['SocialMediaName'].touched"
+                [(ngModel)]="socialMedia.socialMedia_Name" required="" style="border-color: black;"
+                [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaName'].invalid )||langsocialForm.controls['SocialMediaName'].invalid && langsocialForm.controls['SocialMediaName'].touched"
                 formControlName="SocialMediaName">
-                <div
+            <div
                 *ngIf="(formSubmitted)||langsocialForm.controls['SocialMediaName'].invalid && langsocialForm.controls['SocialMediaName'].touched">
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['required']">Social Media Name is
-                  required</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['minlength']">Social Media Name is
-                  too short</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['maxlength']">Social Media Name is
-                  too long</span>
-              </div>   
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['required']">Social
+                    Media Name is
+                    required</span>
+                <span class="text-danger"
+                    *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['minlength']">Social Media Name is
+                    too short</span>
+                <span class="text-danger"
+                    *ngIf="langsocialForm.controls['SocialMediaName'].errors?.['maxlength']">Social Media Name is
+                    too long</span>
+            </div>
 
             <br>
             <label for="personaldetails">Social Media Link</label>
-            <input name="socialMedia_Link" type="link" id="personaldetails" placeholder="Enter Social media link"
-                [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;" [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaLink'].invalid )||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched"
+            <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link"
+                [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;"
+                [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaLink'].invalid )||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched"
                 formControlName="SocialMediaLink">
-                <div
+            <div
                 *ngIf="(formSubmitted)||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched">
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['required']">Social Media Link is
-                  required</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['minlength']">Social Media Link is
-                  too short</span>
-                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['maxlength']">Social Media Link is
-                  too long</span>
-              </div>   
-                
+                <span class="text-danger" *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['required']">Social
+                    Media Link is
+                    required</span>
+                <span class="text-danger"
+                    *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['minlength']">Social Media Link is
+                    too short</span>
+                <span class="text-danger"
+                    *ngIf="langsocialForm.controls['SocialMediaLink'].errors?.['maxlength']">Social Media Link is
+                    too long</span>
+            </div>
+
         </div>
+
         <div class="mt-3 container shadow border bg-body rounded" *ngFor="let item of personalDetails?.socialmedia">
             <div>
                 <div class="card-body">
@@ -114,10 +175,8 @@
                                     <p>{{item.socialMedia_Name}}</p>
                                 </div>
                                 <div class="col-0">
-                                    <!-- <p>{{item.socialMedia_Link}}</p> -->
-                                    <p><a href="{{item.socialMedia_Link}}" target="_blank" rel="noopener noreferrer">{{item.socialMedia_Link}}</a></p>
+                                    <p>{{item.socialMedia_Link}}</p>
                                 </div>
-                            <!-- <a href="https://www.w3.org/">W3C</a> -->
                                 <div class="col-1">
                                     <button (click)="disableSocialMedia(item.socialMedia_Id)" class="btn"><i
                                             class="fa fa-solid fa-trash"></i></button>
@@ -131,11 +190,11 @@
         <br>
         <div class="row">
             <a [routerLink]="['/editoriginalpersonal']" class="btn btn-next width-50 ml-auto">Previous</a>
-    
+
             <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>
-    
-            <a [routerLink]="['/education']"  class="btn btn-next width-50 ml-auto">Next</a>
-    
-          </div>
+
+            <a [routerLink]="['/education']" class="btn btn-next width-50 ml-auto">Next</a>
+
+        </div>
     </form>
 </div>

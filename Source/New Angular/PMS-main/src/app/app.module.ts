@@ -10,7 +10,6 @@ import { CreateusersComponent } from './hr/createusers/createusers.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { HrhomeComponent } from './hr/hrhome/hrhome.component';
-import { HomeComponent } from './hr/home/home.component';
 import { SearchComponent } from './hr/search/search.component';
 import { LoginComponent } from './hr/login/login.component';
 import { CardComponent } from './hr/card/card.component';
@@ -70,7 +69,6 @@ import { DummyComponent } from './dummy/dummy.component';
     SidebarComponent,
     TopbarComponent,
     HrhomeComponent,
-    HomeComponent,
     SearchComponent,
     LoginComponent,
     CardComponent,
