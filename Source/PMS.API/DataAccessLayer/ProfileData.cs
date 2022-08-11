@@ -936,7 +936,7 @@ namespace PMS_API
             if (profile == null || profile.ProfileId <= 0 || profile.UserId <= 0)
                 throw new ValidationException("profileId should not null");
 
-            if (_context.profile!.Any(e => e.ProfileId.Equals(profile.ProfileId)))
+            if (!_context.profile!.Any(e => e.ProfileId.Equals(profile.ProfileId)))
                 throw new ValidationException("Profile does not exists");
             try
             {

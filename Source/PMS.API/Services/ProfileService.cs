@@ -26,6 +26,7 @@ namespace PMS_API
                 profile.CreatedBy = profile.UserId;
                 profile.CreatedOn = DateTime.Now;
                 profile.IsActive = true;
+                profile.UpdatedOn=DateTime.Now;
                 return profileData.AddProfile(profile) ? true : false;
             }
             catch (Exception exception)

@@ -27,7 +27,7 @@
                     [class.is-invalid]="(formSubmitted && achievementForm.controls['AchievementType'].invalid )|| achievementForm.controls['AchievementType'].invalid && achievementForm.controls['AchievementType'].touched||achievementForm.controls['AchievementType'].untouched"
                     id="achievementTypeValue" formControlName="AchievementType" required class="textbox-border">
 
-                    <option value="0" hidden>Select type of Achievement</option>
+                    <option value="" selected>Select type of Achievement</option>
                     <option value="1">Award</option>
                     <option value="2">Certificates</option>
                 </select>
