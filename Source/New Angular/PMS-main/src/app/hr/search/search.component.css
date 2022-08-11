@@ -92,14 +92,13 @@ img {
   } */
   .search {
     position: relative;
-    width: 66%;
     padding-left: 20px;
-    padding-top:80px;
+    padding-top:0px!important;
     justify-self: center;
 }
 
 .search input {
-    width: 150%;
+    width: 100%;
     /* min-width: 128px; */
     height: 40px;
     padding: 0 40px;
@@ -116,7 +115,8 @@ img {
     padding-left:15px;
     /* padding-top:-70px; */
     /* right: 5px; */
-    top: 93px;
+    top: 1rem;
+    left:1rem;
     cursor: pointer;
 }
 
@@ -192,27 +192,28 @@ img {
 
 .main {
     position: fixed;
-    top: 60px;
+    top: 5.2rem;
     width: calc(100% - 260px);
     min-height: calc(100vh - 60px);
     left: 260px;
     background: #f5f5f5;
+    padding-top: 2rem;
 }
 .filters
 {
     width: 100%;
-    padding: 20px 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    /* padding: 20px 20px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .filters .filter{
-     padding: 5px 10px; 
+     /* padding: 5px 10px;  */
     /* display: flex; */
     /* align-items: center; */
     /* justify-content: space-between; */
-    background-color:#fff;
-     border-radius: 10px
+    /* background-color:#fff; */
+     /* border-radius: 10px */
      /* box-shadow: 0 70px 25px rgba(0, 0, 0, 0.08);  */
 }
 
@@ -353,8 +354,8 @@ img {
         font-size: 20px;
     }
     .search {
-        width: 80%;
-    }
+        padding-top: 2rem;
+        }
     .search input {
         padding: 0 20px;
     }
@@ -414,6 +415,8 @@ img {
 .people .peoples img{
     /* padding-left:20%; */
     margin-left: 30%;
+    
+
     width:150px;
     height:150px;
     /* border-radius: 60px; */
@@ -435,7 +438,7 @@ img {
 }
  #button7
 {
-    width:20%;
+    width:40%;
     font-size:100%;
     border: 0;
     background: #967bb6;

@@ -5,13 +5,16 @@
 <div class="container d-flex justify-content-center table-box">
     <div class="main">
         <!-- code type here -->
-        <div class="search">
-                <input type="text" name="search" [(ngModel)]="searchtext" (input)="onsearch()" placeholder="search by name, project">
-                <label for="search"><i class="fas fa-search"></i></label>
+        <div class="row shadow p-3 mb-5 rounded">
+            <div class=" col-lg-6">
+                <div class="search"><input type="text" name="search" [(ngModel)]="searchtext" (input)="onsearch()"
+                        placeholder="search by name, project">
+                    <label for="search"><i class="fas fa-search"></i></label>
+                </div>
             </div>
-            <div class="filters">
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Designation:<select class="h-100 py-2" name="Designation">
+            <div class="col-lg-3">
+                <div class="filter align-items-center justify-content-between ">
+                    <select class=" py-2" name="Designation">
                         <!-- <div class="select"> -->
                         <option value="select Designation">Select Designation</option>
                         <option value="CEO">CEO</option>
@@ -22,108 +25,14 @@
                         <!-- </div> -->
                     </select>
                 </div>
-                
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                    Domain:<select class="h-100 py-2" name="Domain">
-                        <option value="select Domain">Select Domain</option>
-                        <option value="IT">Data Science</option>
-                        <option value="medium">AI</option>
-                        <option value="large">Cloud Computing</option>
-                        <option value="large">Cyber Security</option>
-                    </select>
-                
-                </div>
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                    Technology:<select class="h-100 py-2" name="Technology">
-                        <option value="select Technology">Select Technology</option>
-                        <option value="NET">DotNet</option>
-                        <option value="Java">Java</option>
-                        <option value="Lamp">Lamp</option>
-                        <option value="Lamp">RPA</option>
-                    </select>
-                
-                </div>
-                
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     College:<select class="h-100 py-2" name="College">
-                        <br>
-                        <option value="select college">Select College</option>
-                        <option value="Krishna">Krishna</option>
-                        <option value="Bannari">Bannari</option>
-                        <option value="Kumaraguru">Kumaraguru</option>
-                        <option value="Kumaraguru">PSNA</option>
-                    </select>
-                
-                </div>
-                
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                    Experience:
-                    <div class="">
-                         <select class="h-50 py-2 " name="Min">
-                            <option value="Min">Min</option>
-                            <option value="small">1</option>
-                            <option value="medium">2</option>
-                            <option value="large">3</option>
-                            <option value="large">4</option>
-                            <option value="large">5</option>
-                            <option value="large">6</option>
-                            <option value="large">7</option>
-                            <option value="large">8</option>
-                            <option value="large">9</option>
-                            <option value="large">10</option>
-                            <option value="large">11</option>
-                            <option value="large">12</option>
-                            <option value="large">13</option>
-                            <option value="large">14</option>
-                            <option value="large">15</option>
-                            <option value="large">16</option>
-                            <option value="large">17</option>
-                            <option value="large">18</option>
-                            <option value="large">19</option>
-                            <option value="large">20</option>
-
-                        </select>
-                        <select class="h-50 py-2 mr-2" name="Max">
-                            <option value="Max">Max</option>
-                            <option value="small">1</option>
-                            <option value="medium">2</option>
-                            <option value="large">3</option>
-                            <option value="large">4</option>
-                            <option value="large">5</option>
-                            <option value="large">6</option>
-                            <option value="large">7</option>
-                            <option value="large">8</option>
-                            <option value="large">9</option>
-                            <option value="large">10</option>
-                            <option value="large">11</option>
-                            <option value="large">12</option>
-                            <option value="large">13</option>
-                            <option value="large">14</option>
-                            <option value="large">15</option>
-                            <option value="large">16</option>
-                            <option value="large">17</option>
-                            <option value="large">18</option>
-                            <option value="large">19</option>
-                            <option value="large">20</option>
-                        </select>
-                    
-                    </div>
-                </div>
-                <div class="filter py-3 d-flex align-items-center justify-content-between">
-                     Profile Status:<select class="h-100 py-2" name="Profile Status">
-                        <option value="select Profile Status">Select Status</option>
-                        <option value="Approved">Approved</option>
-                        <option value="Rejected">Rejected</option>
-                        <option value="Waiting for Approval">Waiting</option>
-                    </select>
-                    <!-- <button type="button" class="btn btn-info">Info</button> -->
-                
-                </div>
+               
             </div>
-                <div>
-                    <button id="button7" type="button" class="btn btn-primary">Apply</button>
-                </div>
-        <div  class="home">
+            <div class="col-lg-3">
+                <button id="button7" type="button" class="btn btn-primary   py-2">Apply</button>
+            </div>
+
+        </div>
+        <div class="home">
             <app-hrhome></app-hrhome>
             <!-- <app-card></app-card>  -->
         </div>

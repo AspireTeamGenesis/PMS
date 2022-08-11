@@ -16,22 +16,22 @@
         </div>
         <ul class="list-unstyled components mb-5 sidebar-items">
             <li>
-                <a [routerLink]="['/dashboard']" ><i class="fa-solid fa-person ml-4 sidebar-dashboard"></i>Dashboard</a>
+                <a [routerLink]="['/dashboard']" ><i class="fa-solid fa-chart-line ml-4 mr-4 sidebar-dashboard"></i>Dashboard</a>
             </li>
             <li>
                 <a [routerLink]="['/profilehome']" data-toggle="collapse" aria-expanded="false"> <i class="fa-solid fa-magnifying-glass ml-4 mr-4"></i>Search Profile</a> 
             </li>
             <li>
-                <a [routerLink]="['../myinfo']"><i class="fa-solid fa-user ml-4 mr-4"></i>My Info</a>   
+                <a [routerLink]="['../myinfo']"><i class="fa-solid fa-user ml-4 mr-4"></i> My Info</a>   
             </li>
             <li>
                 <a (click)="getProfileIdByUserId()"><i class="fa-solid fa-circle-plus ml-4 mr-4"></i>My Profile</a>
             </li>
             <li>
-                <a  [routerLink]="['/changepassword']"><i class="fa-solid fa-building ml-4 sidebar-changepassword"></i>Change Password</a>
+                <a  [routerLink]="['/changepassword']"><i class="fa-solid fa-key ml-4 mr-4 sidebar-changepassword"></i>Change Password</a>
             </li>
             <li>
-                <a (click)="logout()" routerLink=""><i class="fa-solid fa-layer-group ml-4 mr-4"></i>Sign Out</a>
+                <a (click)="logout()" routerLink=""><i class="fa-solid fa-right-from-bracket ml-4 mr-4"></i>Sign Out</a>
             </li>
         </ul>
     </div>

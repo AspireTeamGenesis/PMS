@@ -22,12 +22,12 @@ export class EditprojectComponent implements OnInit {
   for (let year = this.selectedYear; year >= 2000; year--) {
     this.years.push(year);
   }
-   }
-   projectDetails:any;
-   projectid:number=0;
-   profileId:number=0;
-   showMe: boolean = false;
-   formSubmitted: boolean = false;
+    }
+    projectDetails:any;
+    projectid:number=0;
+    profileId:number=0;
+    showMe: boolean = false;
+    formSubmitted: boolean = false;
     foot:boolean = true;
     projectfield: any = {
       projectId: 0,
@@ -93,29 +93,17 @@ export class EditprojectComponent implements OnInit {
           this.toaster.open({ text: 'Project edited successfully', position: 'top-center', type: 'success' });
         }
       });
-
   }
 
   toogletag()
-
   {
-
     this.showMe=!this.showMe;
-
   }
 
-
-
   footer()
-
   {
-
     this.foot=!this.foot;
-
     if(this.foot==false){this.foot=true};
-
-   
-
   }
 
 }

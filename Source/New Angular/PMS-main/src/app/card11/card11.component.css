@@ -409,6 +409,7 @@
 .fa-pencil
 {
     text-indent:2rem;
+    bottom: 2px;
 }
 
 .status{
@@ -439,6 +440,7 @@
 .tooltip1 {
     position: relative;
     display: inline-block;
+    cursor: pointer;
     /* border-bottom: 1px dotted black; */
   }
   

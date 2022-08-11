@@ -11528,3 +11528,7 @@ icon-right{
     visibility: visible;
     opacity: 1;
   }
+  a
+{
+    color: black;
+}

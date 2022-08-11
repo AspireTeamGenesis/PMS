@@ -6,7 +6,7 @@
 <div class="container d-flex justify-content-center table-box">
     <div class="main">
         <div class="kcard"
-            *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 4, currentPage: page,totalItems:totalLength}">
+            *ngFor="let item of data| filter : this.search | paginate: {itemsPerPage : 3, currentPage: page,totalItems:totalLength}">
             <a [routerLink]="['../hrprofile',item.userId]"><img class="card-img-top" src="./assets/img/profile.jpg"
                     alt="Card image cap"></a>
             <div class="status">

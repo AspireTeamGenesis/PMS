@@ -11321,3 +11321,6 @@ button {
     transition: 1.0s;
 
 }
+li{
+    cursor: pointer;
+}

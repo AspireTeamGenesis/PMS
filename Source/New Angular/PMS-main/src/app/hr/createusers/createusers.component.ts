@@ -85,36 +85,29 @@ export class CreateusersComponent implements OnInit {
   // }
   getDesignation()
   {
-    this.service.getDesignation().subscribe({next:(data)=>{
-      this.designationValue=data;
-
-    }
-  });
-    console.log(this.designationValue);
+    this.service.getDesignation().subscribe(data => this.designationValue=data);
+    //console.log(this.designationValue);
     // console.log(data);
   }
   getOrganisation()
   {
-    this.service.getOrganisation().subscribe({next:(data)=>{
-      this.organisationValue=data;
-    }
-    
-  });
-    console.log(this.organisationValue);
+    this.service.getOrganisation().subscribe(data => this.organisationValue=data);
+    //console.log(this.organisationValue);
   }
 
   userdata(){
+    //this.IsLoading=true
     this.formSubmitted = true ;
-    const userDetails ={
-     userId:0,
-     name: this.userForm.value['Name'],
-     email: this.userForm.value['MailAddress'],
-     userName: this.userForm.value['UserName'],
-     password: this.userForm.value['Password'],
-     countryCodeId: this.userForm.value['CountryCode'],
-     mobileNumber: this.userForm.value['MobileNumber'],
-     genderId:this.userForm.value['Gender'],
-     organisationId:this.userForm.value['Organisation'],
+    var userDetails:any={
+      "userId":0,
+    "name": this.Name,
+    "email": this.Email,
+    "userName": this.UserName,
+    "password": this.Password,
+    "countryCodeId": this.CountryCodeValue,
+    "mobileNumber": this.MobileNumber,
+    "genderId":this.GenderValue,
+    "organisationId":this.OrganisationValue,
     //  "organisationId":2,
      designationId:this.userForm.value['Designation'],
      reportingPersonUsername:this.userForm.value['ReportingPersonUsername'],

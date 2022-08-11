@@ -90,7 +90,7 @@
 
             <br>
             <label for="personaldetails">Social Media Link</label>
-            <input name="socialMedia_Link" type="text" id="personaldetails" placeholder="Enter Social media link"
+            <input name="socialMedia_Link" type="link" id="personaldetails" placeholder="Enter Social media link"
                 [(ngModel)]="socialMedia.socialMedia_Link" required="" style="border-color: black;" [class.is-invalid]="(formSubmitted && langsocialForm.controls['SocialMediaLink'].invalid )||langsocialForm.controls['SocialMediaLink'].invalid && langsocialForm.controls['SocialMediaLink'].touched"
                 formControlName="SocialMediaLink">
                 <div
@@ -114,8 +114,10 @@
                                     <p>{{item.socialMedia_Name}}</p>
                                 </div>
                                 <div class="col-0">
-                                    <p>{{item.socialMedia_Link}}</p>
+                                    <!-- <p>{{item.socialMedia_Link}}</p> -->
+                                    <p><a href="{{item.socialMedia_Link}}" target="_blank" rel="noopener noreferrer">{{item.socialMedia_Link}}</a></p>
                                 </div>
+                            <!-- <a href="https://www.w3.org/">W3C</a> -->
                                 <div class="col-1">
                                     <button (click)="disableSocialMedia(item.socialMedia_Id)" class="btn"><i
                                             class="fa fa-solid fa-trash"></i></button>

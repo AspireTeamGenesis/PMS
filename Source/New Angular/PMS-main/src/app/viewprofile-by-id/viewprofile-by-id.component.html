@@ -24,7 +24,6 @@
 						<img class="n-rounded" [src]="'data:image/jpg;base64,'+profileDetails?.personaldetails.image"
 							width="80%" />
 					</div>
-
 					<h2 class="ml-4">{{userDetails.name}} </h2>
 					<hr class="mt-n1" />
 					<div class="card-body mt-n3">
@@ -34,7 +33,7 @@
 						<h6><i class="fas fa-envelope mtr-1"></i>{{userDetails.email}}</h6>
 						<h6><i class="fas fa-phone-alt mtr-1"></i>{{userDetails.mobilenumber}}</h6>
 						<div *ngFor="let item of profileDetails?.personaldetails.socialmedia">
-							<h6><i class="fas fa fa-twitter mtr-1"></i>{{item.socialMedia_Link}}</h6>
+							<h6><i class="fas fa fa-twitter mtr-1"></i><a href="{{item.socialMedia_Link}}" target="_blank" rel="noopener noreferrer">{{item.socialMedia_Link}} </a></h6>
 						</div>
 						<hr />
 						<div class="card-title" (click)="toggletag3()">
@@ -116,7 +115,7 @@
 										<h6><i class="fas fa-calendar my-2 mr-2"></i> {{item.startingyear}} -
 											{{item.endingyear}}</h6>
 										<h6>{{item.degree}}({{item.course}})</h6>
-										<h6>{{item.percentage}}</h6>
+										<h6>{{item.percentage}}%</h6>
 									</div>
 
 								</div>
