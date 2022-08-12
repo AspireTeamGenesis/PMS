@@ -10,7 +10,7 @@ namespace PMS_API
         {
             try
             {
-                return _db.Technologies!.ToList();
+                return _db.Technologies!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {

@@ -11,7 +11,7 @@ namespace PMS_API
         {
             try
             {
-                return _db.ProfileStatuss!.ToList();
+                return _db.ProfileStatuss!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {
