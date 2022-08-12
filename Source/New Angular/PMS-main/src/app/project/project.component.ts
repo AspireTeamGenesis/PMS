@@ -89,7 +89,7 @@ export class ProjectComponent implements OnInit {
       1000// the time to sleep to delay for
     );
   }
-  toogletag() {
+  toggletag() {
 
     this.showMe = !this.showMe;
 

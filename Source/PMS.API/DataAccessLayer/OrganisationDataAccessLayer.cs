@@ -10,7 +10,7 @@ namespace PMS_API
         {
             try
             {
-                return _db.Organisations!.ToList();
+                return _db.Organisations!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {

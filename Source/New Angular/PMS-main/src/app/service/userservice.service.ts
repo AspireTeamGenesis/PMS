@@ -279,7 +279,7 @@ export class UserserviceService {
     return this.http.post<any>(`https://localhost:7021/Profile/GetFilteredProfile`,filter,{headers:this.headers});
   }
 
-  getProfileByApprovedStaus()
+  getProfileByApprovedStatus()
   {
     return this.http.get<any>(`https://localhost:7021/User/Getallusers?profilestatusId=1`,{headers:this.headers});   
   }

@@ -10,26 +10,25 @@ import { Toaster } from 'ngx-toast-notifications';
     styleUrls: ['./approvedprofile.component.css']
 })
 export class ApprovedprofileComponent implements OnInit {
-
-    profileIdDetails: any;
-
+    // Pagenation Settings
     totalLength: any;
     page: number = 1;
-    achievementDetails: any;
-    profileId: number;
-    approvedProfiles: any;
-    constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private toaster: Toaster) { }
-
+    // To store Approved Profile Response from Server
+     approvedProfiles: any;
+    constructor(private service: UserserviceService, private http: HttpClient, private toaster: Toaster) { }
+    // Component Initialization
     ngOnInit(): void {
-        this.getProfileByApprovedStaus();
+        this.getProfileByApprovedStatus();
     }
-    getProfileByApprovedStaus() {
-        this.service.getProfileByApprovedStaus().subscribe({
+//    Gets Profile By Approved Status
+    getProfileByApprovedStatus() {
+        this.service.getProfileByApprovedStatus().subscribe({
             next: (data: any) => {
                 this.approvedProfiles = data
             }
         })
     }
+    // Request to Update Function
     editToUpdate() {
         this.toaster.open({ text: 'Request to update sent successfully via mail', position: 'top-center', type: 'success' })
     }

@@ -1,8 +1,12 @@
+<!-- Topbar start -->
 <app-topbar></app-topbar>
+<!-- Topbar end -->
+<!-- Sidebar start -->
 <app-sidebar></app-sidebar>
+<!-- Sidebar end -->
 <div class="container d-flex justify-content-center table-box">
     <form action="#" class="form form-border" [formGroup]="achievementForm" (ngsubmit)="achievementForm.valid ">
-
+    <!-- Progress Bar starts -->
         <div class="progressbar">
             <div class="progress" id="progress"></div>
 
@@ -13,15 +17,16 @@
             <div [routerLink]="['/skill']" class="progress-step " data-title="Skills"></div>
             <div class="progress-step progress-step-active" data-title="Achievements"></div>
         </div>
-
+     <!-- Progress Bar Ends -->
         <div class="form-step form-step-active">
+             <!-- Add Achievement start -->
             <h3>Achievements
                 <div class="tooltip1">
-                    <button class="plus" (click)="toogletag()"> + </button>
+                    <button class="plus" (click)="toggletag()"> + </button>
                     <span class="tooltip1text">Click here to add achievement details</span>
                 </div>
             </h3>
-            <div *ngIf="showMe">
+            <div *ngIf="toggle">
                 <label for="achievementTypeValue">Type</label>
                 <select name="achievementTypeValue"
                     [class.is-invalid]="(formSubmitted && achievementForm.controls['AchievementType'].invalid )|| achievementForm.controls['AchievementType'].invalid && achievementForm.controls['AchievementType'].touched||achievementForm.controls['AchievementType'].untouched"
@@ -52,9 +57,11 @@
                     <button class="btn btn-next width-50 ml-auto" [disabled]="!achievementForm.valid"
                         (click)="submitAchievement()">Add</button>
                 </div>
+             <!-- Add Achievement Ends    -->
             </div>
             <br>
             <app-achievementcard></app-achievementcard>
+            <!-- Buttons for Previous, Save as Draft, Submit -->
             <div class="row">
                 <a [routerLink]="['/skill']" class="btn btn-next width-50 ml-auto">Previous</a>
                 <a [routerLink]="['/viewprofile']" class="btn btn-next width-50 ml-auto">Save as Draft</a>

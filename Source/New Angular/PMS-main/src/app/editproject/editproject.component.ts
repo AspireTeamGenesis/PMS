@@ -95,7 +95,7 @@ export class EditprojectComponent implements OnInit {
       });
   }
 
-  toogletag()
+  toggletag()
   {
     this.showMe=!this.showMe;
   }

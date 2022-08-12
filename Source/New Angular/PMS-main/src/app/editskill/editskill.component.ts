@@ -105,7 +105,7 @@ export class EditskillComponent implements OnInit {
   );
   }
 
-  toogletag()
+  toggletag()
 
   {
 

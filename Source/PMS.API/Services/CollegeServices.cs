@@ -13,7 +13,7 @@ namespace PMS_API
             try
             {
                 //IEnumerable<College> colleges = new List<College>();
-                return from college in _collegeDataAccessLayer.GetColleges() where college.IsActive == true select college; 
+                return from college in _collegeDataAccessLayer.GetColleges() select college; 
             }
             catch (Exception ex) //unknown exception occurs
             {

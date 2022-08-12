@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Education Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button> </h3>
+      <h3>Education Details <button class="plus" (click)="toggletag()" (click)="footer()" > + </button> </h3>
       <div class="input-group">
         <label for="degree">Degree</label>
         <input [class.is-invalid]="(formSubmitted && educationForm.controls['Degree'].invalid )||educationForm.controls['Degree'].invalid && educationForm.controls['Degree'].touched" type="text" name="degree" id="degree" placeholder="Enter your degree" [(ngModel)]="user.degree"
@@ -102,7 +102,7 @@
 
       </div>
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education']" (click)="updateEducation()" (click)="toogletag()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/education']" (click)="updateEducation()" (click)="toggletag()">Update</a>
       </div>
       <br>
       <app-educationcard [profileId]="profileId"></app-educationcard>

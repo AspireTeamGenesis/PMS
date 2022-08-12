@@ -14,7 +14,7 @@ namespace PMS_API
             try
             {
                 //IEnumerable<Domain> domains = new List<Domain>();
-                return from domain in _domainDataAccessLayer.GetDomains() where domain.IsActive == true select domain;
+                return from domain in _domainDataAccessLayer.GetDomains() select domain;
             }
             catch (Exception ex)
             {

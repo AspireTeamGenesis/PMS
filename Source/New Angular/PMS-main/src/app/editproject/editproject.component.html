@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-step form-step-active">
-      <h3>Project Details <button class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <h3>Project Details <button class="plus" (click)="toggletag()" (click)="footer()" > + </button></h3>
       <label for="Proname">Project Name</label>
       <input type="text" [(ngModel)]="projectDetails.projectname" name="projectname" id="Proname"
         placeholder="Enter Project name"[class.is-invalid]="(formSubmitted && projectForm.controls['ProjectName'].invalid )||projectForm.controls['ProjectName'].invalid && projectForm.controls['ProjectName'].touched"  formControlName="ProjectName">
@@ -101,7 +101,7 @@
         <span class="text-danger" *ngIf="projectForm.controls['ToolsUsed'].errors?.['maxlength']">Tools Used is too long</span>
       </div>    
       <div class="button">
-        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project']" (click)="updateproject()" (click)="toogletag()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" [routerLink]="['/project']" (click)="updateproject()" (click)="toggletag()">Update</a>
       </div>
       <br>
       <app-projectcard [profileId]="profileId"></app-projectcard>

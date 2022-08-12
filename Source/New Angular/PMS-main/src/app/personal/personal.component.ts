@@ -10,7 +10,6 @@ import { Toaster } from 'ngx-toast-notifications';
   styleUrls: ['./personal.component.css']
 })
 export class PersonalComponent implements OnInit {
-
   profileId: number;
   imageError: string = "";
   cardImageBase64: string = "";
@@ -20,25 +19,13 @@ export class PersonalComponent implements OnInit {
   };
   profileIdDetails: any;
   response: string = '';
-
   formSubmitted: boolean = false;
   showMe: boolean = false;
   foot: boolean = true;
   error: string = "";
   maxDate:any;
   base64header:any;
-  // user: any = {
-  //   personalDetailsId: 0,
-  //   profileId: 0,
-  //   base64header: '',
-  //   image: null,
-  //   objective: '',
-  //   dateOfBirth: '',
-  //   nationality: '',
-  //   dateOfJoining: '',
-  //   userId: 0
-  // }
-
+  // Creating Formgroup and its  Validations
   personalForm = this.FB.group({
     profilePhoto: ['', [Validators.required]],
     objective: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]],
@@ -69,7 +56,7 @@ export class PersonalComponent implements OnInit {
   year: number = 0;
   languageArray: any = [];
   personalDetails: any;
-  toogletag() {
+  toggletag() {
     this.showMe = !this.showMe;
   }
   footer() {

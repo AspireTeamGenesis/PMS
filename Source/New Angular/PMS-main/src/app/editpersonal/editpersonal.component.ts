@@ -125,7 +125,7 @@ export class EditpersonalComponent implements OnInit {
       console.warn(this.user);
     })
   }
-  toogletag() {
+  toggletag() {
     this.showMe = !this.showMe;
   }
 

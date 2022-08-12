@@ -11,7 +11,7 @@ namespace PMS_API
             try
             {
                 //IEnumerable<ProfileStatus> profileStatuss = new List<ProfileStatus>();
-                return from profileStatus in _ProfileStatusDataAccessLayer.GetProfileStatuss() where profileStatus.IsActive == true select profileStatus;
+                return from profileStatus in _ProfileStatusDataAccessLayer.GetProfileStatuss() select profileStatus;
             }
             catch (Exception ex)
             {

@@ -20,7 +20,7 @@
             <h3>Project Details
 
                 <div class="tooltip1">
-                    <button class="plus" (click)="toogletag()"> + </button>
+                    <button class="plus" (click)="toggletag()"> + </button>
                     <span class="tooltip1text">Click here to add project details</span>
                 </div>
             </h3>
@@ -174,7 +174,7 @@
                 </div>
                 <div class="button">
                     <button class="btn btn-next width-50 ml-auto" [disabled]="!projectForm.valid" (click)="OnSubmit()"
-                        (click)="toogletag()">Add</button>
+                        (click)="toggletag()">Add</button>
                 </div>
             </div>
         </div>

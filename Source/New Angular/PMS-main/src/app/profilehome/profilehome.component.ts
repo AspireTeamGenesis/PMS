@@ -105,13 +105,13 @@ export class ProfilehomeComponent implements OnInit {
     });
   }
 
-  toogletag()
+  toggletag()
   {
     !this.showMe==this.showMe;
     if(this.showMe==true){this.showMe=false};
   }
 
-  toogletag1()
+  toggletag1()
   {
     this.showMe1=!this.showMe1;
   }

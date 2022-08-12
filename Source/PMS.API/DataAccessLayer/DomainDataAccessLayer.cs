@@ -10,7 +10,7 @@ namespace PMS_API.DataAccessLayer
         {
             try
             {
-                return _db.Domains!.ToList();
+                return _db.Domains!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {

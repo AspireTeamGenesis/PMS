@@ -1,5 +1,10 @@
+<!-- Topbar start -->
 <app-topbar></app-topbar>
+<!-- Topbar end -->
+
+<!-- Sidebar start -->
 <app-sidebar></app-sidebar>
+<!-- Sidebar end -->
 
 <form name="regi" action="register1.jsp" method="post">
     <div class="model">
@@ -11,7 +16,7 @@
                             <h5>No Profile has been created yet <br> <span>  Click '+' to create your profile</span></h5>
                         </div>
                     </div>
-
+             <!-- Buttons for Add profile -->
                     <div class="d-flex align-items-center justify-content-center text-center">
                         <a (click)="createProfile()" [routerLink]="['/personal']"><button class="btn-circular"> + </button></a>
                     </div>

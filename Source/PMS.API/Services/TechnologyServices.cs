@@ -11,7 +11,7 @@ namespace PMS_API
             try
             {
                 //IEnumerable<Technology> technologys = new List<Technology>();
-                return from technology in _TechnologyDataAccessLayer.GetTechnologies() where technology.IsActive == true select technology;
+                return from technology in _TechnologyDataAccessLayer.GetTechnologies() select technology;
             }
             catch (Exception ex)
             {

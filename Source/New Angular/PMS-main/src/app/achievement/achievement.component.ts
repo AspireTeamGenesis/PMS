@@ -13,19 +13,20 @@ import { Toaster } from 'ngx-toast-notifications';
 })
 export class AchievementComponent implements OnInit {
 
-    error: any;
-    showMe: boolean = false;
-    formSubmitted: boolean = false;
-    foot: boolean = true;
-    achievementForm: FormGroup;
-    imageError: string = "";
-    profileIdDetails: any = {
-        profileId: 0
-    }
-    isImageSaved: boolean = false;
-    cardImageBase64: any;
-
+     error: any;
+     toggle: boolean = false;
+     formSubmitted: boolean = false;
+     foot: boolean = true;
+     achievementForm: FormGroup;
+     imageError: string = "";
+     profileIdDetails: any = {
+         profileId: 0
+     }
+     isImageSaved: boolean = false;
+     cardImageBase64: any;
+    
     constructor(private FB: FormBuilder, private service: UserserviceService, private http: HttpClient, private route: ActivatedRoute, private toaster: Toaster) { }
+    // Model for Achievement
     achievement: any = {
         achievementId: 0,
         profileId: 0,
@@ -33,7 +34,7 @@ export class AchievementComponent implements OnInit {
         base64header: '',
         achievementImage: '',
     }
-
+//    Component Initialisation
     ngOnInit(): void {
         this.achievementForm = this.FB.group({
             AchievementPhoto: ['', [Validators.required]],
@@ -42,7 +43,7 @@ export class AchievementComponent implements OnInit {
         this.getProfileIdByUserId();
 
     }
-
+    // Gets Profile for the CurrentUser
     getProfileIdByUserId() {
         this.service.getProfileIdByUserId().subscribe({
             next: (data: any) => {
@@ -52,7 +53,7 @@ export class AchievementComponent implements OnInit {
         })
     }
 
-
+    // Adds the Achievement Details Provided by the user
     submitAchievement() {
         this.formSubmitted = true;
         this.achievement.achievementTypeId = this.achievementForm.value['AchievementType'];
@@ -74,7 +75,7 @@ export class AchievementComponent implements OnInit {
             1000
         );
     }
-
+    // Image Handling Function
     fileChangeEvent(fileInput: any) {
         this.imageError = "";
         if (fileInput.target.files && fileInput.target.files[0]) {
@@ -106,15 +107,17 @@ export class AchievementComponent implements OnInit {
             reader.readAsDataURL(fileInput.target.files[0]);
         } return false
     }
-    toogletag() {
+    // Toggle for showing the details for adding the awards and certificates
+    toggletag() {
 
-        this.showMe = !this.showMe;
+        this.toggle = !this.toggle;
 
     }
+    // Show Toast Message when Submit Button is Clicked
     submit() {
         this.toaster.open({ text: 'Form submitted successfully', position: 'top-center', type: 'success' });
     }
-
+    // Sets footer for the Page
     footer() {
 
         this.foot = !this.foot;

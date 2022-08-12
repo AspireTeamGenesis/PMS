@@ -113,7 +113,7 @@ export class EditeducationComponent implements OnInit {
       );
     
       }
-      toogletag()
+      toggletag()
 
   {
 

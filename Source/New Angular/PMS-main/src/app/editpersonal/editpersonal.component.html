@@ -17,7 +17,7 @@
 
     <!-- Steps -->
     <div class="form-step form-step-active">
-      <h3>Personal Details <button  class="plus" (click)="toogletag()" (click)="footer()" > + </button></h3>
+      <h3>Personal Details <button  class="plus" (click)="toggletag()" (click)="footer()" > + </button></h3>
       <div *ngIf="showMe" >
 
       <label for="personaldetails">Profile Photo</label>
@@ -97,7 +97,7 @@
       <br>
 
             <div class="button">
-        <a class="btn btn-next width-50 ml-auto" (click)="updatePersonal()" (click)="toogletag()">Update</a>
+        <a class="btn btn-next width-50 ml-auto" (click)="updatePersonal()" (click)="toggletag()">Update</a>
       </div>
     </div>
 

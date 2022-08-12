@@ -10,7 +10,7 @@ namespace PMS_API.DataAccessLayer
         {
             try
             {
-                return _db.Colleges!.ToList();
+                return _db.Colleges!.Where(e=>e.IsActive==true).ToList();
             }
             catch (InvalidOperationException ex)              //InvalidOperation Exception Occurs
             {

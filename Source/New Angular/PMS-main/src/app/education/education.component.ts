@@ -94,7 +94,7 @@ export class EducationComponent implements OnInit {
             500// the time to sleep to delay for
         );
     }
-    toogletag() {
+    toggletag() {
         this.showMe = !this.showMe;
     }
     footer() {

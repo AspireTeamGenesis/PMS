@@ -86,7 +86,7 @@ export class SkillsComponent implements OnInit {
     );
   }
 
-  toogletag() {
+  toggletag() {
     this.showMe = !this.showMe;
   }
 

@@ -11,7 +11,7 @@ namespace PMS_API
             try
             {
                 //IEnumerable<Organisation> organization = new List<Organisation>();
-                return from organisation in _OrganisationDataAccessLayer.GetOrganisations() where organisation.IsActive == true select organisation;
+                return from organisation in _OrganisationDataAccessLayer.GetOrganisations() select organisation;
             }
             catch (Exception ex)
             {
