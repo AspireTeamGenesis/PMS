@@ -1,0 +1,365 @@
+[2022-08-12 09:21:13.407 +05:30  INF]  User profile is available. Using 'C:\Users\gugan.bala\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-12 09:21:13.511 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-12 09:21:13.511 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-12 09:21:13.516 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-12 09:21:13.516 +05:30  INF]  Hosting environment: Development
+[2022-08-12 09:21:13.516 +05:30  INF]  Content root path: C:\Users\gugan.bala\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-12 09:21:24.868 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/ - -
+[2022-08-12 09:21:24.941 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/ - - - 404 0 - 74.6246ms
+[2022-08-12 09:21:29.350 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/swagger/index.html - -
+[2022-08-12 09:21:29.417 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/swagger/index.html - - - 200 - text/html;charset=utf-8 66.9704ms
+[2022-08-12 09:21:30.812 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - -
+[2022-08-12 09:21:30.914 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 101.8187ms
+[2022-08-12 09:22:06.390 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62
+[2022-08-12 09:22:06.396 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:22:06.401 +05:30  INF]  Executing endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:22:06.437 +05:30  INF]  Route matched with {action = "AuthLogin", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AuthLogin(PMS_API.UserLogin) on controller PMS_API.LoginController (PMS_API).
+[2022-08-12 09:22:08.303 +05:30  INF]  Entity Framework Core 6.0.5 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: None
+[2022-08-12 09:22:09.399 +05:30  INF]  Executed DbCommand (83ms) [Parameters=[@__UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE [u].[UserName] = @__UserName_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:22:09.447 +05:30  INF]  Executed DbCommand (7ms) [Parameters=[@__UserName_0='?' (Size = 4000), @__Sha256_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE ([u].[UserName] = @__UserName_0) AND ([u].[Password] = @__Sha256_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:22:09.641 +05:30  INF]  Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[CountryCodeId], [u].[CreatedBy], [u].[CreatedOn], [u].[DesignationId], [u].[Email], [u].[GenderId], [u].[IsActive], [u].[MobileNumber], [u].[Name], [u].[OrganisationId], [u].[Password], [u].[ReportingPersonUsername], [u].[UpdatedBy], [u].[UpdatedOn], [u].[UserName], [g].[GenderId], [g].[GenderName], [g].[IsActive], [d].[DesignationId], [d].[DesignationName], [d].[IsActive], [o].[OrganisationId], [o].[IsActive], [o].[OrganisationName], [c].[CountryCodeId], [c].[CountryCodeName], [c].[IsActive], [p].[PersonalDetailsId], [p].[CreatedBy], [p].[CreatedOn], [p].[DateOfBirth], [p].[DateOfJoining], [p].[Image], [p].[IsActive], [p].[Nationality], [p].[Objective], [p].[ProfileId], [p].[UpdatedBy], [p].[UpdatedOn], [p].[UserId], [p].[base64header]
+FROM [users] AS [u]
+INNER JOIN [Gender] AS [g] ON [u].[GenderId] = [g].[GenderId]
+INNER JOIN [Designations] AS [d] ON [u].[DesignationId] = [d].[DesignationId]
+INNER JOIN [Organisations] AS [o] ON [u].[OrganisationId] = [o].[OrganisationId]
+LEFT JOIN [CountryCodes] AS [c] ON [u].[CountryCodeId] = [c].[CountryCodeId]
+LEFT JOIN [personalDetails] AS [p] ON [u].[UserId] = [p].[UserId]
+[2022-08-12 09:22:10.061 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType36`4[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:22:10.139 +05:30  INF]  Executed action PMS_API.LoginController.AuthLogin (PMS_API) in 3693.1747ms
+[2022-08-12 09:22:10.139 +05:30  INF]  Executed endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:22:10.143 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62 - 200 473 application/json;+charset=utf-8 3753.1442ms
+[2022-08-12 09:22:21.493 +05:30  INF]  Application is shutting down...
+[2022-08-12 09:22:27.828 +05:30  INF]  User profile is available. Using 'C:\Users\gugan.bala\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-12 09:22:27.935 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-12 09:22:27.935 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-12 09:22:27.939 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-12 09:22:27.940 +05:30  INF]  Hosting environment: Development
+[2022-08-12 09:22:27.940 +05:30  INF]  Content root path: C:\Users\gugan.bala\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-12 09:22:33.459 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62
+[2022-08-12 09:22:33.494 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:22:33.519 +05:30  INF]  Executing endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:22:33.535 +05:30  INF]  Route matched with {action = "AuthLogin", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AuthLogin(PMS_API.UserLogin) on controller PMS_API.LoginController (PMS_API).
+[2022-08-12 09:22:34.794 +05:30  INF]  Entity Framework Core 6.0.5 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: None
+[2022-08-12 09:22:51.796 +05:30  ERR]  An error occurred using the connection to database 'PMS' on server 'ASPLAP19291'.
+[2022-08-12 09:22:51.848 +05:30  ERR]  An exception occurred while iterating over the results of a query for context type 'PMS_API.Context'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (53): The network path was not found.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__19_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+ ---> System.ComponentModel.Win32Exception (53): The network path was not found.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover, SqlAuthenticationMethod authType)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__19_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:53,State:0,Class:20
+[2022-08-12 09:22:51.850 +05:30  INF]  Exception on User DAL : LoginCrendentials(string UserName, string password) : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+[2022-08-12 09:22:51.850 +05:30  INF]  User DAL : LoginCredentails throwed an exception : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+[2022-08-12 09:22:51.851 +05:30  INF]  Login Service : AuthLogin() : A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+[2022-08-12 09:22:51.854 +05:30  INF]  Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+[2022-08-12 09:22:51.931 +05:30  INF]  Executed action PMS_API.LoginController.AuthLogin (PMS_API) in 18387.0437ms
+[2022-08-12 09:22:51.932 +05:30  INF]  Executed endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:22:51.946 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62 - 500 245 application/problem+json;+charset=utf-8 18490.5273ms
+[2022-08-12 09:23:52.441 +05:30  INF]  Application is shutting down...
+[2022-08-12 09:24:12.383 +05:30  INF]  User profile is available. Using 'C:\Users\gugan.bala\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2022-08-12 09:24:12.497 +05:30  INF]  Now listening on: https://localhost:7021
+[2022-08-12 09:24:12.497 +05:30  INF]  Now listening on: http://localhost:5139
+[2022-08-12 09:24:12.501 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2022-08-12 09:24:12.501 +05:30  INF]  Hosting environment: Development
+[2022-08-12 09:24:12.501 +05:30  INF]  Content root path: C:\Users\gugan.bala\Documents\GitHub\PMS\Source\PMS.API\
+[2022-08-12 09:25:01.062 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/swagger/index.html - -
+[2022-08-12 09:25:01.245 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/swagger/index.html - - - 200 - text/html;charset=utf-8 188.5870ms
+[2022-08-12 09:25:01.323 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - -
+[2022-08-12 09:25:01.520 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 197.2009ms
+[2022-08-12 09:25:28.936 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62
+[2022-08-12 09:25:28.941 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:25:28.992 +05:30  INF]  Executing endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:25:29.028 +05:30  INF]  Route matched with {action = "AuthLogin", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AuthLogin(PMS_API.UserLogin) on controller PMS_API.LoginController (PMS_API).
+[2022-08-12 09:25:30.834 +05:30  INF]  Entity Framework Core 6.0.5 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: None
+[2022-08-12 09:25:31.852 +05:30  INF]  Executed DbCommand (88ms) [Parameters=[@__UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE [u].[UserName] = @__UserName_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:25:31.905 +05:30  INF]  Executed DbCommand (5ms) [Parameters=[@__UserName_0='?' (Size = 4000), @__Sha256_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE ([u].[UserName] = @__UserName_0) AND ([u].[Password] = @__Sha256_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:25:32.108 +05:30  INF]  Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[CountryCodeId], [u].[CreatedBy], [u].[CreatedOn], [u].[DesignationId], [u].[Email], [u].[GenderId], [u].[IsActive], [u].[MobileNumber], [u].[Name], [u].[OrganisationId], [u].[Password], [u].[ReportingPersonUsername], [u].[UpdatedBy], [u].[UpdatedOn], [u].[UserName], [g].[GenderId], [g].[GenderName], [g].[IsActive], [d].[DesignationId], [d].[DesignationName], [d].[IsActive], [o].[OrganisationId], [o].[IsActive], [o].[OrganisationName], [c].[CountryCodeId], [c].[CountryCodeName], [c].[IsActive], [p].[PersonalDetailsId], [p].[CreatedBy], [p].[CreatedOn], [p].[DateOfBirth], [p].[DateOfJoining], [p].[Image], [p].[IsActive], [p].[Nationality], [p].[Objective], [p].[ProfileId], [p].[UpdatedBy], [p].[UpdatedOn], [p].[UserId], [p].[base64header]
+FROM [users] AS [u]
+INNER JOIN [Gender] AS [g] ON [u].[GenderId] = [g].[GenderId]
+INNER JOIN [Designations] AS [d] ON [u].[DesignationId] = [d].[DesignationId]
+INNER JOIN [Organisations] AS [o] ON [u].[OrganisationId] = [o].[OrganisationId]
+LEFT JOIN [CountryCodes] AS [c] ON [u].[CountryCodeId] = [c].[CountryCodeId]
+LEFT JOIN [personalDetails] AS [p] ON [u].[UserId] = [p].[UserId]
+[2022-08-12 09:25:32.528 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType36`4[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:25:32.597 +05:30  INF]  Executed action PMS_API.LoginController.AuthLogin (PMS_API) in 3559.5072ms
+[2022-08-12 09:25:32.598 +05:30  INF]  Executed endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:25:32.601 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json-patch+json 62 - 200 473 application/json;+charset=utf-8 3664.7395ms
+[2022-08-12 09:25:59.577 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Designation/ViewDesignations - -
+[2022-08-12 09:25:59.679 +05:30  INF]  Executing endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:25:59.681 +05:30  INF]  Route matched with {action = "ViewDesignations", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewDesignations() on controller PMS_API.DesignationController (PMS_API).
+[2022-08-12 09:25:59.687 +05:30  INF]  List of Designations......
+[2022-08-12 09:25:59.974 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:25:59.990 +05:30  INF]  Executed action PMS_API.DesignationController.ViewDesignations (PMS_API) in 308.8245ms
+[2022-08-12 09:25:59.990 +05:30  INF]  Executed endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:25:59.990 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Designation/ViewDesignations - - - 200 850 application/json;+charset=utf-8 412.9619ms
+[2022-08-12 09:27:20.467 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Login/AuthLogin/Login - -
+[2022-08-12 09:27:20.468 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:20.469 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Login/AuthLogin/Login - - - 204 - - 1.7159ms
+[2022-08-12 09:27:20.470 +05:30  INF]  Request starting HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json 53
+[2022-08-12 09:27:20.470 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:20.473 +05:30  INF]  Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token.
+[2022-08-12 09:27:20.473 +05:30  INF]  Executing endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:27:20.473 +05:30  INF]  Route matched with {action = "AuthLogin", controller = "Login"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AuthLogin(PMS_API.UserLogin) on controller PMS_API.LoginController (PMS_API).
+[2022-08-12 09:27:20.477 +05:30  INF]  Entity Framework Core 6.0.5 initialized 'Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.5' with options: None
+[2022-08-12 09:27:20.493 +05:30  INF]  Executed DbCommand (10ms) [Parameters=[@__UserName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE [u].[UserName] = @__UserName_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:27:20.498 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__UserName_0='?' (Size = 4000), @__Sha256_1='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [users] AS [u]
+        WHERE ([u].[UserName] = @__UserName_0) AND ([u].[Password] = @__Sha256_1)) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+[2022-08-12 09:27:20.512 +05:30  INF]  Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserId], [u].[CountryCodeId], [u].[CreatedBy], [u].[CreatedOn], [u].[DesignationId], [u].[Email], [u].[GenderId], [u].[IsActive], [u].[MobileNumber], [u].[Name], [u].[OrganisationId], [u].[Password], [u].[ReportingPersonUsername], [u].[UpdatedBy], [u].[UpdatedOn], [u].[UserName], [g].[GenderId], [g].[GenderName], [g].[IsActive], [d].[DesignationId], [d].[DesignationName], [d].[IsActive], [o].[OrganisationId], [o].[IsActive], [o].[OrganisationName], [c].[CountryCodeId], [c].[CountryCodeName], [c].[IsActive], [p].[PersonalDetailsId], [p].[CreatedBy], [p].[CreatedOn], [p].[DateOfBirth], [p].[DateOfJoining], [p].[Image], [p].[IsActive], [p].[Nationality], [p].[Objective], [p].[ProfileId], [p].[UpdatedBy], [p].[UpdatedOn], [p].[UserId], [p].[base64header]
+FROM [users] AS [u]
+INNER JOIN [Gender] AS [g] ON [u].[GenderId] = [g].[GenderId]
+INNER JOIN [Designations] AS [d] ON [u].[DesignationId] = [d].[DesignationId]
+INNER JOIN [Organisations] AS [o] ON [u].[OrganisationId] = [o].[OrganisationId]
+LEFT JOIN [CountryCodes] AS [c] ON [u].[CountryCodeId] = [c].[CountryCodeId]
+LEFT JOIN [personalDetails] AS [p] ON [u].[UserId] = [p].[UserId]
+[2022-08-12 09:27:20.529 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType36`4[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:27:20.530 +05:30  INF]  Executed action PMS_API.LoginController.AuthLogin (PMS_API) in 56.3322ms
+[2022-08-12 09:27:20.530 +05:30  INF]  Executed endpoint 'PMS_API.LoginController.AuthLogin (PMS_API)'
+[2022-08-12 09:27:20.530 +05:30  INF]  Request finished HTTP/2 POST https://localhost:7021/Login/AuthLogin/Login application/json 53 - 200 473 application/json;+charset=utf-8 60.4276ms
+[2022-08-12 09:27:20.573 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - -
+[2022-08-12 09:27:20.573 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:20.573 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - - - 204 - - 0.3821ms
+[2022-08-12 09:27:20.575 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json -
+[2022-08-12 09:27:20.578 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:20.579 +05:30  INF]  Executing endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:27:20.583 +05:30  INF]  Route matched with {action = "GetUserProfile", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetUserProfile() on controller PMS_API.UserController (PMS_API).
+[2022-08-12 09:27:20.717 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType53`16[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:27:20.744 +05:30  INF]  Executed action PMS_API.UserController.GetUserProfile (PMS_API) in 160.3242ms
+[2022-08-12 09:27:20.744 +05:30  INF]  Executed endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:27:20.748 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json - - 200 100754 application/json;+charset=utf-8 173.2734ms
+[2022-08-12 09:27:22.719 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - -
+[2022-08-12 09:27:22.720 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:22.720 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - - - 204 - - 1.5627ms
+[2022-08-12 09:27:22.721 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - -
+[2022-08-12 09:27:22.721 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:22.721 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json -
+[2022-08-12 09:27:22.721 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - - - 204 - - 0.3281ms
+[2022-08-12 09:27:22.721 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:22.725 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json -
+[2022-08-12 09:27:22.725 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:22.725 +05:30  INF]  Executing endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:27:22.725 +05:30  INF]  Route matched with {action = "GetUserProfile", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetUserProfile() on controller PMS_API.UserController (PMS_API).
+[2022-08-12 09:27:22.726 +05:30  INF]  Executing endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:27:22.727 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json -
+[2022-08-12 09:27:22.727 +05:30  INF]  Route matched with {action = "ViewOrganisations", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewOrganisations() on controller PMS_API.OrganisationController (PMS_API).
+[2022-08-12 09:27:22.727 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:27:22.728 +05:30  INF]  Executing endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:27:22.728 +05:30  INF]  Route matched with {action = "ViewDesignations", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewDesignations() on controller PMS_API.DesignationController (PMS_API).
+[2022-08-12 09:27:22.728 +05:30  INF]  List of Designations......
+[2022-08-12 09:27:22.731 +05:30  INF]  List of Organisations......
+[2022-08-12 09:27:22.855 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:27:22.856 +05:30  INF]  Executed action PMS_API.DesignationController.ViewDesignations (PMS_API) in 127.7394ms
+[2022-08-12 09:27:22.856 +05:30  INF]  Executed endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:27:22.856 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json - - 200 850 application/json;+charset=utf-8 129.0648ms
+[2022-08-12 09:27:22.859 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PMS_API.Organisation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:27:22.861 +05:30  INF]  Executed action PMS_API.OrganisationController.ViewOrganisations (PMS_API) in 133.4672ms
+[2022-08-12 09:27:22.861 +05:30  INF]  Executed endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:27:22.861 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json - - 200 774 application/json;+charset=utf-8 136.2106ms
+[2022-08-12 09:27:22.887 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType53`16[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:27:22.894 +05:30  INF]  Executed action PMS_API.UserController.GetUserProfile (PMS_API) in 168.2764ms
+[2022-08-12 09:27:22.894 +05:30  INF]  Executed endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:27:22.894 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json - - 200 100754 application/json;+charset=utf-8 172.8701ms
+[2022-08-12 09:29:02.846 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - -
+[2022-08-12 09:29:02.846 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.847 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - - - 204 - - 0.3935ms
+[2022-08-12 09:29:02.848 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json -
+[2022-08-12 09:29:02.848 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.849 +05:30  INF]  Executing endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:29:02.849 +05:30  INF]  Route matched with {action = "ViewOrganisations", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewOrganisations() on controller PMS_API.OrganisationController (PMS_API).
+[2022-08-12 09:29:02.849 +05:30  INF]  List of Organisations......
+[2022-08-12 09:29:02.852 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PMS_API.Organisation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:29:02.852 +05:30  INF]  Executed action PMS_API.OrganisationController.ViewOrganisations (PMS_API) in 3.3949ms
+[2022-08-12 09:29:02.852 +05:30  INF]  Executed endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:29:02.852 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json - - 200 774 application/json;+charset=utf-8 4.3224ms
+[2022-08-12 09:29:02.866 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - -
+[2022-08-12 09:29:02.866 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.866 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - - - 204 - - 0.3977ms
+[2022-08-12 09:29:02.866 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - -
+[2022-08-12 09:29:02.866 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.867 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - - - 204 - - 0.1479ms
+[2022-08-12 09:29:02.868 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json -
+[2022-08-12 09:29:02.868 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json -
+[2022-08-12 09:29:02.868 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.868 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:29:02.868 +05:30  INF]  Executing endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:29:02.868 +05:30  INF]  Executing endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:29:02.868 +05:30  INF]  Route matched with {action = "GetUserProfile", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetUserProfile() on controller PMS_API.UserController (PMS_API).
+[2022-08-12 09:29:02.868 +05:30  INF]  Route matched with {action = "ViewDesignations", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewDesignations() on controller PMS_API.DesignationController (PMS_API).
+[2022-08-12 09:29:02.868 +05:30  INF]  List of Designations......
+[2022-08-12 09:29:02.872 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:29:02.872 +05:30  INF]  Executed action PMS_API.DesignationController.ViewDesignations (PMS_API) in 3.6651ms
+[2022-08-12 09:29:02.872 +05:30  INF]  Executed endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:29:02.872 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json - - 200 850 application/json;+charset=utf-8 4.3790ms
+[2022-08-12 09:29:02.898 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType53`16[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:29:02.903 +05:30  INF]  Executed action PMS_API.UserController.GetUserProfile (PMS_API) in 34.3221ms
+[2022-08-12 09:29:02.903 +05:30  INF]  Executed endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:29:02.903 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json - - 200 100754 application/json;+charset=utf-8 35.1053ms
+[2022-08-12 09:32:02.224 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - -
+[2022-08-12 09:32:02.224 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.224 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - - - 204 - - 0.3016ms
+[2022-08-12 09:32:02.225 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json -
+[2022-08-12 09:32:02.225 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.226 +05:30  INF]  Executing endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:32:02.226 +05:30  INF]  Route matched with {action = "ViewOrganisations", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewOrganisations() on controller PMS_API.OrganisationController (PMS_API).
+[2022-08-12 09:32:02.226 +05:30  INF]  List of Organisations......
+[2022-08-12 09:32:02.231 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PMS_API.Organisation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:32:02.231 +05:30  INF]  Executed action PMS_API.OrganisationController.ViewOrganisations (PMS_API) in 5.2001ms
+[2022-08-12 09:32:02.231 +05:30  INF]  Executed endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:32:02.231 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json - - 200 774 application/json;+charset=utf-8 6.1788ms
+[2022-08-12 09:32:02.237 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - -
+[2022-08-12 09:32:02.237 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.237 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - - - 204 - - 0.4479ms
+[2022-08-12 09:32:02.238 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - -
+[2022-08-12 09:32:02.238 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.238 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - - - 204 - - 0.1522ms
+[2022-08-12 09:32:02.239 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json -
+[2022-08-12 09:32:02.239 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json -
+[2022-08-12 09:32:02.239 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.239 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:32:02.240 +05:30  INF]  Executing endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:32:02.240 +05:30  INF]  Executing endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:32:02.240 +05:30  INF]  Route matched with {action = "ViewDesignations", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewDesignations() on controller PMS_API.DesignationController (PMS_API).
+[2022-08-12 09:32:02.240 +05:30  INF]  Route matched with {action = "GetUserProfile", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetUserProfile() on controller PMS_API.UserController (PMS_API).
+[2022-08-12 09:32:02.240 +05:30  INF]  List of Designations......
+[2022-08-12 09:32:02.243 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:32:02.244 +05:30  INF]  Executed action PMS_API.DesignationController.ViewDesignations (PMS_API) in 3.6703ms
+[2022-08-12 09:32:02.244 +05:30  INF]  Executed endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:32:02.244 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json - - 200 850 application/json;+charset=utf-8 4.7939ms
+[2022-08-12 09:32:02.258 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType53`16[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:32:02.267 +05:30  INF]  Executed action PMS_API.UserController.GetUserProfile (PMS_API) in 26.3403ms
+[2022-08-12 09:32:02.267 +05:30  INF]  Executed endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:32:02.267 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json - - 200 100754 application/json;+charset=utf-8 27.5564ms
+[2022-08-12 09:35:15.970 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - -
+[2022-08-12 09:35:15.971 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:15.972 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Organisation/ViewOrganisations - - - 204 - - 1.8061ms
+[2022-08-12 09:35:15.974 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json -
+[2022-08-12 09:35:15.974 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:15.975 +05:30  INF]  Executing endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:35:15.975 +05:30  INF]  Route matched with {action = "ViewOrganisations", controller = "Organisation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewOrganisations() on controller PMS_API.OrganisationController (PMS_API).
+[2022-08-12 09:35:15.976 +05:30  INF]  List of Organisations......
+[2022-08-12 09:35:15.982 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+WhereListIterator`1[[PMS_API.Organisation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:35:15.982 +05:30  INF]  Executed action PMS_API.OrganisationController.ViewOrganisations (PMS_API) in 6.8182ms
+[2022-08-12 09:35:15.982 +05:30  INF]  Executed endpoint 'PMS_API.OrganisationController.ViewOrganisations (PMS_API)'
+[2022-08-12 09:35:15.982 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Organisation/ViewOrganisations application/json - - 200 774 application/json;+charset=utf-8 8.1790ms
+[2022-08-12 09:35:15.987 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - -
+[2022-08-12 09:35:15.993 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:15.993 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/Designation/ViewDesignations - - - 204 - - 6.3971ms
+[2022-08-12 09:35:15.996 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json -
+[2022-08-12 09:35:15.997 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:15.997 +05:30  INF]  Executing endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:35:15.997 +05:30  INF]  Route matched with {action = "ViewDesignations", controller = "Designation"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ViewDesignations() on controller PMS_API.DesignationController (PMS_API).
+[2022-08-12 09:35:15.998 +05:30  INF]  List of Designations......
+[2022-08-12 09:35:15.999 +05:30  INF]  Request starting HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - -
+[2022-08-12 09:35:15.999 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:15.999 +05:30  INF]  Request finished HTTP/2 OPTIONS https://localhost:7021/User/GetUserProfile - - - 204 - - 0.4211ms
+[2022-08-12 09:35:16.044 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[PMS_API.Designation, PMS_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2022-08-12 09:35:16.044 +05:30  INF]  Executed action PMS_API.DesignationController.ViewDesignations (PMS_API) in 46.7397ms
+[2022-08-12 09:35:16.044 +05:30  INF]  Executed endpoint 'PMS_API.DesignationController.ViewDesignations (PMS_API)'
+[2022-08-12 09:35:16.044 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/Designation/ViewDesignations application/json - - 200 850 application/json;+charset=utf-8 47.8370ms
+[2022-08-12 09:35:16.046 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json -
+[2022-08-12 09:35:16.047 +05:30  INF]  CORS policy execution successful.
+[2022-08-12 09:35:16.047 +05:30  INF]  Executing endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:35:16.047 +05:30  INF]  Route matched with {action = "GetUserProfile", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetUserProfile() on controller PMS_API.UserController (PMS_API).
+[2022-08-12 09:35:16.288 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType53`16[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Byte[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2022-08-12 09:35:16.293 +05:30  INF]  Executed action PMS_API.UserController.GetUserProfile (PMS_API) in 245.6944ms
+[2022-08-12 09:35:16.293 +05:30  INF]  Executed endpoint 'PMS_API.UserController.GetUserProfile (PMS_API)'
+[2022-08-12 09:35:16.293 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7021/User/GetUserProfile application/json - - 200 100754 application/json;+charset=utf-8 246.8096ms
